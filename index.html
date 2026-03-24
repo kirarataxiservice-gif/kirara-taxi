@@ -10,42 +10,30 @@
       box-sizing: border-box;
     }
 
-    .brand-logo-wrap {
-  line-height: 0;
-}
-
-.brand-logo {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-}
-
-.brand-logo-wrap {
-  line-height: 0;
-}
-
-.brand-logo {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-}
-
-.pc-text {
-  display: block;
-}
-
-.sp-text {
-  display: none;
-}
-    
-    
     body {
       margin: 0;
       background: #f5f5f5;
       color: #222;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    .brand-logo-wrap {
+      line-height: 0;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 100%;
+      max-width: 190px;
+      height: auto;
+    }
+
+    .pc-text {
+      display: block;
+    }
+
+    .sp-text {
+      display: none;
     }
 
     .site-header {
@@ -67,25 +55,22 @@
       padding: 10px 0;
     }
 
+    .brand {
+      min-width: 0;
+      flex: 1;
+    }
+
     .brand-sub {
-      font-size: 18px;
+      font-size: 11px;
       color: #666;
       margin-bottom: 4px;
     }
 
-    .brand-title {
-      font-size: 24px;
-      line-height: 1.2;
-      margin: 0;
-      color: #009140;
-      font-weight: 800;
-    }
-
     .brand-text {
-      font-size: 22px;
+      font-size: 13px;
       line-height: 1.5;
       color: #333;
-      margin: 4px 0 0;
+      margin: 6px 0 0;
     }
 
     .menu-button {
@@ -249,15 +234,19 @@
 
     @media (max-width: 768px) {
       .brand-logo {
-  max-width: 180px;
-}
-      
-      .brand-title {
-        font-size: 20px;
+        max-width: 180px;
       }
 
       .brand-text {
         font-size: 12px;
+      }
+
+      .pc-text {
+        display: none;
+      }
+
+      .sp-text {
+        display: block;
       }
 
       .hero-title {
@@ -285,16 +274,6 @@
       .call-bar a {
         font-size: 18px;
       }
-     
-      .pc-text {
-    display: none;
-  }
-
-  .sp-text {
-    display: block;
-  }
-    
-    
     }
   </style>
 </head>
@@ -303,18 +282,20 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-  <div class="brand-sub">介護タクシー・通院・転院・リクライニング車いす対応</div>
-  <div class="brand-logo-wrap">
-    <img class="brand-logo" src="./きららロゴ2.png" alt="介護タクシーきらら">
-  </div>
-  <p class="brand-text pc-text">
-愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーで、通院・転院・お出かけをサポートします。
-</p>
+        <div class="brand-sub">介護タクシー・通院・転院・リクライニング車いす対応</div>
 
-<p class="brand-text sp-text">
-愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーでお出かけをサポートします。
-</p>
-</div>
+        <div class="brand-logo-wrap">
+          <img class="brand-logo" src="./きららロゴ2.png" alt="介護タクシーきらら">
+        </div>
+
+        <p class="brand-text pc-text">
+          愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、通院・転院・お出かけをサポートします。
+        </p>
+
+        <p class="brand-text sp-text">
+          愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、お出かけをサポートします。
+        </p>
+      </div>
 
       <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
     </div>
