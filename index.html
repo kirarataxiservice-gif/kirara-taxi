@@ -1,61 +1,342 @@
-<header class="site-header">
-  <div class="header-inner">
-    <div class="brand">
-      <div class="brand-sub">介護タクシー・通院・転院・付き添い対応</div>
-      <h1 class="brand-title">介護タクシーきらら</h1>
-      <p class="brand-text">愛知県蒲郡市を拠点に、通院・転院・お出かけをサポートします。</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>介護タクシーきらら</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      width: min(100% - 16px, 1100px);
+      margin: 0 auto;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      line-height: 1.2;
+      margin: 0;
+      color: #009140;
+      font-weight: 800;
+    }
+
+    .brand-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #333;
+      margin: 4px 0 0;
+    }
+
+    .menu-button {
+      width: 48px;
+      height: 48px;
+      border: 1px solid #cfcfcf;
+      background: #fff;
+      border-radius: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .drawer-menu {
+      display: none;
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 8px 16px 16px;
+    }
+
+    .drawer-menu.open {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .drawer-menu a {
+      text-decoration: none;
+      color: #009140;
+      font-size: 18px;
+      padding: 10px 0;
+      border-bottom: 1px solid #e9e9e9;
+    }
+
+    .site-wrap {
+      width: min(100% - 16px, 1100px);
+      margin: 0 auto;
+      padding: 16px 0 96px;
+    }
+
+    .hero {
+      background: #ffffff;
+      margin: 12px auto 16px;
+      border-radius: 14px;
+      padding: 20px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .hero-lead {
+      margin: 0 0 8px;
+      color: #009140;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+
+    .hero-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: #f4a300;
+      color: #fff;
+    }
+
+    .btn-line {
+      background: #06c755;
+      color: #fff;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+
+    .feature-card {
+      flex: 1 1 calc(50% - 20px);
+      min-width: 260px;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+
+    .feature-card img {
+      width: 90%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      display: block;
+      margin: 15px auto 0;
+    }
+
+    .feature-body {
+      padding: 15px;
+    }
+
+    .feature-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #009140;
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+
+    .feature-text {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .call-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      background: #f4a300;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .call-bar a {
+      display: block;
+      padding: 16px 12px calc(16px + env(safe-area-inset-bottom));
+      color: #fff;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 768px) {
+      .brand-title {
+        font-size: 20px;
+      }
+
+      .brand-text {
+        font-size: 12px;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .features {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .feature-card {
+        flex: 1 1 100%;
+        min-width: 0;
+      }
+
+      .feature-title {
+        font-size: 20px;
+      }
+
+      .feature-text {
+        font-size: 16px;
+      }
+
+      .call-bar a {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-sub">介護タクシー・通院・転院・付き添い対応</div>
+        <h1 class="brand-title">介護タクシーきらら</h1>
+        <p class="brand-text">愛知県蒲郡市を拠点に、通院・転院・お出かけをサポートします。</p>
+      </div>
+
+      <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
     </div>
+  </header>
 
-    <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
+  <nav class="drawer-menu" id="drawerMenu">
+    <a href="index.html">ホーム</a>
+    <a href="guide.html">ご利用案内</a>
+    <a href="price.html">料金</a>
+    <a href="area.html">対応エリア</a>
+    <a href="contact.html">お問い合わせ</a>
+  </nav>
+
+  <main class="site-wrap">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-lead">通院・転院・入退院・お出かけに対応</p>
+        <h2 class="hero-title">移動に不安のある方へ、安心の介護タクシー</h2>
+        <p class="hero-text">
+          ご本人様はもちろん、ご家族様・ケアマネージャー様からのご相談にも対応しています。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:09012345678">電話で予約する</a>
+          <a class="btn btn-line" href="lineバナー-.html">LINEで相談する</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/i3cd71a6da20bf386/version/1773320062/image.png" alt="有資格者が対応します" />
+        <div class="feature-body">
+          <h3 class="feature-title">有資格者が対応します</h3>
+          <p class="feature-text">第二種免許および介護士関連の資格を保有するスタッフが対応し、関係法令を遵守した安全な移動と介助に努めます。</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/iff182b8cf10ff697/version/1773319933/image.png" alt="男女スタッフが在籍" />
+        <div class="feature-body">
+          <h3 class="feature-title">男女スタッフが在籍</h3>
+          <p class="feature-text">男性スタッフ・女性スタッフともに在籍しております。ご家族様も含め、安心してご依頼いただける環境を整えています。</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/ic39b72c39f185b75/version/1774269472/image.png" alt="介護保険が適用できます" />
+        <div class="feature-body">
+          <h3 class="feature-title">介護保険が適用できます</h3>
+          <p class="feature-text">通院等乗降介助など、一部のサービスにおいて介護保険の適用が可能です。適用範囲については担当のケアマネージャー様と連携いたします。</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/ic39b72c39f185b75/version/1774269429/image.png" alt="予約料はいただきません" />
+        <div class="feature-body">
+          <h3 class="feature-title">予約料はいただきません</h3>
+          <p class="feature-text">ご利用者様の負担を少しでも減らすため、事前の「予約料」は一切いただいておりません。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="call-bar">
+    <a href="tel:09012345678">📞 お電話はこちら 090-1234-5678</a>
   </div>
-</header>
 
-<nav class="drawer-menu" id="drawerMenu">
-  <a href="index.html">ホーム</a>
-  <a href="guide.html">ご利用案内</a>
-  <a href="price.html">料金</a>
-  <a href="area.html">対応エリア</a>
-  <a href="contact.html">お問い合わせ</a>
-</nav>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const drawerMenu = document.getElementById('drawerMenu');
 
-<section class="hero">
-  <div class="hero-inner">
-    <p class="hero-lead">通院・転院・入退院・お出かけに対応</p>
-    <h2 class="hero-title">移動に不安のある方へ、安心の介護タクシー</h2>
-    <p class="hero-text">
-      ご本人様はもちろん、ご家族様・ケアマネージャー様からのご相談にも対応しています。
-    </p>
-
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="tel:09012345678">電話で予約する</a>
-      <a class="btn btn-line" href="lineバナー-.html">LINEで相談する</a>
-    </div>
-  </div>
-</section>
-
-<div style="display: flex; flex-wrap: wrap; gap: 20px; font-family: sans-serif; justify-content: space-between; padding: 10px;">
-<div style="flex: 1 1 calc(50% - 20px); min-width: 260px; background: #ffffff; border: 1px solid #dddddd; border-radius: 8px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 5px; text-align: left;"><img style="width: 90%; aspect-ratio: 4/3; object-fit: contain; display: block; margin: 15px auto 0;" src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/i3cd71a6da20bf386/version/1773320062/image.png" alt="" />
-<div style="padding: 15px;">
-<div style="font-size: 18px; font-weight: 900; color: #009140; margin-bottom: 8px;"><span style="font-size: 22px;">有資格者が対応します</span></div>
-<div style="font-size: 13px; color: #333; line-height: 1.5;"><span style="font-size: 18px;">第二種免許および介護士関連の資格を保有するスタッフが対応し、関係法令を遵守した安全な移動と介助に努めます。</span></div>
-</div>
-</div>
-<div style="flex: 1 1 calc(50% - 20px); min-width: 260px; background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img style="width: 90%; aspect-ratio: 4/3; object-fit: contain; display: block; margin: 15px auto 0;" src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/iff182b8cf10ff697/version/1773319933/image.png" alt="" />
-<div style="padding: 15px;">
-<div style="font-size: 18px; font-weight: 900; color: #009140; margin-bottom: 8px;"><span style="font-size: 22px;">男女スタッフが在籍</span></div>
-<div style="font-size: 13px; color: #333; line-height: 1.5;"><span style="font-size: 18px;">男性スタッフ・女性スタッフともに在籍しております。ご家族様も含め、安心してご依頼いただける環境を整えています。</span></div>
-</div>
-</div>
-<div style="flex: 1 1 calc(50% - 20px); min-width: 260px; background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img style="width: 90%; aspect-ratio: 4/3; object-fit: contain; display: block; margin: 15px auto 0;" src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/ic39b72c39f185b75/version/1774269472/image.png" alt="" />
-<div style="padding: 15px;">
-<div style="font-size: 18px; font-weight: 900; color: #009140; margin-bottom: 8px;"><span style="font-size: 22px;">介護保険が適用できます</span></div>
-<div style="font-size: 13px; color: #333; line-height: 1.5;"><span style="font-size: 18px;">通院等乗降介助など、一部のサービスにおいて介護保険の適用が可能です。適用範囲については担当のケアマネージャー様と連携いたします。</span></div>
-</div>
-</div>
-<div style="flex: 1 1 calc(50% - 20px); min-width: 260px; background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img style="width: 90%; aspect-ratio: 4/3; object-fit: contain; display: block; margin: 15px auto 0;" src="https://image.jimcdn.com/app/cms/image/transf/none/path/s0d1f1804e35014ea/image/ic39b72c39f185b75/version/1774269429/image.png" alt="" />
-<div style="padding: 15px;">
-<div style="font-size: 18px; font-weight: 900; color: #009140; margin-bottom: 8px;"><span style="font-size: 22px;">予約料はいただきません</span></div>
-<div style="font-size: 13px; color: #333; line-height: 1.5;"><span style="font-size: 18px;">ご利用者様の負担を少しでも減らすため、事前の「予約料」は一切いただいておりません。</span></div>
-</div>
-</div>
-</div>
+    menuButton.addEventListener('click', () => {
+      drawerMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
