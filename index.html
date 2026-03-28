@@ -34,7 +34,7 @@
       z-index: 1000;
     }
 
-    .header-inner {
+   .header-inner {
   width: min(100% - 16px, 1100px);
   margin: 0 auto;
   display: flex;
@@ -44,20 +44,18 @@
   padding: 10px 0;
 }
 
-.header-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  flex: 0 0 48px;
-  width: 48px;
-  margin-top: 2px;
-}
-
-    
-    .brand {
+.brand {
   min-width: 0;
   flex: 1 1 auto;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 0 0 auto;
+  margin-top: 6px;
 }
 
     .brand-sub {
@@ -91,16 +89,30 @@
       margin: 6px 0 0;
     }
 
-    .menu-button {
-      width: 48px;
-      height: 48px;
-      border: 1px solid #cfcfcf;
-      background: #fff;
-      border-radius: 10px;
-      font-size: 24px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
+    .header-phone {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.menu-button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
 
     .drawer-menu {
       display: none;
@@ -748,26 +760,29 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="header-inner">
-      <div class="brand">
-        <div class="brand-sub">介護タクシー・通院・転院・リクライニング車いす対応</div>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-sub">介護タクシー・通院・転院・リクライニング車いす対応</div>
 
-        <div class="brand-logo-wrap">
-          <img class="brand-logo" src="./きららロゴ2.png" alt="介護タクシーきらら">
-        </div>
+      <div class="brand-logo-wrap">
+        <img class="brand-logo" src="./きららロゴ2.png" alt="介護タクシーきらら">
+      </div>
 
-        <p class="brand-text pc-text">
-          5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、通院・転院・お出かけをサポートします。
-        </p>
+      <p class="brand-text pc-text">
+        5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、通院・転院・お出かけをサポートします。
+      </p>
 
-        <p class="brand-text sp-text">
-          5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、お出かけをサポートします。
-        </p>
-      <div class="header-actions">
-  <a class="header-phone" href="tel:09094066235" aria-label="電話をかける">📞</a>
-  <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
-</div>
-  </header>
+      <p class="brand-text sp-text">
+        5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、お出かけをサポートします。
+      </p>
+    </div>
+
+    <div class="header-actions">
+      <a class="header-phone" href="tel:09094066235" aria-label="電話をかける">📞</a>
+      <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
+    </div>
+  </div>
+</header>
 
   <nav class="drawer-menu" id="drawerMenu">
     <a href="#home">ホーム</a>
