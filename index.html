@@ -456,6 +456,134 @@
   .price-subtext {
     font-size: 13px;
   }
+
+.contact-section {
+  margin: 12px 0 24px;
+}
+
+.contact-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e8e8e8;
+}
+
+.contact-heading {
+  margin: 0 0 12px;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #009140;
+}
+
+.contact-text {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  width: 100%;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 16px;
+  background: #fff;
+  color: #222;
+}
+
+.contact-field textarea {
+  resize: vertical;
+}
+
+.required {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fff3e8;
+  color: rgb(230, 90, 20);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contact-check label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.contact-links {
+  margin-top: -4px;
+}
+
+.privacy-link {
+  color: #009140;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.contact-submit {
+  border: none;
+  border-radius: 10px;
+  background: #009140;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .contact-heading {
+    font-size: 20px;
+  }
+
+  .contact-text {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .contact-field label {
+    font-size: 14px;
+  }
+
+  .contact-field input,
+  .contact-field select,
+  .contact-field textarea {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .contact-heading {
+    font-size: 30px;
+  }
+
+  .contact-text {
+    font-size: 19px;
+  }
+}
+
 }
 
 @media (min-width: 769px) {
@@ -857,6 +985,68 @@
         <span class="btn-sub">対応状況により折り返しとなる場合があります</span>
       </a>
     </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-card">
+    <h2 class="contact-heading">お問い合わせ</h2>
+    <p class="contact-text">
+      ご利用内容や料金の目安、対応エリアなど、ご不明な点がありましたらお気軽にお問い合わせください。
+      ご予約は予約フォーム、再予約やご相談はLINEからのご連絡が便利です。
+    </p>
+
+    <form class="contact-form" action="あなたの送信先URL" method="post">
+      <div class="contact-field">
+        <label for="name">お名前<span class="required">必須</span></label>
+        <input type="text" id="name" name="name" placeholder="例：山田 花子" required>
+      </div>
+
+      <div class="contact-field">
+        <label for="kana">ふりがな</label>
+        <input type="text" id="kana" name="kana" placeholder="例：やまだ はなこ">
+      </div>
+
+      <div class="contact-field">
+        <label for="tel">電話番号<span class="required">必須</span></label>
+        <input type="tel" id="tel" name="tel" placeholder="例：09012345678" required>
+      </div>
+
+      <div class="contact-field">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" placeholder="例：example@mail.com">
+      </div>
+
+      <div class="contact-field">
+        <label for="type">お問い合わせ内容</label>
+        <select id="type" name="type">
+          <option value="">選択してください</option>
+          <option value="price">料金について</option>
+          <option value="area">対応エリアについて</option>
+          <option value="reservation">ご予約について</option>
+          <option value="care">介助内容について</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+
+      <div class="contact-field">
+        <label for="message">お問い合わせ内容<span class="required">必須</span></label>
+        <textarea id="message" name="message" rows="6" placeholder="ご相談内容をご入力ください。" required></textarea>
+      </div>
+
+      <div class="contact-check">
+        <label>
+          <input type="checkbox" name="privacy" required>
+          <span>プライバシーポリシーに同意する</span>
+        </label>
+      </div>
+
+      <div class="contact-links">
+        <a href="privacy.html" class="privacy-link">プライバシーポリシーを見る</a>
+      </div>
+
+      <button type="submit" class="contact-submit">お問い合わせを送信する</button>
+    </form>
   </div>
 </section>
   
