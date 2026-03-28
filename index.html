@@ -444,6 +444,103 @@
       font-weight: 800;
     }
 
+.company-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+.company-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8e8e8;
+}
+
+.company-heading {
+  margin: 0 0 14px;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #009140;
+}
+
+.company-row {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.company-row:last-child {
+  margin-bottom: 0;
+}
+
+.company-label {
+  flex: 1 1 220px;
+  background-color: #f0f5f2;
+  padding: 16px 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1.7;
+}
+
+.company-value {
+  flex: 2 1 340px;
+  background-color: #fafafa;
+  padding: 16px 18px;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.company-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.company-list li {
+  margin-bottom: 8px;
+}
+
+.company-list li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .company-heading {
+    font-size: 20px;
+  }
+
+  .company-label,
+  .company-value {
+    flex: 1 1 100%;
+    padding: 14px 15px;
+  }
+
+  .company-value {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}
+
+@media (min-width: 769px) {
+  .company-heading {
+    font-size: 32px;
+  }
+
+  .company-value {
+    font-size: 20px;
+  }
+
+  .company-label {
+    font-size: 18px;
+  }
+}
+    
     @media (max-width: 768px) {
       .brand-logo {
         max-width: 180px;
@@ -847,6 +944,50 @@
       </div>
     </section>
 
+<section class="company-section">
+  <div class="company-card">
+    <h2 class="company-heading">会社概要</h2>
+
+    <div class="company-row">
+      <div class="company-label">会社名</div>
+      <div class="company-value">株式会社カトウ</div>
+    </div>
+
+    <div class="company-row">
+      <div class="company-label">所在地</div>
+      <div class="company-value">愛知県蒲郡市丸山町3番14号</div>
+    </div>
+
+    <div class="company-row">
+      <div class="company-label">設立</div>
+      <div class="company-value">平成25年11月18日</div>
+    </div>
+
+    <div class="company-row">
+      <div class="company-label">資本金</div>
+      <div class="company-value">200万円</div>
+    </div>
+
+    <div class="company-row">
+      <div class="company-label">代表者</div>
+      <div class="company-value">代表取締役　加藤 縫子</div>
+    </div>
+
+    <div class="company-row">
+      <div class="company-label">事業内容</div>
+      <div class="company-value">
+        <ol class="company-list">
+          <li>介護保険法に基づく居宅介護支援・居宅サービス・介護予防サービス事業</li>
+          <li>障害者の日常生活及び社会生活を総合的に支援するための法律に基づく障害福祉サービス事業</li>
+          <li>一般乗用旅客自動車運送事業</li>
+          <li>特定旅客自動車運送事業</li>
+          <li>その他前各号に付帯関連する一切の業務</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+    
     <section class="contact-section">
       <div class="contact-card">
         <h2 class="contact-heading">お問い合わせ</h2>
