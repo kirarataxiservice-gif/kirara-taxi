@@ -1346,4 +1346,350 @@
     });
   </script>
 </body>
+
+
+
+
+<style>
+  .price-mock-wrap {
+    margin: 0 0 24px;
+  }
+
+  .price-mock {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top right, rgba(230, 90, 20, 0.08), transparent 26%),
+      linear-gradient(180deg, #fffdfa 0%, #f9f6f1 100%);
+    border: 1px solid #e6ddd3;
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(60, 40, 20, 0.08);
+    padding: 20px 16px 18px;
+  }
+
+  .price-mock::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0b8a43 0%, #f0a144 55%, #8a5a74 100%);
+  }
+
+  .price-mock-kicker {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f6edf2;
+    border: 1px solid #ead9e1;
+    color: #7b5067;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .price-mock-title {
+    margin: 0 0 8px;
+    font-size: 28px;
+    line-height: 1.3;
+    color: #2a2623;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+  }
+
+  .price-mock-lead {
+    margin: 0 0 16px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #655c55;
+  }
+
+  .price-slip {
+    background: #fff;
+    border: 1px solid #e9dfd4;
+    border-radius: 18px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.8),
+      0 6px 18px rgba(80, 50, 20, 0.04);
+    padding: 14px 14px 12px;
+  }
+
+  .price-slip-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #d9cec1;
+  }
+
+  .price-slip-head-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #7a6f64;
+    letter-spacing: 0.08em;
+  }
+
+  .price-slip-head-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0b8a43;
+    text-align: right;
+  }
+
+  .price-slip-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: end;
+    padding: 10px 0;
+    border-bottom: 1px solid #efe7de;
+  }
+
+  .price-slip-row:last-of-type {
+    border-bottom: none;
+  }
+
+  .price-slip-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3e3833;
+    line-height: 1.5;
+  }
+
+  .price-slip-sub {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7a7068;
+    line-height: 1.5;
+  }
+
+  .price-slip-price {
+    font-size: 18px;
+    font-weight: 800;
+    color: #2c2825;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .price-slip-price.is-accent {
+    color: #e65a14;
+  }
+
+  .price-slip-total {
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 2px solid #d9cec1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: end;
+  }
+
+  .price-slip-total-label {
+    font-size: 15px;
+    font-weight: 800;
+    color: #2e2925;
+    line-height: 1.5;
+  }
+
+  .price-slip-total-sub {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #7b7068;
+    line-height: 1.5;
+  }
+
+  .price-slip-total-price {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1;
+    color: #e65a14;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .price-mock-points {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .price-mock-point {
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+  }
+
+  .price-mock-point.is-green {
+    background: #edf7ef;
+    color: #0c7a3a;
+    border-color: #d6ead9;
+  }
+
+  .price-mock-point.is-orange {
+    background: #fff0e1;
+    color: #ba6911;
+    border-color: #f1d5b4;
+  }
+
+  .price-mock-point.is-mauve {
+    background: #f7eef3;
+    color: #775968;
+    border-color: #e8d9e1;
+  }
+
+  .price-mock-note {
+    margin: 14px 2px 0;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #f8f3ed;
+    border: 1px solid #e8ddd2;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #675d55;
+  }
+
+  .price-mock-note strong {
+    color: #3a342f;
+  }
+
+  @media (min-width: 769px) {
+    .price-mock {
+      padding: 28px 26px 24px;
+    }
+
+    .price-mock-title {
+      font-size: 34px;
+    }
+
+    .price-mock-lead {
+      font-size: 15px;
+    }
+
+    .price-slip {
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+    }
+
+    .price-slip-row {
+      padding: 12px 0;
+    }
+
+    .price-slip-name {
+      font-size: 16px;
+    }
+
+    .price-slip-sub {
+      font-size: 13px;
+    }
+
+    .price-slip-price {
+      font-size: 20px;
+    }
+
+    .price-slip-total-label {
+      font-size: 17px;
+    }
+
+    .price-slip-total-price {
+      font-size: 40px;
+    }
+
+    .price-mock-points {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .price-mock-point {
+      font-size: 14px;
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .price-mock-note {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<div class="price-mock-wrap">
+  <section class="price-mock" aria-labelledby="price-mock-title">
+    <div class="price-mock-kicker">初めての方にもわかりやすい料金案内</div>
+    <h3 class="price-mock-title" id="price-mock-title">ご利用目安がひと目でわかります</h3>
+    <p class="price-mock-lead">
+      通院などの一般的なご利用なら、まずはこの目安をご覧ください。
+    </p>
+
+    <div class="price-slip">
+      <div class="price-slip-head">
+        <span class="price-slip-head-label">PRICE GUIDE</span>
+        <span class="price-slip-head-text">シンプルなお見積り例</span>
+      </div>
+
+      <div class="price-slip-row">
+        <div class="price-slip-name">
+          基本料金
+          <span class="price-slip-sub">最初の30分</span>
+        </div>
+        <div class="price-slip-price">3,300円</div>
+      </div>
+
+      <div class="price-slip-row">
+        <div class="price-slip-name">
+          介助料
+          <span class="price-slip-sub">乗降や移動のサポート</span>
+        </div>
+        <div class="price-slip-price">1,000円〜</div>
+      </div>
+
+      <div class="price-slip-row">
+        <div class="price-slip-name">
+          標準車いすレンタル
+          <span class="price-slip-sub">必要な方も安心してご利用いただけます</span>
+        </div>
+        <div class="price-slip-price is-accent">0円</div>
+      </div>
+
+      <div class="price-slip-total">
+        <div class="price-slip-total-label">
+          ご利用目安
+          <span class="price-slip-total-sub">一般的な通院利用の一例です</span>
+        </div>
+        <div class="price-slip-total-price">4,300円〜</div>
+      </div>
+    </div>
+
+    <div class="price-mock-points">
+      <div class="price-mock-point is-green">車いすレンタル無料</div>
+      <div class="price-mock-point is-orange">事前見積りあり</div>
+      <div class="price-mock-point is-mauve">2人介助は必要時のみ</div>
+    </div>
+
+    <div class="price-mock-note">
+      <strong>追加料金がかかる場合</strong><br>
+      2人介助など特別な対応が必要な場合は、事前にご説明のうえご案内します。
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
 </html>
