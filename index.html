@@ -34,29 +34,20 @@
       z-index: 1000;
     }
 
-   .header-inner {
-  width: min(100% - 16px, 1100px);
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 0;
-}
+    .header-inner {
+      width: min(100% - 16px, 1100px);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+    }
 
-.brand {
-  min-width: 0;
-  flex: 1 1 auto;
-}
-
-.header-actions {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 8px;
-  flex: 0 0 auto;
-  margin-top: 6px;
-}
+    .brand {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
 
     .brand-sub {
       font-size: 11px;
@@ -89,30 +80,39 @@
       margin: 6px 0 0;
     }
 
-    .header-phone {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border: 1px solid #cfcfcf;
-  background: #fff;
-  border-radius: 10px;
-  font-size: 18px;
-  color: #333;
-}
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+      margin-top: 6px;
+    }
 
-.menu-button {
-  width: 44px;
-  height: 44px;
-  border: 1px solid #cfcfcf;
-  background: #fff;
-  border-radius: 10px;
-  font-size: 22px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
+    .header-phone {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 1px solid #cfcfcf;
+      background: #fff;
+      border-radius: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .menu-button {
+      width: 48px;
+      height: 48px;
+      border: 1px solid #cfcfcf;
+      background: #fff;
+      border-radius: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
 
     .drawer-menu {
       display: none;
@@ -518,81 +518,208 @@
       font-weight: 800;
     }
 
-.header-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
+    .price-simple-wrap {
+      margin: 0 0 24px;
+    }
 
-.header-phone {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border: 1px solid #cfcfcf;
-  background: #fff;
-  border-radius: 10px;
-  font-size: 18px;
-  color: #333;
-}
+    .price-simple-card {
+      background: linear-gradient(180deg, #f7fbf8 0%, #eef6f0 100%);
+      border: 1px solid #cfe0d4;
+      border-radius: 20px;
+      padding: 24px 18px 20px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      position: relative;
+    }
 
-.menu-button {
-  width: 48px;
-  height: 48px;
-  border: 1px solid #cfcfcf;
-  background: #fff;
-  border-radius: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
+    .price-simple-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 6px;
+      background: linear-gradient(90deg, #009140 0%, #54b46f 55%, #f4a300 100%);
+    }
 
-.price-simple-box-value {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
-  line-height: 1;
-  letter-spacing: 0;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-}
+    .price-simple-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eef8f1;
+      color: #009140;
+      border: 1px solid #d7ecdd;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
 
-.price-simple-box-value strong {
-  font-size: 32px;
-  line-height: 1;
-  font-weight: 800;
-  color: rgb(230, 90, 20);
-}
+    .price-simple-title {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.45;
+      color: #1f2d25;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
 
-.price-simple-box-value small {
-  font-weight: 700;
-  line-height: 1;
-}
+    .price-simple-formula {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.price-simple-box-value .unit-prefix {
-  font-size: 15px;
-  color: #5d6a63;
-  margin-right: 3px;
-}
+    .price-simple-box {
+      background: #edf3ee;
+      border: 1px solid #d5e1d8;
+      border-radius: 16px;
+      padding: 16px 14px;
+      text-align: center;
+    }
 
-.price-simple-box-value .unit-suffix {
-  font-size: 16px;
-  color: #5d6a63;
-  margin-left: 2px;
-}
-    
+    .price-simple-box.is-main {
+      background: linear-gradient(180deg, #fff3e2 0%, #fdebd2 100%);
+      border: 1px solid #edcfa8;
+    }
+
+    .price-simple-box-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #66756c;
+      line-height: 1.5;
+    }
+
+    .price-simple-box-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      line-height: 1;
+      letter-spacing: 0;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+
+    .price-simple-box-value strong {
+      font-size: 32px;
+      line-height: 1;
+      font-weight: 800;
+      color: rgb(230, 90, 20);
+    }
+
+    .price-simple-box-value small {
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .price-simple-box-value .unit-prefix {
+      font-size: 15px;
+      color: #5d6a63;
+      margin-right: 3px;
+    }
+
+    .price-simple-box-value .unit-suffix {
+      font-size: 16px;
+      color: #5d6a63;
+      margin-left: 2px;
+    }
+
+    .price-simple-plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 800;
+      color: #009140;
+      line-height: 1;
+    }
+
+    .price-simple-note {
+      margin: 14px 2px 0;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #52605a;
+      text-align: center;
+    }
+
+    .price-simple-chips {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .price-simple-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      text-align: center;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      border: 1px solid transparent;
+    }
+
+    .price-simple-chip.is-green {
+      background: #eef8f1;
+      color: #0c7a3a;
+      border-color: #d6ecdd;
+    }
+
+    .price-simple-chip.is-orange {
+      background: #fff5ea;
+      color: #c96b00;
+      border-color: #f6dfc3;
+    }
+
+    .price-simple-chip.is-gray {
+      background: #f4f5f6;
+      color: #58626b;
+      border-color: #e2e6e9;
+    }
+
+    .price-simple-subcard {
+      margin-top: 14px;
+      background: #fffdfa;
+      border: 1px solid #f1e3ce;
+      border-radius: 16px;
+      padding: 14px 14px 15px;
+    }
+
+    .price-simple-subcard-title {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #8e5207;
+      line-height: 1.5;
+    }
+
+    .price-simple-subcard-text {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #6a6257;
+    }
+
     @media (max-width: 768px) {
       .brand-logo {
-        max-width: 180px;
+        max-width: 150px;
+      }
+
+      .brand-sub {
+        font-size: 10px;
       }
 
       .brand-text {
-        font-size: 12px;
+        font-size: 11px;
+        line-height: 1.5;
       }
 
       .pc-text {
@@ -601,6 +728,18 @@
 
       .sp-text {
         display: block;
+      }
+
+      .header-phone {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+      }
+
+      .menu-button {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
       }
 
       .hero-title {
@@ -686,34 +825,6 @@
       .call-bar a {
         font-size: 18px;
       }
-    
-    @media (max-width: 768px) {
-  .brand-logo {
-    max-width: 150px;
-  }
-
-  .brand-sub {
-    font-size: 10px;
-  }
-
-  .brand-text {
-    font-size: 11px;
-    line-height: 1.5;
-  }
-
-  .header-phone {
-    width: 44px;
-    height: 44px;
-    font-size: 18px;
-  }
-
-  .menu-button {
-    width: 44px;
-    height: 44px;
-    font-size: 22px;
-  }
-}
-    
     }
 
     @media (min-width: 769px) {
@@ -790,47 +901,100 @@
         font-size: 20px;
         padding: 18px 20px;
       }
-    
-    .price-simple-box-value strong {
-    font-size: 40px;
-  }
 
-  .price-simple-box-value .unit-prefix {
-    font-size: 18px;
-  }
+      .price-simple-card {
+        padding: 30px 28px 24px;
+        border-radius: 24px;
+      }
 
-  .price-simple-box-value .unit-suffix {
-    font-size: 20px;
-  }
-}
-    
+      .price-simple-title {
+        font-size: 34px;
+        text-align: center;
+      }
+
+      .price-simple-formula {
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .price-simple-box {
+        flex: 1 1 0;
+        padding: 22px 18px;
+      }
+
+      .price-simple-box-value strong {
+        font-size: 40px;
+      }
+
+      .price-simple-box-value .unit-prefix {
+        font-size: 18px;
+      }
+
+      .price-simple-box-value .unit-suffix {
+        font-size: 20px;
+      }
+
+      .price-simple-plus {
+        flex: 0 0 32px;
+        font-size: 30px;
+      }
+
+      .price-simple-note {
+        font-size: 15px;
+      }
+
+      .price-simple-chips {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-top: 20px;
+      }
+
+      .price-simple-chip {
+        min-height: 58px;
+        font-size: 14px;
+      }
+
+      .price-simple-subcard {
+        padding: 16px 18px;
+      }
+
+      .price-simple-subcard-title {
+        font-size: 15px;
+      }
+
+      .price-simple-subcard-text {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="site-header">
-  <div class="header-inner">
-    <div class="brand">
-      <div class="brand-sub">介護タクシー・通院・転院・リクライニング車いす対応</div>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-sub">介護タクシー・通院・転院・リクライニング車いす対応</div>
 
-      <div class="brand-logo-wrap">
-        <img class="brand-logo" src="./きららロゴ2.png" alt="介護タクシーきらら">
+        <div class="brand-logo-wrap">
+          <img class="brand-logo" src="./きららロゴ2.png" alt="介護タクシーきらら">
+        </div>
+
+        <p class="brand-text pc-text">
+          5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、通院・転院・お出かけをサポートします。
+        </p>
+
+        <p class="brand-text sp-text">
+          5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、お出かけをサポートします。
+        </p>
       </div>
 
-      <p class="brand-text pc-text">
-        5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、通院・転院・お出かけをサポートします。
-      </p>
-
-      <p class="brand-text sp-text">
-        5月-開業予定　愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、お出かけをサポートします。
-      </p>
+      <div class="header-actions">
+        <a class="header-phone" href="tel:09094066235" aria-label="電話をかける">📞</a>
+        <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
+      </div>
     </div>
-
-    <div class="header-actions">
-      <a class="header-phone" href="tel:09094066235" aria-label="電話をかける">📞</a>
-      <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
-    </div>
-  </div>
-</header>
+  </header>
 
   <nav class="drawer-menu" id="drawerMenu">
     <a href="#home">ホーム</a>
@@ -966,38 +1130,53 @@
         </p>
       </div>
 
+      <div class="price-simple-wrap">
+        <div class="price-simple-card">
+          <div class="price-simple-label">初めての方にもわかりやすい料金案内</div>
 
+          <h3 class="price-simple-title">料金はシンプルです</h3>
 
+          <div class="price-simple-formula">
+            <div class="price-simple-box is-main">
+              <span class="price-simple-box-label">基本料金</span>
+              <span class="price-simple-box-value">
+                <small class="unit-prefix">30分</small>
+                <strong>3,300</strong>
+                <small class="unit-suffix">円</small>
+              </span>
+            </div>
 
+            <div class="price-simple-plus">＋</div>
 
-<div class="price-simple-box is-main">
-  <span class="price-simple-box-label">基本料金</span>
-  <span class="price-simple-box-value">
-    <small class="unit-prefix">30分</small>
-    <strong>3,300</strong>
-    <small class="unit-suffix">円</small>
-  </span>
-</div>
+            <div class="price-simple-box">
+              <span class="price-simple-box-label">介助料</span>
+              <span class="price-simple-box-value">
+                <strong>1,000</strong>
+                <small class="unit-suffix">円〜</small>
+              </span>
+            </div>
+          </div>
 
-<div class="price-simple-plus">＋</div>
+          <p class="price-simple-note">
+            ご利用内容を確認のうえ、事前に概算料金をご案内します。
+          </p>
 
-<div class="price-simple-box">
-  <span class="price-simple-box-label">介助料</span>
-  <span class="price-simple-box-value">
-    <strong>1,000</strong>
-    <small class="unit-suffix">円〜</small>
-  </span>
-</div>
+          <div class="price-simple-chips">
+            <div class="price-simple-chip is-green">車いすレンタル無料</div>
+            <div class="price-simple-chip is-gray">予約料なし</div>
+            <div class="price-simple-chip is-orange">事前見積りあり</div>
+            <div class="price-simple-chip is-gray">2人介助は必要時のみ</div>
+          </div>
 
+          <div class="price-simple-subcard">
+            <p class="price-simple-subcard-title">追加料金がかかる場合</p>
+            <p class="price-simple-subcard-text">
+              2人介助など、特別な対応が必要な場合は事前にご説明のうえご案内します。
+            </p>
+          </div>
+        </div>
+      </div>
 
-
-
-
-
-
-
-
-      
       <div class="price-note">
         <strong>【安心の事前お見積り】</strong><br>
         ご予約時に状況を確認し、事前に概算料金をご案内いたします。
@@ -1122,36 +1301,36 @@
     </section>
 
     <section class="contact-section" id="contact">
-  <div class="contact-card">
-    <h2 class="contact-heading">お問い合わせ</h2>
-    <p class="contact-text">
-      ご利用内容や料金の目安、対応エリアなど、ご不明な点がありましたらお気軽にご連絡ください。
-      ご予約は予約フォーム、再予約やご相談はLINEが便利です。
-    </p>
+      <div class="contact-card">
+        <h2 class="contact-heading">お問い合わせ</h2>
+        <p class="contact-text">
+          ご利用内容や料金の目安、対応エリアなど、ご不明な点がありましたらお気軽にご連絡ください。
+          ご予約は予約フォーム、再予約やご相談はLINEが便利です。
+        </p>
 
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://forms.gle/Wcq6MSPAPVsqh5gx9">
-        <span class="btn-main">予約フォームから申し込む</span>
-        <span class="btn-sub">ご希望内容を落ち着いて入力できます</span>
-      </a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://forms.gle/Wcq6MSPAPVsqh5gx9">
+            <span class="btn-main">予約フォームから申し込む</span>
+            <span class="btn-sub">ご希望内容を落ち着いて入力できます</span>
+          </a>
 
-      <a class="btn btn-line" href="https://line.me/R/ti/p/@565watrp">
-        <span class="btn-main">LINEで相談する</span>
-        <span class="btn-sub">再予約やご相談はLINEが便利です</span>
-      </a>
+          <a class="btn btn-line" href="https://line.me/R/ti/p/@565watrp">
+            <span class="btn-main">LINEで相談する</span>
+            <span class="btn-sub">再予約やご相談はLINEが便利です</span>
+          </a>
 
-      <a class="btn btn-phone-sub" href="mailto:kirara.taxi.service@gmail.com?subject=介護タクシーきららへのお問い合わせ">
-        <span class="btn-main">メールでお問い合わせ</span>
-        <span class="btn-sub">メールアプリが開きます</span>
-      </a>
-    </div>
-  </div>
-</section>
+          <a class="btn btn-phone-sub" href="mailto:kirara.taxi.service@gmail.com?subject=介護タクシーきららへのお問い合わせ">
+            <span class="btn-main">メールでお問い合わせ</span>
+            <span class="btn-sub">メールアプリが開きます</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div class="call-bar">
-  <a href="https://forms.gle/Wcq6MSPAPVsqh5gx9">📝 予約フォームはこちら</a>
-</div>
+    <a href="https://forms.gle/Wcq6MSPAPVsqh5gx9">📝 予約フォームはこちら</a>
+  </div>
 
   <script>
     const menuButton = document.getElementById('menuButton');
@@ -1169,6 +1348,4 @@
     });
   </script>
 </body>
-
-
 </html>
