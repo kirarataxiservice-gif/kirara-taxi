@@ -1089,4 +1089,278 @@
     });
   </script>
 </body>
+
+<style>
+  .price-simple-wrap {
+    margin: 0 0 24px;
+  }
+
+  .price-simple-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fcfdfb 100%);
+    border: 1px solid #dfe9e3;
+    border-radius: 20px;
+    padding: 24px 18px 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .price-simple-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 6px;
+    background: linear-gradient(90deg, #009140 0%, #54b46f 55%, #f4a300 100%);
+  }
+
+  .price-simple-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eef8f1;
+    color: #009140;
+    border: 1px solid #d7ecdd;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+
+  .price-simple-title {
+    margin: 0 0 10px;
+    font-size: 28px;
+    line-height: 1.45;
+    color: #1f2d25;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+  }
+
+  .price-simple-formula {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .price-simple-box {
+    background: #f8faf8;
+    border: 1px solid #e3ebe6;
+    border-radius: 16px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .price-simple-box.is-main {
+    background: linear-gradient(180deg, #fff8ef 0%, #fffdf9 100%);
+    border: 1px solid #f3dcc0;
+  }
+
+  .price-simple-box-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #66756c;
+    line-height: 1.5;
+  }
+
+  .price-simple-box-value {
+    display: block;
+    font-size: 31px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: rgb(230, 90, 20);
+    letter-spacing: 0.01em;
+  }
+
+  .price-simple-box-value small {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4a564f;
+    margin-left: 4px;
+  }
+
+  .price-simple-plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #009140;
+    line-height: 1;
+  }
+
+  .price-simple-note {
+    margin: 14px 2px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #52605a;
+    text-align: center;
+  }
+
+  .price-simple-chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .price-simple-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    text-align: center;
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    border: 1px solid transparent;
+  }
+
+  .price-simple-chip.is-green {
+    background: #eef8f1;
+    color: #0c7a3a;
+    border-color: #d6ecdd;
+  }
+
+  .price-simple-chip.is-orange {
+    background: #fff5ea;
+    color: #c96b00;
+    border-color: #f6dfc3;
+  }
+
+  .price-simple-chip.is-gray {
+    background: #f4f5f6;
+    color: #58626b;
+    border-color: #e2e6e9;
+  }
+
+  .price-simple-subcard {
+    margin-top: 14px;
+    background: #fffdfa;
+    border: 1px solid #f1e3ce;
+    border-radius: 16px;
+    padding: 14px 14px 15px;
+  }
+
+  .price-simple-subcard-title {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #8e5207;
+    line-height: 1.5;
+  }
+
+  .price-simple-subcard-text {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #6a6257;
+  }
+
+  @media (min-width: 769px) {
+    .price-simple-card {
+      padding: 30px 28px 24px;
+      border-radius: 24px;
+    }
+
+    .price-simple-title {
+      font-size: 34px;
+      text-align: center;
+    }
+
+    .price-simple-formula {
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .price-simple-box {
+      flex: 1 1 0;
+      padding: 22px 18px;
+    }
+
+    .price-simple-box-value {
+      font-size: 36px;
+    }
+
+    .price-simple-plus {
+      flex: 0 0 32px;
+      font-size: 30px;
+    }
+
+    .price-simple-note {
+      font-size: 15px;
+    }
+
+    .price-simple-chips {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 20px;
+    }
+
+    .price-simple-chip {
+      min-height: 58px;
+      font-size: 14px;
+    }
+
+    .price-simple-subcard {
+      padding: 16px 18px;
+    }
+
+    .price-simple-subcard-title {
+      font-size: 15px;
+    }
+
+    .price-simple-subcard-text {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<div class="price-simple-wrap">
+  <div class="price-simple-card">
+    <div class="price-simple-label">初めての方にもわかりやすい料金案内</div>
+
+    <h3 class="price-simple-title">料金はシンプルです</h3>
+
+    <div class="price-simple-formula">
+      <div class="price-simple-box is-main">
+        <span class="price-simple-box-label">基本料金</span>
+        <span class="price-simple-box-value">30分 3,300円</span>
+      </div>
+
+      <div class="price-simple-plus">＋</div>
+
+      <div class="price-simple-box">
+        <span class="price-simple-box-label">介助料</span>
+        <span class="price-simple-box-value">1,000円〜</span>
+      </div>
+    </div>
+
+    <p class="price-simple-note">
+      ご利用内容を確認のうえ、事前に概算料金をご案内します。
+    </p>
+
+    <div class="price-simple-chips">
+      <div class="price-simple-chip is-green">車いすレンタル無料</div>
+      <div class="price-simple-chip is-gray">予約料なし</div>
+      <div class="price-simple-chip is-orange">事前見積りあり</div>
+      <div class="price-simple-chip is-gray">2人介助は必要時のみ</div>
+    </div>
+
+    <div class="price-simple-subcard">
+      <p class="price-simple-subcard-title">追加料金がかかる場合</p>
+      <p class="price-simple-subcard-text">
+        2人介助など、特別な対応が必要な場合は事前にご説明のうえご案内します。
+      </p>
+    </div>
+  </div>
+</div>
+
 </html>
