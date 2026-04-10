@@ -143,9 +143,9 @@
 
     .hero,
     .info-card,
-    .price-card,
     .contact-card,
-    .company-card {
+    .company-card,
+    .price-simple-card {
       background: #ffffff;
       border-radius: 16px;
       padding: 22px 18px;
@@ -236,7 +236,6 @@
     }
 
     .info-heading,
-    .price-heading,
     .contact-heading,
     .company-heading {
       margin: 0 0 12px;
@@ -246,7 +245,6 @@
     }
 
     .info-text,
-    .price-text,
     .contact-text {
       margin: 0 0 12px;
       font-size: 16px;
@@ -255,32 +253,10 @@
     }
 
     .info-text:last-child,
-    .price-text:last-child,
     .contact-text:last-child {
       margin-bottom: 0;
     }
 
-     .price-simple-label {
-  margin-bottom: 16px;
-}
-
-     .price-simple-formula {
-  margin-top: 2px;
-}
-
-.price-simple-chips {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 18px;
-}
-
-@media (min-width: 769px) {
-  .price-simple-chips {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-    
     .features {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -322,86 +298,6 @@
       color: #333;
       line-height: 1.7;
       margin: 0;
-    }
-
-    .price-note {
-      background-color: #fff9f2;
-      border: 1px solid #fce3c5;
-      border-left: 5px solid rgb(230, 90, 20);
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 14px;
-      line-height: 1.8;
-      color: #b36400;
-    }
-
-    .price-row {
-      display: flex;
-      flex-wrap: wrap;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #e7e7e7;
-      margin-top: 12px;
-    }
-
-    .price-row:first-of-type {
-      margin-top: 0;
-    }
-
-    .price-row-border {
-      margin-bottom: 12px;
-    }
-
-    .price-label {
-      flex: 1 1 240px;
-      background-color: #f0f5f2;
-      padding: 16px 18px;
-      font-weight: 700;
-      color: #2c3e50;
-      line-height: 1.7;
-    }
-
-    .price-mini {
-      display: block;
-      margin-top: 4px;
-      font-size: 12px;
-      color: #666;
-      font-weight: 500;
-    }
-
-    .price-value {
-      flex: 2 1 320px;
-      background-color: #fafafa;
-      padding: 16px 18px;
-      line-height: 1.8;
-      color: #333;
-    }
-
-    .price-number {
-      font-size: 22px;
-      font-weight: 800;
-      color: rgb(230, 90, 20);
-    }
-
-    .price-inline {
-      font-weight: 800;
-      color: rgb(230, 90, 20);
-    }
-
-    .price-subtext {
-      margin-top: 4px;
-      font-size: 14px;
-      color: #666;
-      font-weight: 600;
-      line-height: 1.7;
-    }
-
-    .price-list div {
-      margin-bottom: 6px;
-    }
-
-    .price-list div:last-child {
-      margin-bottom: 0;
     }
 
     .company-row {
@@ -540,271 +436,170 @@
     }
 
     .price-simple-wrap {
-  margin: 0 0 24px;
-}
+      margin: 0 0 24px;
+    }
 
-.price-simple-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 24px;
-  padding: 22px 18px 20px;
-  background:
-    radial-gradient(circle at top right, rgba(126, 88, 116, 0.10), transparent 34%),
-    linear-gradient(180deg, #fffdfa 0%, #fcf6ef 100%);
-  border: 1px solid #eadfd5;
-  box-shadow: 0 12px 30px rgba(88, 58, 28, 0.08);
-}
+    .price-simple-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 22px 18px 20px;
+      background: linear-gradient(180deg, #fffdfa 0%, #faf7f2 100%);
+      border: 1px solid #e7ddd2;
+      box-shadow: 0 12px 30px rgba(70, 46, 20, 0.08);
+    }
 
-.price-simple-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 6px;
-  background: linear-gradient(90deg, #0b8a43 0%, #5db36c 35%, #e79a45 72%, #8c5c76 100%);
-}
+    .price-simple-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 6px;
+      background: linear-gradient(90deg, #0b8a43 0%, #f0a144 100%);
+    }
 
-.price-simple-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 32px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: #f6edf2;
-  border: 1px solid #ead9e1;
-  color: #7c4f67;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 14px;
-}
+    .price-simple-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eef7f0;
+      border: 1px solid #d7ead9;
+      color: #0c7a3a;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
 
-.price-simple-title {
-  margin: 0 0 12px;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #2c2622;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-}
+    .price-simple-formula {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.price-simple-formula {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0;
-}
+    .price-simple-box {
+      border-radius: 18px;
+      padding: 16px 14px;
+      text-align: center;
+      background: #f7f4ef;
+      border: 1px solid #e7ddd2;
+    }
 
-.price-simple-box {
-  border-radius: 18px;
-  padding: 16px 14px;
-  text-align: center;
-  background: #f8f2eb;
-  border: 1px solid #e9ddd1;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
-}
+    .price-simple-box.is-main {
+      background: linear-gradient(180deg, #fff1e0 0%, #fde4c4 100%);
+      border: 1px solid #efc58c;
+      box-shadow: 0 6px 16px rgba(230, 90, 20, 0.10);
+    }
 
-.price-simple-box.is-main {
-  background: linear-gradient(180deg, #fff2e2 0%, #fde6c9 100%);
-  border: 1px solid #efc996;
-}
+    .price-simple-box:not(.is-main) {
+      background: linear-gradient(180deg, #f4faf5 0%, #edf6ef 100%);
+      border: 1px solid #d9e8dd;
+    }
 
-.price-simple-box-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: #6d6258;
-}
+    .price-simple-box-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #6a625a;
+      line-height: 1.5;
+    }
 
-.price-simple-box-value {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
-  white-space: nowrap;
-  line-height: 1;
-  letter-spacing: 0;
-}
+    .price-simple-box-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      white-space: nowrap;
+      line-height: 1;
+    }
 
-.price-simple-box-value strong {
-  font-size: 32px;
-  line-height: 1;
-  font-weight: 800;
-  color: #e65a14;
-}
+    .price-simple-box-value strong {
+      font-size: 32px;
+      font-weight: 900;
+      color: #e65a14;
+      line-height: 1;
+    }
 
-.price-simple-box-value small {
-  line-height: 1;
-  font-weight: 700;
-}
+    .price-simple-box-value .unit-prefix,
+    .price-simple-box-value .unit-suffix {
+      font-size: 15px;
+      font-weight: 700;
+      color: #75685d;
+    }
 
-.price-simple-box-value .unit-prefix {
-  font-size: 15px;
-  color: #75685d;
-  margin-right: 3px;
-}
+    .price-simple-plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: #0b8a43;
+      line-height: 1;
+    }
 
-.price-simple-box-value .unit-suffix {
-  font-size: 16px;
-  color: #75685d;
-  margin-left: 2px;
-}
+    .price-simple-note {
+      margin: 14px 2px 0;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #6d6258;
+      text-align: center;
+    }
 
-.price-simple-plus {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1;
-  color: #0b8a43;
-}
+    .price-simple-chips {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
 
-.price-simple-note {
-  margin: 14px 2px 0;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.8;
-  color: #685d53;
-}
+    .price-simple-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      text-align: center;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      background: #f8f4ef;
+      color: #675d55;
+      border: 1px solid #e7ddd2;
+    }
 
-.price-simple-chips {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 18px;
-}
+    .price-simple-chip.is-green {
+      background: #eef7f0;
+      color: #0c7a3a;
+      border-color: #d7ead9;
+    }
 
-.price-simple-chip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 54px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.5;
-  border: 1px solid transparent;
-}
+    .price-simple-subcard {
+      margin-top: 14px;
+      background: #fcfaf7;
+      border: 1px solid #ece3d9;
+      border-left: 4px solid #d9cec1;
+      border-radius: 16px;
+      padding: 14px 14px 15px;
+    }
 
-.price-simple-chip.is-green {
-  background: #edf7ef;
-  color: #0c7a3a;
-  border-color: #d6ead9;
-}
+    .price-simple-subcard-title {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #4a433d;
+      line-height: 1.5;
+    }
 
-.price-simple-chip.is-orange {
-  background: #fff0e1;
-  color: #b96a12;
-  border-color: #f3d7b6;
-}
-
-.price-simple-chip.is-mauve {
-  background: #f7eef3;
-  color: #78586a;
-  border-color: #e8d9e1;
-}
-
-.price-simple-chip.is-sand {
-  background: #f8f2ea;
-  color: #6d6258;
-  border-color: #e8ddd2;
-}
-
-.price-simple-subcard {
-  margin-top: 14px;
-  border-radius: 16px;
-  padding: 14px 14px 15px;
-  background: linear-gradient(180deg, #fbf1f4 0%, #f9eef2 100%);
-  border: 1px solid #ecd9e2;
-}
-
-.price-simple-subcard-title {
-  margin: 0 0 6px;
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 800;
-  color: #8a5d76;
-}
-
-.price-simple-subcard-text {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.75;
-  color: #6b5f66;
-}
-
-@media (min-width: 769px) {
-  .price-simple-card {
-    border-radius: 26px;
-    padding: 30px 28px 24px;
-  }
-
-  .price-simple-title {
-    font-size: 34px;
-    text-align: center;
-  }
-
-  .price-simple-formula {
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
-    gap: 14px;
-    margin-top: 16px;
-  }
-
-  .price-simple-box {
-    flex: 1 1 0;
-    padding: 22px 18px;
-  }
-
-  .price-simple-box-value strong {
-    font-size: 40px;
-  }
-
-  .price-simple-box-value .unit-prefix {
-    font-size: 18px;
-  }
-
-  .price-simple-box-value .unit-suffix {
-    font-size: 20px;
-  }
-
-  .price-simple-plus {
-    flex: 0 0 32px;
-    font-size: 30px;
-  }
-
-  .price-simple-note {
-    font-size: 15px;
-  }
-
-  .price-simple-chips {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin-top: 20px;
-  }
-
-  .price-simple-chip {
-    min-height: 58px;
-    font-size: 14px;
-  }
-
-  .price-simple-subcard {
-    padding: 16px 18px;
-  }
-
-  .price-simple-subcard-title {
-    font-size: 15px;
-  }
-
-  .price-simple-subcard-text {
-    font-size: 14px;
-  }
-}
+    .price-simple-subcard-text {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #6b625b;
+    }
 
     @media (max-width: 768px) {
       .brand-logo {
@@ -849,14 +644,12 @@
       }
 
       .info-heading,
-      .price-heading,
       .contact-heading,
       .company-heading {
         font-size: 20px;
       }
 
       .info-text,
-      .price-text,
       .contact-text,
       .company-value {
         font-size: 15px;
@@ -876,27 +669,17 @@
         font-size: 16px;
       }
 
-      .price-label,
-      .price-value,
       .company-label,
       .company-value {
         flex: 1 1 100%;
         padding: 14px 15px;
       }
 
-      .price-number {
-        font-size: 20px;
-      }
-
-      .price-subtext {
-        font-size: 13px;
-      }
-
       .contact-card,
-      .price-card,
       .info-card,
       .hero,
-      .company-card {
+      .company-card,
+      .price-simple-card {
         padding: 20px 16px;
       }
 
@@ -951,14 +734,12 @@
       }
 
       .info-heading,
-      .price-heading,
       .contact-heading,
       .company-heading {
         font-size: 32px;
       }
 
       .info-text,
-      .price-text,
       .contact-text,
       .company-value {
         font-size: 20px;
@@ -977,7 +758,6 @@
       }
 
       .contact-card,
-      .price-card,
       .info-card,
       .hero,
       .company-card {
@@ -1002,12 +782,6 @@
 
       .price-simple-card {
         padding: 30px 28px 24px;
-        border-radius: 24px;
-      }
-
-      .price-simple-title {
-        font-size: 34px;
-        text-align: center;
       }
 
       .price-simple-formula {
@@ -1015,7 +789,6 @@
         align-items: stretch;
         justify-content: center;
         gap: 14px;
-        margin-top: 16px;
       }
 
       .price-simple-box {
@@ -1027,12 +800,9 @@
         font-size: 40px;
       }
 
-      .price-simple-box-value .unit-prefix {
-        font-size: 18px;
-      }
-
+      .price-simple-box-value .unit-prefix,
       .price-simple-box-value .unit-suffix {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .price-simple-plus {
@@ -1045,8 +815,7 @@
       }
 
       .price-simple-chips {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        margin-top: 20px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .price-simple-chip {
@@ -1221,50 +990,49 @@
 
     <section class="price-section" id="price">
       <div class="price-simple-wrap">
-  <div class="price-simple-card">
-    <div class="price-simple-label">料金はシンプルです</div>
+        <div class="price-simple-card">
+          <div class="price-simple-label">料金はシンプルです</div>
 
-    <div class="price-simple-formula">
-      <div class="price-simple-box is-main">
-        <span class="price-simple-box-label">基本料金</span>
-        <span class="price-simple-box-value">
-          <small class="unit-prefix">30分</small>
-          <strong>3,300</strong>
-          <small class="unit-suffix">円</small>
-        </span>
+          <div class="price-simple-formula">
+            <div class="price-simple-box is-main">
+              <span class="price-simple-box-label">基本料金</span>
+              <span class="price-simple-box-value">
+                <small class="unit-prefix">30分</small>
+                <strong>3,300</strong>
+                <small class="unit-suffix">円</small>
+              </span>
+            </div>
+
+            <div class="price-simple-plus">＋</div>
+
+            <div class="price-simple-box">
+              <span class="price-simple-box-label">介助料</span>
+              <span class="price-simple-box-value">
+                <strong>1,000</strong>
+                <small class="unit-suffix">円〜</small>
+              </span>
+            </div>
+          </div>
+
+          <p class="price-simple-note">
+            ご利用内容を確認のうえ、事前に概算料金をご案内します。
+          </p>
+
+          <div class="price-simple-chips">
+            <div class="price-simple-chip is-green">車いすレンタル無料</div>
+            <div class="price-simple-chip">チルト・リクライニング車いす対応</div>
+            <div class="price-simple-chip">2人介助は必要時のみ</div>
+          </div>
+
+          <div class="price-simple-subcard">
+            <p class="price-simple-subcard-title">追加料金がかかる場合</p>
+            <p class="price-simple-subcard-text">
+              2人介助など、特別な対応が必要な場合は事前にご説明のうえご案内します。
+            </p>
+          </div>
+        </div>
       </div>
-
-      <div class="price-simple-plus">＋</div>
-
-      <div class="price-simple-box">
-        <span class="price-simple-box-label">介助料</span>
-        <span class="price-simple-box-value">
-          <strong>1,000</strong>
-          <small class="unit-suffix">円〜</small>
-        </span>
-      </div>
-    </div>
-
-    <p class="price-simple-note">
-      ご利用内容を確認のうえ、事前に概算料金をご案内します。
-    </p>
-
-    <div class="price-simple-chips">
-      <div class="price-simple-chip is-mauve">チルト・リクライニング車いす対応</div>
-      <div class="price-simple-chip is-green">車いすレンタル無料</div>
-      <div class="price-simple-chip is-orange">事前見積りあり</div>
-      <div class="price-simple-chip is-sand">予約料なし</div>
-      <div class="price-simple-chip is-mauve">2人介助は必要時のみ</div>
-    </div>
-
-    <div class="price-simple-subcard">
-      <p class="price-simple-subcard-title">追加料金がかかる場合</p>
-      <p class="price-simple-subcard-text">
-        2人介助など、特別な対応が必要な場合は事前にご説明のうえご案内します。
-      </p>
-    </div>
-  </div>
-</div>
+    </section>
 
     <section class="company-section" id="company">
       <div class="company-card">
@@ -1329,9 +1097,9 @@
             <span class="btn-sub">再予約やご相談はLINEが便利です</span>
           </a>
 
-          <a class="btn btn-phone-sub" href="mailto:kirara.taxi.service@gmail.com?subject=介護タクシーきららへのお問い合わせ">
-            <span class="btn-main">メールでお問い合わせ</span>
-            <span class="btn-sub">メールアプリが開きます</span>
+          <a class="btn btn-phone-sub" href="tel:09094066235">
+            <span class="btn-main">お急ぎの方のみお電話</span>
+            <span class="btn-sub">対応状況により折り返しとなる場合があります</span>
           </a>
         </div>
       </div>
@@ -1358,511 +1126,7 @@
     });
   </script>
 </body>
-
-
-
-
-<style>
-  .price-mock-wrap {
-    margin: 0 0 24px;
-  }
-
-  .price-mock {
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at top right, rgba(230, 90, 20, 0.08), transparent 26%),
-      linear-gradient(180deg, #fffdfa 0%, #f9f6f1 100%);
-    border: 1px solid #e6ddd3;
-    border-radius: 24px;
-    box-shadow: 0 12px 30px rgba(60, 40, 20, 0.08);
-    padding: 20px 16px 18px;
-  }
-
-  .price-mock::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 6px;
-    background: linear-gradient(90deg, #0b8a43 0%, #f0a144 55%, #8a5a74 100%);
-  }
-
-  .price-mock-kicker {
-    display: inline-block;
-    margin: 0 0 12px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #f6edf2;
-    border: 1px solid #ead9e1;
-    color: #7b5067;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-
-  .price-mock-title {
-    margin: 0 0 8px;
-    font-size: 28px;
-    line-height: 1.3;
-    color: #2a2623;
-    font-weight: 800;
-    letter-spacing: 0.01em;
-  }
-
-  .price-mock-lead {
-    margin: 0 0 16px;
-    font-size: 14px;
-    line-height: 1.8;
-    color: #655c55;
-  }
-
-  .price-slip {
-    background: #fff;
-    border: 1px solid #e9dfd4;
-    border-radius: 18px;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.8),
-      0 6px 18px rgba(80, 50, 20, 0.04);
-    padding: 14px 14px 12px;
-  }
-
-  .price-slip-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px dashed #d9cec1;
-  }
-
-  .price-slip-head-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #7a6f64;
-    letter-spacing: 0.08em;
-  }
-
-  .price-slip-head-text {
-    font-size: 13px;
-    font-weight: 700;
-    color: #0b8a43;
-    text-align: right;
-  }
-
-  .price-slip-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-    align-items: end;
-    padding: 10px 0;
-    border-bottom: 1px solid #efe7de;
-  }
-
-  .price-slip-row:last-of-type {
-    border-bottom: none;
-  }
-
-  .price-slip-name {
-    font-size: 14px;
-    font-weight: 700;
-    color: #3e3833;
-    line-height: 1.5;
-  }
-
-  .price-slip-sub {
-    display: block;
-    margin-top: 4px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #7a7068;
-    line-height: 1.5;
-  }
-
-  .price-slip-price {
-    font-size: 18px;
-    font-weight: 800;
-    color: #2c2825;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .price-slip-price.is-accent {
-    color: #e65a14;
-  }
-
-  .price-slip-total {
-    margin-top: 12px;
-    padding-top: 14px;
-    border-top: 2px solid #d9cec1;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-    align-items: end;
-  }
-
-  .price-slip-total-label {
-    font-size: 15px;
-    font-weight: 800;
-    color: #2e2925;
-    line-height: 1.5;
-  }
-
-  .price-slip-total-sub {
-    display: block;
-    margin-top: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #7b7068;
-    line-height: 1.5;
-  }
-
-  .price-slip-total-price {
-    font-size: 34px;
-    font-weight: 900;
-    line-height: 1;
-    color: #e65a14;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
-  }
-
-  .price-mock-points {
-    margin-top: 14px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .price-mock-point {
-    padding: 10px 12px;
-    border-radius: 14px;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1.5;
-    text-align: center;
-    border: 1px solid transparent;
-  }
-
-  .price-mock-point.is-green {
-    background: #edf7ef;
-    color: #0c7a3a;
-    border-color: #d6ead9;
-  }
-
-  .price-mock-point.is-orange {
-    background: #fff0e1;
-    color: #ba6911;
-    border-color: #f1d5b4;
-  }
-
-  .price-mock-point.is-mauve {
-    background: #f7eef3;
-    color: #775968;
-    border-color: #e8d9e1;
-  }
-
-  .price-mock-note {
-    margin: 14px 2px 0;
-    padding: 12px 14px;
-    border-radius: 14px;
-    background: #f8f3ed;
-    border: 1px solid #e8ddd2;
-    font-size: 13px;
-    line-height: 1.75;
-    color: #675d55;
-  }
-
-  .price-mock-note strong {
-    color: #3a342f;
-  }
-
-  @media (min-width: 769px) {
-    .price-mock {
-      padding: 28px 26px 24px;
-    }
-
-    .price-mock-title {
-      font-size: 34px;
-    }
-
-    .price-mock-lead {
-      font-size: 15px;
-    }
-
-    .price-slip {
-      padding: 18px 18px 16px;
-      border-radius: 20px;
-    }
-
-    .price-slip-row {
-      padding: 12px 0;
-    }
-
-    .price-slip-name {
-      font-size: 16px;
-    }
-
-    .price-slip-sub {
-      font-size: 13px;
-    }
-
-    .price-slip-price {
-      font-size: 20px;
-    }
-
-    .price-slip-total-label {
-      font-size: 17px;
-    }
-
-    .price-slip-total-price {
-      font-size: 40px;
-    }
-
-    .price-mock-points {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .price-mock-point {
-      font-size: 14px;
-      min-height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .price-mock-note {
-      font-size: 14px;
-    }
-  }
-</style>
-
-
-
-
-<style>
-  .allin-fare-wrap {
-    margin: 0 0 24px;
-  }
-
-  .allin-fare {
-    position: relative;
-    overflow: hidden;
-    background:
-      linear-gradient(135deg, rgba(11, 138, 67, 0.06) 0%, rgba(11, 138, 67, 0) 36%),
-      linear-gradient(225deg, rgba(230, 90, 20, 0.08) 0%, rgba(230, 90, 20, 0) 34%),
-      linear-gradient(180deg, #fffefd 0%, #fbf7f2 100%);
-    border: 1px solid #e7ddd2;
-    border-radius: 28px;
-    box-shadow: 0 14px 34px rgba(76, 50, 23, 0.08);
-    padding: 20px 18px 18px;
-  }
-
-  .allin-fare::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 7px;
-    background: linear-gradient(90deg, #0b8a43 0%, #f0a144 60%, #8a5a74 100%);
-  }
-
-  .allin-fare-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .allin-fare-kicker {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #f6eef2;
-    border: 1px solid #ead9e1;
-    color: #7b5067;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-
-  .allin-fare-mini {
-    margin: 3px 0 0;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #8f8277;
-    white-space: nowrap;
-  }
-
-  .allin-fare-main {
-    text-align: center;
-    padding: 4px 0 10px;
-  }
-
-  .allin-fare-label {
-    margin: 0 0 6px;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.5;
-    color: #665c54;
-  }
-
-  .allin-fare-total {
-    margin: 0;
-    display: inline-flex;
-    align-items: flex-end;
-    gap: 4px;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .allin-fare-total strong {
-    font-size: 54px;
-    line-height: 0.95;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    color: #e65a14;
-  }
-
-  .allin-fare-total small {
-    font-size: 18px;
-    line-height: 1.1;
-    font-weight: 700;
-    color: #6b6057;
-    transform: translateY(-5px);
-  }
-
-  .allin-fare-caption {
-    margin: 10px 0 0;
-    font-size: 13px;
-    line-height: 1.7;
-    color: #73685f;
-    font-weight: 600;
-  }
-
-  .allin-fare-formula {
-    margin: 14px 0 0;
-    padding: 14px 12px 0;
-    border-top: 1px solid #ece3d9;
-    text-align: center;
-  }
-
-  .allin-fare-formula p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.7;
-    font-weight: 700;
-    color: #433c36;
-  }
-
-  .allin-fare-formula .base {
-    color: #0b8a43;
-  }
-
-  .allin-fare-formula .plus {
-    color: #8b7e73;
-    padding: 0 4px;
-  }
-
-  .allin-fare-formula .assist {
-    color: #e65a14;
-  }
-
-  .allin-fare-trust {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 10px;
-    margin-top: 14px;
-  }
-
-  .allin-fare-trust span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 34px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.4;
-    white-space: nowrap;
-  }
-
-  .allin-fare-trust .free {
-    background: #edf7ef;
-    border: 1px solid #d7ead9;
-    color: #0c7a3a;
-  }
-
-  .allin-fare-trust .safe {
-    background: #f8f2ea;
-    border: 1px solid #e8ddd2;
-    color: #6d6258;
-  }
-
-  .allin-fare-note {
-    margin: 12px 0 0;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.7;
-    color: #796e65;
-  }
-
-  @media (min-width: 769px) {
-    .allin-fare {
-      padding: 28px 28px 22px;
-      border-radius: 32px;
-    }
-
-    .allin-fare-kicker {
-      font-size: 13px;
-      min-height: 34px;
-    }
-
-    .allin-fare-mini {
-      font-size: 12px;
-    }
-
-    .allin-fare-label {
-      font-size: 16px;
-    }
-
-    .allin-fare-total strong {
-      font-size: 72px;
-    }
-
-    .allin-fare-total small {
-      font-size: 24px;
-      transform: translateY(-8px);
-    }
-
-    .allin-fare-caption {
-      font-size: 14px;
-    }
-
-    .allin-fare-formula {
-      margin-top: 16px;
-      padding-top: 16px;
-    }
-
-    .allin-fare-formula p {
-      font-size: 18px;
-    }
-
-    .allin-fare-trust span {
-      min-height: 38px;
-      font-size: 13px;
-      padding: 7px 14px;
-    }
-
-    .allin-fare-note {
-      font-size: 13px;
-    }
-  }
-</style>
+</html>
 
 
 
