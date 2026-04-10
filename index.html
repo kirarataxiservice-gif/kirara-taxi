@@ -1624,69 +1624,268 @@
   }
 </style>
 
-<div class="price-mock-wrap">
-  <section class="price-mock" aria-labelledby="price-mock-title">
-    <div class="price-mock-kicker">初めての方にもわかりやすい料金案内</div>
-    <h3 class="price-mock-title" id="price-mock-title">ご利用目安がひと目でわかります</h3>
-    <p class="price-mock-lead">
-      通院などの一般的なご利用なら、まずはこの目安をご覧ください。
+
+
+
+<style>
+  .allin-fare-wrap {
+    margin: 0 0 24px;
+  }
+
+  .allin-fare {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(11, 138, 67, 0.06) 0%, rgba(11, 138, 67, 0) 36%),
+      linear-gradient(225deg, rgba(230, 90, 20, 0.08) 0%, rgba(230, 90, 20, 0) 34%),
+      linear-gradient(180deg, #fffefd 0%, #fbf7f2 100%);
+    border: 1px solid #e7ddd2;
+    border-radius: 28px;
+    box-shadow: 0 14px 34px rgba(76, 50, 23, 0.08);
+    padding: 20px 18px 18px;
+  }
+
+  .allin-fare::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 7px;
+    background: linear-gradient(90deg, #0b8a43 0%, #f0a144 60%, #8a5a74 100%);
+  }
+
+  .allin-fare-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .allin-fare-kicker {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f6eef2;
+    border: 1px solid #ead9e1;
+    color: #7b5067;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .allin-fare-mini {
+    margin: 3px 0 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #8f8277;
+    white-space: nowrap;
+  }
+
+  .allin-fare-main {
+    text-align: center;
+    padding: 4px 0 10px;
+  }
+
+  .allin-fare-label {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #665c54;
+  }
+
+  .allin-fare-total {
+    margin: 0;
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 4px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .allin-fare-total strong {
+    font-size: 54px;
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #e65a14;
+  }
+
+  .allin-fare-total small {
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #6b6057;
+    transform: translateY(-5px);
+  }
+
+  .allin-fare-caption {
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #73685f;
+    font-weight: 600;
+  }
+
+  .allin-fare-formula {
+    margin: 14px 0 0;
+    padding: 14px 12px 0;
+    border-top: 1px solid #ece3d9;
+    text-align: center;
+  }
+
+  .allin-fare-formula p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 700;
+    color: #433c36;
+  }
+
+  .allin-fare-formula .base {
+    color: #0b8a43;
+  }
+
+  .allin-fare-formula .plus {
+    color: #8b7e73;
+    padding: 0 4px;
+  }
+
+  .allin-fare-formula .assist {
+    color: #e65a14;
+  }
+
+  .allin-fare-trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 10px;
+    margin-top: 14px;
+  }
+
+  .allin-fare-trust span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .allin-fare-trust .free {
+    background: #edf7ef;
+    border: 1px solid #d7ead9;
+    color: #0c7a3a;
+  }
+
+  .allin-fare-trust .safe {
+    background: #f8f2ea;
+    border: 1px solid #e8ddd2;
+    color: #6d6258;
+  }
+
+  .allin-fare-note {
+    margin: 12px 0 0;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #796e65;
+  }
+
+  @media (min-width: 769px) {
+    .allin-fare {
+      padding: 28px 28px 22px;
+      border-radius: 32px;
+    }
+
+    .allin-fare-kicker {
+      font-size: 13px;
+      min-height: 34px;
+    }
+
+    .allin-fare-mini {
+      font-size: 12px;
+    }
+
+    .allin-fare-label {
+      font-size: 16px;
+    }
+
+    .allin-fare-total strong {
+      font-size: 72px;
+    }
+
+    .allin-fare-total small {
+      font-size: 24px;
+      transform: translateY(-8px);
+    }
+
+    .allin-fare-caption {
+      font-size: 14px;
+    }
+
+    .allin-fare-formula {
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+
+    .allin-fare-formula p {
+      font-size: 18px;
+    }
+
+    .allin-fare-trust span {
+      min-height: 38px;
+      font-size: 13px;
+      padding: 7px 14px;
+    }
+
+    .allin-fare-note {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="allin-fare-wrap">
+  <section class="allin-fare" aria-labelledby="allin-fare-title">
+    <div class="allin-fare-head">
+      <div class="allin-fare-kicker">初めての方にもわかりやすい料金案内</div>
+      <p class="allin-fare-mini">ALL-IN PRICE</p>
+    </div>
+
+    <div class="allin-fare-main">
+      <p class="allin-fare-label" id="allin-fare-title">一般的な通院利用のご利用目安</p>
+      <p class="allin-fare-total">
+        <strong>4,300</strong>
+        <small>円〜</small>
+      </p>
+      <p class="allin-fare-caption">まずはこの金額感を目安にご覧ください</p>
+    </div>
+
+    <div class="allin-fare-formula">
+      <p>
+        <span class="base">30分 3,300円</span>
+        <span class="plus">＋</span>
+        <span class="assist">介助料 1,000円〜</span>
+      </p>
+    </div>
+
+    <div class="allin-fare-trust">
+      <span class="free">車いすレンタル無料</span>
+      <span class="safe">2人介助は必要時のみ</span>
+    </div>
+
+    <p class="allin-fare-note">
+      特別な対応が必要な場合は、事前にご説明のうえご案内します。
     </p>
-
-    <div class="price-slip">
-      <div class="price-slip-head">
-        <span class="price-slip-head-label">PRICE GUIDE</span>
-        <span class="price-slip-head-text">シンプルなお見積り例</span>
-      </div>
-
-      <div class="price-slip-row">
-        <div class="price-slip-name">
-          基本料金
-          <span class="price-slip-sub">最初の30分</span>
-        </div>
-        <div class="price-slip-price">3,300円</div>
-      </div>
-
-      <div class="price-slip-row">
-        <div class="price-slip-name">
-          介助料
-          <span class="price-slip-sub">乗降や移動のサポート</span>
-        </div>
-        <div class="price-slip-price">1,000円〜</div>
-      </div>
-
-      <div class="price-slip-row">
-        <div class="price-slip-name">
-          標準車いすレンタル
-          <span class="price-slip-sub">必要な方も安心してご利用いただけます</span>
-        </div>
-        <div class="price-slip-price is-accent">0円</div>
-      </div>
-
-      <div class="price-slip-total">
-        <div class="price-slip-total-label">
-          ご利用目安
-          <span class="price-slip-total-sub">一般的な通院利用の一例です</span>
-        </div>
-        <div class="price-slip-total-price">4,300円〜</div>
-      </div>
-    </div>
-
-    <div class="price-mock-points">
-      <div class="price-mock-point is-green">車いすレンタル無料</div>
-      <div class="price-mock-point is-orange">事前見積りあり</div>
-      <div class="price-mock-point is-mauve">2人介助は必要時のみ</div>
-    </div>
-
-    <div class="price-mock-note">
-      <strong>追加料金がかかる場合</strong><br>
-      2人介助など特別な対応が必要な場合は、事前にご説明のうえご案内します。
-    </div>
   </section>
 </div>
-
-
-
-
 
 
 
