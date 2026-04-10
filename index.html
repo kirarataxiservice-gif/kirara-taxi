@@ -144,8 +144,7 @@
     .hero,
     .info-card,
     .contact-card,
-    .company-card,
-    .price-simple-card {
+    .company-card {
       background: #ffffff;
       border-radius: 16px;
       padding: 22px 18px;
@@ -444,30 +443,30 @@
       overflow: hidden;
       border-radius: 24px;
       padding: 22px 18px 20px;
-      background: linear-gradient(180deg, #fffdfa 0%, #faf7f2 100%);
-      border: 1px solid #e7ddd2;
-      box-shadow: 0 12px 30px rgba(70, 46, 20, 0.08);
+      background: linear-gradient(180deg, #fffdfb 0%, #faf6f1 100%);
+      border: 1px solid #ddd1c4;
+      box-shadow: 0 14px 34px rgba(62, 38, 15, 0.10);
     }
 
     .price-simple-card::before {
       content: "";
       position: absolute;
       inset: 0 0 auto 0;
-      height: 6px;
-      background: linear-gradient(90deg, #0b8a43 0%, #f0a144 100%);
+      height: 7px;
+      background: linear-gradient(90deg, #0b8a43 0%, #f0a144 58%, #8a5a74 100%);
     }
 
     .price-simple-label {
       display: inline-flex;
       align-items: center;
-      min-height: 32px;
+      min-height: 34px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: #eef7f0;
-      border: 1px solid #d7ead9;
-      color: #0c7a3a;
+      background: #f4ebf1;
+      border: 1px solid #ddc8d5;
+      color: #6f4a61;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.4;
       margin-bottom: 16px;
     }
@@ -476,26 +475,24 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .price-simple-box {
       border-radius: 18px;
       padding: 16px 14px;
       text-align: center;
-      background: #f7f4ef;
-      border: 1px solid #e7ddd2;
+      border: 1px solid #d8dadd;
+      background: linear-gradient(180deg, #ffffff 0%, #f1f4f7 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
     }
 
     .price-simple-box.is-main {
-      background: linear-gradient(180deg, #fff1e0 0%, #fde4c4 100%);
-      border: 1px solid #efc58c;
-      box-shadow: 0 6px 16px rgba(230, 90, 20, 0.10);
-    }
-
-    .price-simple-box:not(.is-main) {
-      background: linear-gradient(180deg, #f4faf5 0%, #edf6ef 100%);
-      border: 1px solid #d9e8dd;
+      background: linear-gradient(180deg, #fff1df 0%, #fbdcb6 100%);
+      border: 1px solid #e2aa63;
+      box-shadow:
+        0 8px 18px rgba(230, 90, 20, 0.16),
+        inset 0 1px 0 rgba(255,255,255,0.7);
     }
 
     .price-simple-box-label {
@@ -503,7 +500,7 @@
       margin-bottom: 8px;
       font-size: 13px;
       font-weight: 700;
-      color: #6a625a;
+      color: #5f5851;
       line-height: 1.5;
     }
 
@@ -517,9 +514,9 @@
     }
 
     .price-simple-box-value strong {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 900;
-      color: #e65a14;
+      color: #d94f10;
       line-height: 1;
     }
 
@@ -527,24 +524,24 @@
     .price-simple-box-value .unit-suffix {
       font-size: 15px;
       font-weight: 700;
-      color: #75685d;
+      color: #665d55;
     }
 
     .price-simple-plus {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      font-weight: 800;
+      font-size: 30px;
+      font-weight: 900;
       color: #0b8a43;
       line-height: 1;
     }
 
     .price-simple-note {
-      margin: 14px 2px 0;
+      margin: 16px 2px 0;
       font-size: 14px;
       line-height: 1.8;
-      color: #6d6258;
+      color: #5f5851;
       text-align: center;
     }
 
@@ -564,24 +561,30 @@
       border-radius: 14px;
       padding: 10px 12px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.5;
-      background: #f8f4ef;
-      color: #675d55;
-      border: 1px solid #e7ddd2;
+      background: #f6f2ec;
+      color: #60564e;
+      border: 1px solid #ddd3c8;
     }
 
     .price-simple-chip.is-green {
-      background: #eef7f0;
-      color: #0c7a3a;
-      border-color: #d7ead9;
+      background: #e8f5eb;
+      color: #0a7738;
+      border-color: #b9dfc2;
+    }
+
+    .price-simple-chip.is-lavender {
+      background: #f2e9f5;
+      color: #6e4f7f;
+      border-color: #d9c5e3;
     }
 
     .price-simple-subcard {
       margin-top: 14px;
-      background: #fcfaf7;
-      border: 1px solid #ece3d9;
-      border-left: 4px solid #d9cec1;
+      background: #fffaf4;
+      border: 1px solid #e7d8c8;
+      border-left: 4px solid #d9b38a;
       border-radius: 16px;
       padding: 14px 14px 15px;
     }
@@ -598,7 +601,7 @@
       margin: 0;
       font-size: 13px;
       line-height: 1.75;
-      color: #6b625b;
+      color: #645b54;
     }
 
     @media (max-width: 768px) {
@@ -678,8 +681,7 @@
       .contact-card,
       .info-card,
       .hero,
-      .company-card,
-      .price-simple-card {
+      .company-card {
         padding: 20px 16px;
       }
 
@@ -797,7 +799,7 @@
       }
 
       .price-simple-box-value strong {
-        font-size: 40px;
+        font-size: 42px;
       }
 
       .price-simple-box-value .unit-prefix,
@@ -807,7 +809,7 @@
 
       .price-simple-plus {
         flex: 0 0 32px;
-        font-size: 30px;
+        font-size: 32px;
       }
 
       .price-simple-note {
@@ -1020,7 +1022,7 @@
 
           <div class="price-simple-chips">
             <div class="price-simple-chip is-green">車いすレンタル無料</div>
-            <div class="price-simple-chip">チルト・リクライニング車いす対応</div>
+            <div class="price-simple-chip is-lavender">チルト・リクライニング車いす対応</div>
             <div class="price-simple-chip">2人介助は必要時のみ</div>
           </div>
 
@@ -1127,7 +1129,6 @@
   </script>
 </body>
 </html>
-
 
 
 
