@@ -260,6 +260,27 @@
       margin-bottom: 0;
     }
 
+     .price-simple-label {
+  margin-bottom: 16px;
+}
+
+     .price-simple-formula {
+  margin-top: 2px;
+}
+
+.price-simple-chips {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+@media (min-width: 769px) {
+  .price-simple-chips {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+    
     .features {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1201,9 +1222,7 @@
     <section class="price-section" id="price">
       <div class="price-simple-wrap">
   <div class="price-simple-card">
-    <div class="price-simple-label">初めての方にもわかりやすい料金案内</div>
-
-    <h3 class="price-simple-title">料金はシンプルです</h3>
+    <div class="price-simple-label">料金はシンプルです</div>
 
     <div class="price-simple-formula">
       <div class="price-simple-box is-main">
@@ -1231,7 +1250,7 @@
     </p>
 
     <div class="price-simple-chips">
-      <div class="price-simple-chip is-mauve">チルト・リクライニング対応</div>
+      <div class="price-simple-chip is-mauve">チルト・リクライニング車いす対応</div>
       <div class="price-simple-chip is-green">車いすレンタル無料</div>
       <div class="price-simple-chip is-orange">事前見積りあり</div>
       <div class="price-simple-chip is-sand">予約料なし</div>
