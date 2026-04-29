@@ -373,7 +373,9 @@
       overflow: hidden;
       border-radius: 24px;
       padding: 24px 18px 20px;
-      background: linear-gradient(180deg, #fcfbf8 0%, #f3eee7 100%);
+      background:
+        radial-gradient(circle at top right, rgba(108, 140, 124, 0.10), transparent 36%),
+        linear-gradient(180deg, #fcfbf8 0%, #f4efe8 100%);
       border: 1px solid #d8d0c5;
       box-shadow: 0 14px 34px rgba(62, 38, 15, 0.10);
     }
@@ -383,7 +385,7 @@
       position: absolute;
       inset: 0 0 auto 0;
       height: 7px;
-      background: linear-gradient(90deg, #4d7a65 0%, #6f9a84 55%, #b5c8bc 100%);
+      background: linear-gradient(90deg, #537867 0%, #7ea28e 55%, #c0cec6 100%);
     }
 
     .price-simple-label {
@@ -392,9 +394,9 @@
       min-height: 34px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: #e5efe9;
-      color: #365f4f;
-      border: 1px solid #c9d8cf;
+      background: #e6efe9;
+      color: #3f6555;
+      border: 1px solid #cad8d0;
       font-size: 12px;
       font-weight: 800;
       line-height: 1.4;
@@ -426,18 +428,18 @@
       border-radius: 18px;
       padding: 18px 14px;
       border: 1.5px solid #d5ccbf;
-      background: linear-gradient(180deg, #f5efe7 0%, #ece2d5 100%);
+      background: linear-gradient(180deg, #f7f1e9 0%, #ede3d6 100%);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.78),
+        inset 0 1px 0 rgba(255,255,255,0.80),
         0 4px 10px rgba(0,0,0,0.04);
     }
 
     .price-main-box.is-primary {
-      border: 1.5px solid #98b7a7;
-      background: linear-gradient(180deg, #edf5f1 0%, #dce9e2 100%);
+      border: 1.5px solid #a9bfb3;
+      background: linear-gradient(180deg, #eef4f1 0%, #dde9e2 100%);
       box-shadow:
-        0 10px 20px rgba(77, 122, 101, 0.10),
-        inset 0 1px 0 rgba(255,255,255,0.85);
+        0 10px 18px rgba(83, 120, 103, 0.10),
+        inset 0 1px 0 rgba(255,255,255,0.88);
     }
 
     .price-main-box-label {
@@ -450,7 +452,7 @@
     }
 
     .price-main-box.is-primary .price-main-box-label {
-      color: #44685a;
+      color: #4b695c;
     }
 
     .price-main-box-value {
@@ -477,12 +479,12 @@
     }
 
     .price-main-box.is-primary .price-main-box-value strong {
-      color: #365f4f;
+      color: #4a675a;
     }
 
     .price-main-box.is-primary .price-main-box-value .unit-prefix,
     .price-main-box.is-primary .price-main-box-value .unit-suffix {
-      color: #44685a;
+      color: #5c7b6f;
     }
 
     .price-main-plus {
@@ -537,9 +539,9 @@
     }
 
     .price-simple-chip.is-green {
-      background: #e3eee8;
-      color: #3d6656;
-      border-color: #c8d7ce;
+      background: #e4eee8;
+      color: #47695b;
+      border-color: #c8d6ce;
     }
 
     .price-simple-chip.is-lavender {
