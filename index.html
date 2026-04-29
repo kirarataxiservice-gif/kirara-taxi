@@ -15,7 +15,7 @@
 
     body {
       margin: 0;
-      background: #f5f5f5;
+      background: #f4f3ef;
       color: #222;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
     }
@@ -24,6 +24,10 @@
       max-width: 100%;
       height: auto;
       display: block;
+    }
+
+    a {
+      color: inherit;
     }
 
     .site-header {
@@ -129,7 +133,7 @@
 
     .drawer-menu a {
       text-decoration: none;
-      color: #009140;
+      color: #1b6a4b;
       font-size: 18px;
       padding: 10px 0;
       border-bottom: 1px solid #e9e9e9;
@@ -146,10 +150,10 @@
     .contact-card,
     .company-card {
       background: #ffffff;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 22px 18px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e8e8e8;
+      border: 1px solid #e8e4dd;
     }
 
     .hero {
@@ -158,15 +162,16 @@
 
     .hero-lead {
       margin: 0 0 8px;
-      color: #009140;
+      color: #1b6a4b;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .hero-title {
       margin: 0 0 10px;
       font-size: 28px;
       line-height: 1.4;
+      color: #2b2a27;
     }
 
     .hero-text {
@@ -187,7 +192,7 @@
       display: block;
       text-align: center;
       text-decoration: none;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 14px 16px;
       font-weight: 700;
     }
@@ -208,7 +213,7 @@
     }
 
     .btn-primary {
-      background: #f4a300;
+      background: #e89b2f;
       color: #fff;
     }
 
@@ -240,7 +245,7 @@
       margin: 0 0 12px;
       font-size: 24px;
       line-height: 1.4;
-      color: #009140;
+      color: #1b6a4b;
     }
 
     .info-text,
@@ -267,7 +272,7 @@
     .feature-card {
       background: #ffffff;
       border: 1px solid #dddddd;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       text-align: left;
@@ -287,7 +292,7 @@
     .feature-title {
       font-size: 22px;
       font-weight: 900;
-      color: #009140;
+      color: #1b6a4b;
       margin: 0 0 8px;
       line-height: 1.4;
     }
@@ -302,8 +307,8 @@
     .company-row {
       display: flex;
       flex-wrap: wrap;
-      border: 1px solid #e7e7e7;
-      border-radius: 10px;
+      border: 1px solid #e7e1d8;
+      border-radius: 12px;
       overflow: hidden;
       margin-bottom: 12px;
     }
@@ -314,16 +319,16 @@
 
     .company-label {
       flex: 1 1 220px;
-      background-color: #f0f5f2;
+      background-color: #eef4f0;
       padding: 16px 18px;
       font-weight: 700;
-      color: #2c3e50;
+      color: #31443c;
       line-height: 1.7;
     }
 
     .company-value {
       flex: 2 1 340px;
-      background-color: #fafafa;
+      background-color: #faf9f6;
       padding: 16px 18px;
       color: #333;
       font-size: 16px;
@@ -341,6 +346,269 @@
 
     .company-list li:last-child {
       margin-bottom: 0;
+    }
+
+    /* 料金 */
+    .price-board {
+      background: linear-gradient(180deg, #fffdfa 0%, #f4efe7 100%);
+      border: 1px solid #dbd3c6;
+      border-radius: 24px;
+      padding: 22px 18px;
+      box-shadow: 0 14px 34px rgba(62, 38, 15, 0.10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-board::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 8px;
+      background: linear-gradient(90deg, #4f7d68 0%, #7ea28e 55%, #c3d0c7 100%);
+    }
+
+    .price-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e7f0ea;
+      color: #416657;
+      border: 1px solid #ccd8d1;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .price-title {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.4;
+      color: #2f2c28;
+    }
+
+    .price-lead {
+      margin: 0 0 18px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #4e4943;
+    }
+
+    .price-hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .price-card {
+      border-radius: 20px;
+      padding: 18px 14px;
+      border: 1.5px solid #d7cec1;
+      background: linear-gradient(180deg, #f7f1e8 0%, #ede4d7 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.82),
+        0 4px 10px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .price-card.primary {
+      border: 1.5px solid #afc3b8;
+      background: linear-gradient(180deg, #eef5f1 0%, #dfeae3 100%);
+      box-shadow:
+        0 10px 18px rgba(79, 125, 104, 0.10),
+        inset 0 1px 0 rgba(255,255,255,0.90);
+    }
+
+    .price-card-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #5d564f;
+    }
+
+    .price-card.primary .price-card-label {
+      color: #4d695d;
+    }
+
+    .price-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .price-value strong {
+      font-size: 40px;
+      font-weight: 900;
+      color: #2f2c28;
+      line-height: 1;
+    }
+
+    .price-card.primary .price-value strong {
+      color: #456659;
+    }
+
+    .price-value .unit-prefix,
+    .price-value .unit-suffix {
+      font-size: 15px;
+      font-weight: 700;
+      color: #5f564e;
+    }
+
+    .price-card.primary .price-value .unit-prefix,
+    .price-card.primary .price-value .unit-suffix {
+      color: #5c7a6e;
+    }
+
+    .price-plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 900;
+      color: #5b544d;
+      line-height: 1;
+    }
+
+    .price-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .price-note-card,
+    .price-extra-card,
+    .price-example-card {
+      border-radius: 18px;
+      background: #fcfaf7;
+      border: 1px solid #dfd6ca;
+      padding: 16px 14px;
+    }
+
+    .price-note-card {
+      background: #f8f5ef;
+    }
+
+    .price-extra-card {
+      background: #f6f2eb;
+      border-left: 5px solid #9a866f;
+    }
+
+    .price-example-card {
+      background: #fffdfb;
+    }
+
+    .price-note {
+      margin: 0 0 8px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #554e47;
+    }
+
+    .price-note:last-child {
+      margin-bottom: 0;
+    }
+
+    .price-note strong {
+      color: #2d2a27;
+    }
+
+    .price-subtitle {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #433d37;
+      line-height: 1.5;
+    }
+
+    .price-subtext {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.9;
+      color: #615851;
+    }
+
+    .price-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .price-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.5;
+      background: #efe9e1;
+      color: #575049;
+      border: 1px solid #d5cbbe;
+    }
+
+    .price-tag.green {
+      background: #e5efea;
+      color: #47695b;
+      border-color: #c9d7cf;
+    }
+
+    .price-tag.lavender {
+      background: #ece9ef;
+      color: #615a69;
+      border-color: #d7cfdd;
+    }
+
+    .price-tag.orange {
+      background: #f2e7dc;
+      color: #7a5a3d;
+      border-color: #dfccb8;
+    }
+
+    .price-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #554f48;
+    }
+
+    .price-list li {
+      margin-bottom: 8px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .price-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-section .contact-card {
+      background: #ffffff;
+    }
+
+    .contact-heading {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.4;
+      color: #1b6a4b;
+    }
+
+    .contact-text {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #333;
     }
 
     .call-bar {
@@ -361,254 +629,6 @@
       text-decoration: none;
       font-size: 22px;
       font-weight: 800;
-    }
-
-    /* 料金 */
-    .price-simple-wrap {
-      margin: 0 0 24px;
-    }
-
-    .price-simple-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      padding: 24px 18px 20px;
-      background:
-        radial-gradient(circle at top right, rgba(108, 140, 124, 0.10), transparent 36%),
-        linear-gradient(180deg, #fcfbf8 0%, #f4efe8 100%);
-      border: 1px solid #d8d0c5;
-      box-shadow: 0 14px 34px rgba(62, 38, 15, 0.10);
-    }
-
-    .price-simple-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 7px;
-      background: linear-gradient(90deg, #537867 0%, #7ea28e 55%, #c0cec6 100%);
-    }
-
-    .price-simple-label {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: #e6efe9;
-      color: #3f6555;
-      border: 1px solid #cad8d0;
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
-
-    .price-simple-heading {
-      margin: 0 0 10px;
-      font-size: 28px;
-      line-height: 1.4;
-      color: #2f2c28;
-    }
-
-    .price-simple-lead {
-      margin: 0 0 18px;
-      font-size: 15px;
-      line-height: 1.9;
-      color: #4f4a44;
-    }
-
-    .price-main-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .price-main-box {
-      border-radius: 18px;
-      padding: 18px 14px;
-      border: 1.5px solid #d5ccbf;
-      background: linear-gradient(180deg, #f7f1e9 0%, #ede3d6 100%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.80),
-        0 4px 10px rgba(0,0,0,0.04);
-    }
-
-    .price-main-box.is-primary {
-      border: 1.5px solid #a9bfb3;
-      background: linear-gradient(180deg, #eef4f1 0%, #dde9e2 100%);
-      box-shadow:
-        0 10px 18px rgba(83, 120, 103, 0.10),
-        inset 0 1px 0 rgba(255,255,255,0.88);
-    }
-
-    .price-main-box-label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.5;
-      color: #5b544d;
-    }
-
-    .price-main-box.is-primary .price-main-box-label {
-      color: #4b695c;
-    }
-
-    .price-main-box-value {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 2px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .price-main-box-value strong {
-      font-size: 38px;
-      font-weight: 900;
-      line-height: 1;
-      color: #2f2c28;
-    }
-
-    .price-main-box-value .unit-prefix,
-    .price-main-box-value .unit-suffix {
-      font-size: 15px;
-      font-weight: 700;
-      color: #5f564e;
-    }
-
-    .price-main-box.is-primary .price-main-box-value strong {
-      color: #4a675a;
-    }
-
-    .price-main-box.is-primary .price-main-box-value .unit-prefix,
-    .price-main-box.is-primary .price-main-box-value .unit-suffix {
-      color: #5c7b6f;
-    }
-
-    .price-main-plus {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 900;
-      color: #5a534b;
-      line-height: 1;
-    }
-
-    .price-inline-notes {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .price-inline-note {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.9;
-      color: #554e47;
-    }
-
-    .price-inline-note strong {
-      color: #2d2a27;
-    }
-
-    .price-simple-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .price-simple-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      text-align: center;
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1.5;
-      background: #efe9e1;
-      color: #575049;
-      border: 1px solid #d5cbbe;
-    }
-
-    .price-simple-chip.is-green {
-      background: #e4eee8;
-      color: #47695b;
-      border-color: #c8d6ce;
-    }
-
-    .price-simple-chip.is-lavender {
-      background: #ece9ef;
-      color: #615a69;
-      border-color: #d7cfdd;
-    }
-
-    .price-simple-chip.is-orange {
-      background: #f2e7dc;
-      color: #7a5a3d;
-      border-color: #dfccb8;
-    }
-
-    .price-simple-subcard {
-      margin-top: 16px;
-      padding: 16px 14px 15px;
-      border-radius: 16px;
-      background: #f8f3eb;
-      border: 1px solid #ddd0bf;
-      border-left: 5px solid #9a866f;
-    }
-
-    .price-simple-subcard-title {
-      margin: 0 0 8px;
-      font-size: 14px;
-      font-weight: 800;
-      color: #463f38;
-      line-height: 1.5;
-    }
-
-    .price-simple-subcard-text {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.9;
-      color: #615851;
-    }
-
-    .price-examples {
-      margin-top: 16px;
-      padding: 16px 14px 14px;
-      border-radius: 16px;
-      background: #fdfbf8;
-      border: 1px solid #ddd3c7;
-    }
-
-    .price-examples-title {
-      margin: 0 0 10px;
-      font-size: 15px;
-      font-weight: 800;
-      color: #3d3832;
-    }
-
-    .price-examples-list {
-      margin: 0;
-      padding-left: 18px;
-      color: #554f48;
-    }
-
-    .price-examples-list li {
-      margin-bottom: 8px;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .price-examples-list li:last-child {
-      margin-bottom: 0;
     }
 
     @media (max-width: 768px) {
@@ -753,58 +773,75 @@
         padding: 34px 30px;
       }
 
+      .price-board,
       .price-simple-card {
         padding: 30px 28px 24px;
       }
 
+      .price-title,
       .price-simple-heading {
         font-size: 34px;
       }
 
+      .price-lead,
       .price-simple-lead {
         font-size: 16px;
       }
 
+      .price-hero,
       .price-main-grid {
-        grid-template-columns: 1fr 40px 1fr;
+        grid-template-columns: 1fr 44px 1fr;
         align-items: stretch;
       }
 
+      .price-card,
       .price-main-box {
         padding: 24px 18px;
       }
 
+      .price-value strong,
       .price-main-box-value strong {
-        font-size: 44px;
+        font-size: 46px;
       }
 
+      .price-value .unit-prefix,
+      .price-value .unit-suffix,
       .price-main-box-value .unit-prefix,
       .price-main-box-value .unit-suffix {
         font-size: 18px;
       }
 
+      .price-plus,
       .price-main-plus {
         font-size: 34px;
       }
 
-      .price-inline-note {
+      .price-detail-grid {
+        grid-template-columns: 1.2fr 1fr;
+      }
+
+      .price-example-card {
+        grid-column: 1 / -1;
+      }
+
+      .price-note {
         font-size: 15px;
       }
 
-      .price-simple-chip {
+      .price-subtitle {
+        font-size: 16px;
+      }
+
+      .price-subtext {
         font-size: 14px;
       }
 
-      .price-simple-subcard-title {
+      .price-list li {
         font-size: 15px;
       }
 
-      .price-simple-subcard-text {
+      .price-tag {
         font-size: 14px;
-      }
-
-      .price-examples-list li {
-        font-size: 15px;
       }
     }
   </style>
@@ -961,68 +998,68 @@
     </section>
 
     <section class="price-section" id="price">
-      <div class="price-simple-wrap">
-        <div class="price-simple-card">
-          <div class="price-simple-label">料金案内</div>
+      <div class="price-board">
+        <div class="price-kicker">料金案内</div>
 
-          <h2 class="price-simple-heading">ご利用料金</h2>
-          <p class="price-simple-lead">
-            通院・転院・お出かけなどのご利用は、<strong>15分単位</strong>でご案内しています。
-          </p>
+        <h2 class="price-title">ご利用料金</h2>
+        <p class="price-lead">
+          通院・転院・お出かけなどのご利用は、<strong>15分単位</strong>でご案内しています。
+        </p>
 
-          <div class="price-main-grid">
-            <div class="price-main-box is-primary">
-              <span class="price-main-box-label">送迎料金</span>
-              <span class="price-main-box-value">
-                <small class="unit-prefix">15分まで</small>
-                <strong>1,700</strong>
-                <small class="unit-suffix">円</small>
-              </span>
-            </div>
-
-            <div class="price-main-plus">＋</div>
-
-            <div class="price-main-box">
-              <span class="price-main-box-label">乗り降りに特別な介助が必要な場合</span>
-              <span class="price-main-box-value">
-                <strong>1,000</strong>
-                <small class="unit-suffix">円</small>
-              </span>
-            </div>
+        <div class="price-hero">
+          <div class="price-card primary">
+            <span class="price-card-label">送迎料金</span>
+            <span class="price-value">
+              <small class="unit-prefix">15分まで</small>
+              <strong>1,700</strong>
+              <small class="unit-suffix">円</small>
+            </span>
           </div>
 
-          <div class="price-inline-notes">
-            <p class="price-inline-note">
+          <div class="price-plus">＋</div>
+
+          <div class="price-card">
+            <span class="price-card-label">乗り降りに特別な介助が必要な場合</span>
+            <span class="price-value">
+              <strong>1,000</strong>
+              <small class="unit-suffix">円</small>
+            </span>
+          </div>
+        </div>
+
+        <div class="price-detail-grid">
+          <div class="price-note-card">
+            <p class="price-note">
               <strong>通常の乗り降りのお手伝い・見守り・車いす介助</strong>は、運賃に含みます。
             </p>
-            <p class="price-inline-note">
+            <p class="price-note">
               <strong>同一日の往復利用</strong>で、行き帰りとも同程度の介助が必要な場合は、<strong>追加料金は1回分のみ</strong>です。
             </p>
           </div>
 
-          <div class="price-simple-chips">
-            <div class="price-simple-chip is-green">標準車いす対応</div>
-            <div class="price-simple-chip is-lavender">リクライニング車いす対応</div>
-            <div class="price-simple-chip is-orange">近距離のご利用にも対応</div>
-          </div>
-
-          <div class="price-simple-subcard">
-            <p class="price-simple-subcard-title">別途ご案内する場合</p>
-            <p class="price-simple-subcard-text">
+          <div class="price-extra-card">
+            <h3 class="price-subtitle">別途ご案内する場合</h3>
+            <p class="price-subtext">
               階段介助、院内付き添い、2名対応、リクライニング車いすの使用など、
               特別な対応が必要な場合は、内容確認のうえ事前にご案内いたします。
             </p>
           </div>
 
-          <div class="price-examples">
-            <h3 class="price-examples-title">料金の目安</h3>
-            <ul class="price-examples-list">
+          <div class="price-example-card">
+            <h3 class="price-subtitle">料金の目安</h3>
+            <ul class="price-list">
               <li>15分までの送迎　<strong>1,700円</strong></li>
               <li>30分までの送迎　<strong>3,400円</strong></li>
               <li>45分までの送迎　<strong>5,100円</strong></li>
               <li>乗り降りに特別な介助が必要な場合　<strong>+1,000円</strong></li>
             </ul>
           </div>
+        </div>
+
+        <div class="price-tags">
+          <div class="price-tag green">標準車いす対応</div>
+          <div class="price-tag lavender">リクライニング車いす対応</div>
+          <div class="price-tag orange">近距離のご利用にも対応</div>
         </div>
       </div>
     </section>
