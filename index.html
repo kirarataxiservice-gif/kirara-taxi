@@ -832,6 +832,18 @@
         font-size: 34px;
       }
 
+      .price-main-time {
+        font-size: 20px;
+      }
+
+      .price-main-number {
+        font-size: 52px;
+      }
+
+      .price-main-yen {
+        font-size: 20px;
+      }
+
       .price-lead {
         font-size: 16px;
       }
@@ -848,6 +860,142 @@
 
       .price-tag {
         font-size: 14px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .site-wrap {
+        width: min(100% - 48px, 920px);
+        padding-bottom: 48px;
+      }
+
+      .header-inner {
+        width: min(100% - 48px, 920px);
+        align-items: center;
+      }
+
+      .brand-logo {
+        max-width: 260px;
+      }
+
+      .brand-sub {
+        font-size: 13px;
+        text-align: left;
+      }
+
+      .brand-text {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .hero,
+      .info-card,
+      .contact-card,
+      .company-card,
+      .price-board {
+        border-radius: 18px;
+      }
+
+      .hero {
+        padding: 34px 32px;
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn {
+        padding: 15px 18px;
+      }
+
+      .btn-main {
+        font-size: 17px;
+      }
+
+      .btn-sub {
+        font-size: 12px;
+      }
+
+      .info-card,
+      .company-card,
+      .contact-card {
+        padding: 30px 30px;
+      }
+
+      .info-heading,
+      .contact-heading,
+      .company-heading {
+        font-size: 26px;
+      }
+
+      .info-text,
+      .contact-text,
+      .company-value {
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .feature-title {
+        font-size: 20px;
+      }
+
+      .feature-text {
+        font-size: 16px;
+      }
+
+      .price-board-inner {
+        padding: 30px 30px;
+      }
+
+      .price-title {
+        font-size: 30px;
+      }
+
+      .price-lead {
+        font-size: 15px;
+      }
+
+      .price-summary-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .price-main-number {
+        font-size: 46px;
+      }
+
+      .price-accompany-value {
+        font-size: 28px;
+      }
+
+      .price-table th,
+      .price-table td {
+        font-size: 15px;
+      }
+
+      .call-bar {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .site-wrap,
+      .header-inner {
+        width: 920px;
       }
     }
   </style>
