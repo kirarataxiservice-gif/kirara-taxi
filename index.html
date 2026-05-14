@@ -1,350 +1,1192 @@
-/* ===== 料金案内 ===== */
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>介護タクシーきらら</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.price-board {
-  background: #e9edf1;
-  border: 1px solid #cfd6de;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
-  overflow: hidden;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.price-board-inner {
-  padding: 22px 18px;
-}
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
 
-.price-kicker {
-  display: inline-flex;
-  align-items: center;
-  min-height: 32px;
-  padding: 6px 12px;
-  margin-bottom: 14px;
-  border-radius: 999px;
-  background: #e2e6ea;
-  border: 1px solid #c9d0d8;
-  color: #374151;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.04em;
-}
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-.price-title {
-  margin: 0 0 8px;
-  color: #111827;
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1.35;
-  letter-spacing: 0.01em;
-}
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.price-lead {
-  margin: 0 0 20px;
-  color: #4b5563;
-  font-size: 15px;
-  line-height: 1.9;
-}
+    .header-inner {
+      width: min(100% - 16px, 1100px);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+    }
 
-.price-lead strong {
-  color: #111827;
-  font-weight: 800;
-}
+    .brand {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
 
-.price-summary-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  margin-bottom: 14px;
-}
+    .brand-sub {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+    }
 
-.price-card-box {
-  background: #ffffff;
-  border: 1px solid #e2e5e0;
-  border-radius: 18px;
-  padding: 18px 16px;
-}
+    .brand-logo-wrap {
+      line-height: 0;
+    }
 
-.price-card-label {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 11px;
-  margin-bottom: 14px;
-  border-radius: 999px;
-  background: #ffffff;
-  border: 1px solid #e1e4de;
-  color: #4b5563;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.03em;
-}
+    .brand-logo {
+      width: 100%;
+      max-width: 190px;
+      height: auto;
+    }
 
-.price-main-row {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: nowrap;
-  gap: 8px;
-  margin-bottom: 14px;
-  line-height: 1;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
+    .pc-text {
+      display: block;
+    }
 
-.price-main-time {
-  color: #374151;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
+    .sp-text {
+      display: none;
+    }
 
-.price-main-number {
-  color: #111827;
-  font-size: clamp(36px, 9vw, 48px);
-  font-weight: 800;
-  letter-spacing: 0.005em;
-}
+    .brand-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #333;
+      margin: 6px 0 0;
+    }
 
-.price-main-yen {
-  color: #374151;
-  font-size: 18px;
-  font-weight: 700;
-}
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+      margin-top: 6px;
+    }
 
-.price-main-note {
-  margin: 0;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.9;
-}
+    .header-phone {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 1px solid #cfcfcf;
+      background: #fff;
+      border-radius: 10px;
+      font-size: 18px;
+      color: #333;
+    }
 
-.price-main-note strong {
-  color: #1f2937;
-  font-weight: 800;
-}
+    .menu-button {
+      width: 48px;
+      height: 48px;
+      border: 1px solid #cfcfcf;
+      background: #fff;
+      border-radius: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      flex-shrink: 0;
+      color: #333;
+    }
 
-.price-accompany-text {
-  margin: 0 0 14px;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.85;
-}
+    .drawer-menu {
+      display: none;
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 8px 16px 16px;
+    }
 
-.price-accompany-text strong {
-  color: #1f2937;
-  font-weight: 800;
-}
+    .drawer-menu.open {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.price-accompany-rates {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 2px solid #b88955;
-  border-bottom: 1px solid #d1d5db;
-}
+    .drawer-menu a {
+      text-decoration: none;
+      color: #009140;
+      font-size: 18px;
+      padding: 10px 0;
+      border-bottom: 1px solid #e9e9e9;
+    }
 
-.price-accompany-rate {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 13px 0;
-  font-variant-numeric: tabular-nums;
-}
+    .site-wrap {
+      width: min(100% - 16px, 1100px);
+      margin: 0 auto;
+      padding: 16px 0 96px;
+    }
 
-.price-accompany-rate + .price-accompany-rate {
-  border-top: 1px solid #e5e7eb;
-}
+    .hero,
+    .info-card,
+    .contact-card,
+    .company-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 22px 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e8e8e8;
+    }
 
-.price-accompany-label {
-  color: #4b5563;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.5;
-}
+    .hero {
+      margin: 12px 0 16px;
+    }
 
-.price-accompany-value {
-  color: #111827;
-  font-size: clamp(24px, 6vw, 30px);
-  font-weight: 800;
-  line-height: 1.15;
-  white-space: nowrap;
-}
+    .hero-lead {
+      margin: 0 0 8px;
+      color: #009140;
+      font-size: 14px;
+      font-weight: 700;
+    }
 
-.price-note-item {
-  margin-bottom: 14px;
-  padding: 14px;
-  background: #ffffff;
-  border: 1px solid #e2e5e0;
-  border-radius: 14px;
-}
+    .hero-title {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
 
-.price-note-item h3 {
-  margin: 0 0 6px;
-  color: #1f2937;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.5;
-}
+    .hero-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+    }
 
-.price-note-item p {
-  margin: 0;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.85;
-}
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
 
-.price-table-wrap {
-  margin-bottom: 14px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid #e2e5e0;
-  border-radius: 16px;
-}
+    .btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-weight: 700;
+    }
 
-.price-table-title {
-  padding: 12px 14px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  color: #111827;
-  font-size: 15px;
-  font-weight: 800;
-}
+    .btn-main {
+      display: block;
+      font-size: 18px;
+      line-height: 1.5;
+    }
 
-.price-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+    .btn-sub {
+      display: block;
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 500;
+      opacity: 0.95;
+    }
 
-.price-table th,
-.price-table td {
-  padding: 14px 16px;
-  border-right: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 14px;
-  line-height: 1.7;
-  vertical-align: middle;
-}
+    .btn-primary {
+      background: #e39a45;
+      color: #fff;
+    }
 
-.price-table th:last-child,
-.price-table td:last-child {
-  border-right: none;
-}
+    .btn-line {
+      background: #06c755;
+      color: #fff;
+    }
 
-.price-table tr:last-child th,
-.price-table tr:last-child td {
-  border-bottom: none;
-}
+    .btn-phone-sub {
+      background: #ffffff;
+      color: #555;
+      border: 1px solid #d8d8d8;
+    }
 
-.price-table th {
-  width: 58%;
-  background: #ffffff;
-  color: #374151;
-  font-weight: 700;
-  text-align: left;
-}
+    .info-section,
+    .price-section,
+    .contact-section,
+    .company-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 0 0 24px;
+      scroll-margin-top: 90px;
+    }
 
-.price-table td {
-  background: #ffffff;
-  color: #111827;
-  font-weight: 800;
-  text-align: right;
-  white-space: nowrap;
-}
+    .info-heading,
+    .contact-heading,
+    .company-heading {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.4;
+      color: #009140;
+    }
 
-.price-table tr.is-extra th,
-.price-table tr.is-extra td {
-  background: #ffffff;
-}
+    .info-text,
+    .contact-text {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #333;
+    }
 
-.price-table tr.is-extra:first-of-type th,
-.price-table tr.is-extra:first-of-type td {
-  border-top: 2px solid #b88955;
-}
+    .info-text:last-child,
+    .contact-text:last-child {
+      margin-bottom: 0;
+    }
 
-.price-notice {
-  margin-bottom: 14px;
-  padding: 14px;
-  background: #ffffff;
-  border: 1px solid #e2e5e0;
-  border-radius: 14px;
-}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: 0 0 24px;
+      scroll-margin-top: 90px;
+    }
 
-.price-notice-title {
-  margin: 0 0 6px;
-  color: #1f2937;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.5;
-}
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
 
-.price-notice-text {
-  margin: 0;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.85;
-}
+    .feature-card img {
+      width: 90%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      margin: 15px auto 0;
+    }
 
-.price-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+    .feature-body {
+      padding: 15px;
+    }
 
-.price-tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #ffffff;
-  border: 1px solid #e1e4de;
-  color: #4b5563;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.5;
-  text-align: center;
-}
+    .feature-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #009140;
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
 
-/* ===== 下部固定予約ボタン ===== */
+    .feature-text {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.7;
+      margin: 0;
+    }
 
-.call-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, 0.96);
-  border-top: 1px solid #e5e7eb;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
-  text-align: center;
-}
+    .company-row {
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid #e7e7e7;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
 
-.call-bar a {
-  display: block;
-  width: min(100%, 520px);
-  margin: 0 auto;
-  padding: 13px 12px;
-  border-radius: 14px;
-  background: #e39a45;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 800;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(120, 73, 26, 0.18);
-}
+    .company-row:last-child {
+      margin-bottom: 0;
+    }
 
-@media (min-width: 769px) {
-  .price-summary-grid {
-    grid-template-columns: 0.95fr 1.05fr;
-    align-items: stretch;
-  }
+    .company-label {
+      flex: 1 1 220px;
+      background-color: #f0f5f2;
+      padding: 16px 18px;
+      font-weight: 700;
+      color: #2c3e50;
+      line-height: 1.7;
+    }
 
-  .price-table th,
-  .price-table td {
-    font-size: 15px;
-  }
+    .company-value {
+      flex: 2 1 340px;
+      background-color: #fafafa;
+      padding: 16px 18px;
+      color: #333;
+      font-size: 16px;
+      line-height: 1.9;
+    }
 
-  .price-tag {
-    font-size: 14px;
-  }
-}
+    .company-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .company-list li {
+      margin-bottom: 8px;
+    }
+
+    .company-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .price-board {
+      background: #e9edf1;
+      border-radius: 18px;
+      border: 1px solid #cfd6de;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+    }
+
+    .price-board-inner {
+      padding: 22px 18px;
+      background: transparent;
+    }
+
+    .price-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e2e6ea;
+      color: #374151;
+      border: 1px solid #c9d0d8;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .price-title {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.35;
+      color: #111827;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .price-lead {
+      margin: 0 0 20px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #4b5563;
+    }
+
+    .price-lead strong {
+      color: #111827;
+      font-weight: 800;
+    }
+
+    .price-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .price-card-box {
+      background: #ffffff;
+      border: 1px solid #e2e5e0;
+      border-radius: 18px;
+      padding: 18px 16px;
+    }
+
+    .price-card-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #4b5563;
+      border: 1px solid #e1e4de;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+      margin-bottom: 14px;
+    }
+
+    .price-main-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: nowrap;
+      gap: 8px;
+      line-height: 1;
+      margin-bottom: 14px;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .price-main-time {
+      font-size: 18px;
+      font-weight: 700;
+      color: #374151;
+      letter-spacing: 0.01em;
+    }
+
+    .price-main-number {
+      font-size: clamp(36px, 9vw, 48px);
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: 0.005em;
+    }
+
+    .price-main-yen {
+      font-size: 18px;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .price-main-note {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #4b5563;
+    }
+
+    .price-main-note strong {
+      color: #1f2937;
+      font-weight: 800;
+    }
+
+    .price-note-item {
+      background: #ffffff;
+      border: 1px solid #e2e5e0;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .price-note-item h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #1f2937;
+      font-weight: 800;
+    }
+
+    .price-note-item p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.85;
+      color: #4b5563;
+    }
+
+    .price-accompany-text {
+      margin: 0 0 14px;
+      font-size: 14px;
+      line-height: 1.85;
+      color: #4b5563;
+    }
+
+    .price-accompany-text strong {
+      color: #1f2937;
+      font-weight: 800;
+    }
+
+    .price-accompany-rates {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 2px solid #b88955;
+      border-bottom: 1px solid #d1d5db;
+    }
+
+    .price-accompany-rate {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .price-accompany-rate + .price-accompany-rate {
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .price-accompany-label {
+      display: block;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #4b5563;
+      font-weight: 700;
+    }
+
+    .price-accompany-value {
+      display: block;
+      font-size: clamp(24px, 6vw, 30px);
+      line-height: 1.15;
+      color: #111827;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .price-table-wrap {
+      border: 1px solid #e2e5e0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .price-table-title {
+      padding: 12px 14px;
+      background: #ffffff;
+      color: #111827;
+      font-size: 15px;
+      font-weight: 800;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .price-table th,
+    .price-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      border-right: 1px solid #e5e7eb;
+      font-size: 14px;
+      line-height: 1.7;
+      vertical-align: middle;
+    }
+
+    .price-table th:last-child,
+    .price-table td:last-child {
+      border-right: none;
+    }
+
+    .price-table tr:last-child th,
+    .price-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .price-table th {
+      width: 58%;
+      text-align: left;
+      background: #ffffff;
+      color: #374151;
+      font-weight: 700;
+    }
+
+    .price-table td {
+      text-align: right;
+      background: #ffffff;
+      color: #111827;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .price-table tr.is-extra th,
+    .price-table tr.is-extra td {
+      background: #ffffff;
+    }
+
+    .price-table tr.is-extra:first-of-type th,
+    .price-table tr.is-extra:first-of-type td {
+      border-top: 2px solid #b88955;
+    }
+
+    .price-notice {
+      border-radius: 14px;
+      border: 1px solid #e2e5e0;
+      background: #ffffff;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .price-notice-title {
+      margin: 0 0 6px;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 800;
+      color: #1f2937;
+    }
+
+    .price-notice-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.85;
+      color: #4b5563;
+    }
+
+    .price-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .price-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      background: #ffffff;
+      color: #4b5563;
+      border: 1px solid #e1e4de;
+    }
+
+    .call-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+      padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    }
+
+    .call-bar a {
+      display: block;
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding: 13px 12px;
+      border-radius: 14px;
+      background: #e39a45;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(120, 73, 26, 0.18);
+    }
+
+    @media (max-width: 768px) {
+      .brand-logo {
+        max-width: 150px;
+      }
+
+      .brand-sub {
+        font-size: 10px;
+      }
+
+      .brand-text {
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .pc-text {
+        display: none;
+      }
+
+      .sp-text {
+        display: block;
+      }
+
+      .header-phone {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+      }
+
+      .menu-button {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .hero-text {
+        font-size: 15px;
+      }
+
+      .info-heading,
+      .contact-heading,
+      .company-heading {
+        font-size: 20px;
+      }
+
+      .info-text,
+      .contact-text,
+      .company-value {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .feature-title {
+        font-size: 20px;
+      }
+
+      .feature-text {
+        font-size: 16px;
+      }
+
+      .company-label,
+      .company-value {
+        flex: 1 1 100%;
+        padding: 14px 15px;
+      }
+
+      .contact-card,
+      .info-card,
+      .hero,
+      .company-card {
+        padding: 20px 16px;
+      }
+
+      .price-board-inner {
+        padding: 20px 16px;
+      }
+
+      .call-bar a {
+        font-size: 18px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .brand-logo {
+        max-width: 350px;
+      }
+
+      .brand-sub {
+        font-size: 17px;
+      }
+
+      .brand-text {
+        font-size: 19px;
+      }
+
+      .hero-lead {
+        font-size: 18px;
+      }
+
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .hero-text {
+        font-size: 20px;
+      }
+
+      .info-heading,
+      .contact-heading,
+      .company-heading {
+        font-size: 32px;
+      }
+
+      .info-text,
+      .contact-text,
+      .company-value {
+        font-size: 20px;
+      }
+
+      .company-label {
+        font-size: 18px;
+      }
+
+      .btn-main {
+        font-size: 20px;
+      }
+
+      .btn-sub {
+        font-size: 15px;
+      }
+
+      .contact-card,
+      .info-card,
+      .hero,
+      .company-card {
+        padding: 34px 30px;
+      }
+
+      .price-board-inner {
+        padding: 34px 30px;
+      }
+
+      .price-title {
+        font-size: 34px;
+      }
+
+      .price-lead {
+        font-size: 16px;
+      }
+
+      .price-summary-grid {
+        grid-template-columns: 0.95fr 1.05fr;
+        align-items: stretch;
+      }
+
+      .price-table th,
+      .price-table td {
+        font-size: 15px;
+      }
+
+      .price-tag {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-sub">介護タクシー・通院・転院・リクライニング車いす対応</div>
+
+        <div class="brand-logo-wrap">
+          <img class="brand-logo" src="./きららロゴ2.png" alt="介護タクシーきらら">
+        </div>
+
+        <p class="brand-text pc-text">
+          愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、通院・転院・お出かけをサポートします。
+        </p>
+
+        <p class="brand-text sp-text">
+          愛知県蒲郡市を拠点に、訪問介護事業所併設の介護タクシーとして、お出かけをサポートします。
+        </p>
+      </div>
+
+      <div class="header-actions">
+        <a class="header-phone" href="tel:09094066235" aria-label="電話をかける">📞</a>
+        <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="drawer-menu" id="drawerMenu">
+    <a href="#home">ホーム</a>
+    <a href="#guide">ご利用案内</a>
+    <a href="#price">料金</a>
+    <a href="#company">会社概要</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
+
+  <main class="site-wrap">
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <p class="hero-lead">ご予約・ご相談はこちら</p>
+        <h2 class="hero-title">移動に不安のある方へ、安心の介護タクシー</h2>
+        <p class="hero-text">
+          ご本人様はもちろん、ご家族様・ケアマネジャー様からのご相談にも対応しています。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://forms.gle/Wcq6MSPAPVsqh5gx9">
+            <span class="btn-main">予約フォームから申し込む</span>
+            <span class="btn-sub">ご希望内容を落ち着いて入力できます</span>
+          </a>
+
+          <a class="btn btn-line" href="https://line.me/R/ti/p/@565watrp">
+            <span class="btn-main">LINEで相談する</span>
+            <span class="btn-sub">再予約やご相談はLINEが便利です</span>
+          </a>
+
+          <a class="btn btn-phone-sub" href="tel:09094066235">
+            <span class="btn-main">お急ぎの方のみお電話</span>
+            <span class="btn-sub">対応状況により折り返しとなる場合があります</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section" id="guide">
+      <div class="info-card">
+        <h2 class="info-heading">サービス概要</h2>
+        <p class="info-text">
+          <strong>介護タクシー きらら</strong>は、愛知県蒲郡市を拠点とする、訪問介護事業所併設の福祉タクシーです。
+          第二種免許および介護関連資格を有するスタッフが、ご自宅から目的地までの移動を、安全面に配慮しながらサポートいたします。
+        </p>
+        <p class="info-text">
+          日々の通院や入退院・転院はもちろん、お買い物、お墓参り、ご家族とのお食事、冠婚葬祭など、生活のさまざまな場面でご利用いただけます。
+          また、片道のみの送迎、往復でのご利用、複数箇所の経由、時間制での貸切など、ご都合に合わせてできる限り柔軟に対応いたします。
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h2 class="info-heading">車両・設備・対応エリア</h2>
+        <p class="info-text">
+          対応エリアは、<strong>蒲郡市・岡崎市・豊橋市および近郊エリア</strong>です。
+        </p>
+        <p class="info-text">
+          使用車両は<strong>トヨタ シエンタ</strong>です。
+          <strong>助手席回転シート</strong>を備えており、乗り降りの負担をできるだけ軽減できるよう配慮しています。
+          また、<strong>後部助手席側はシートレスの車いすスペース</strong>となっており、車いすのままでもご利用いただきやすい仕様です。
+        </p>
+        <p class="info-text">
+          <strong>リクライニング車いす</strong>もご用意しており、お身体の状態に応じて、無理の少ない移動をサポートいたします。
+          ご利用内容に応じて、介護保険の適用についてもご相談いただけます。
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h2 class="info-heading">介護タクシーについて</h2>
+        <p class="info-text">
+          介護タクシーは、移動に不安のある方のための送迎・外出支援サービスです。
+          通常のタクシーと異なり、介護に関する資格を持つスタッフが、乗降時の介助や移動時の見守りを含めて対応いたします。
+        </p>
+        <p class="info-text">
+          ご利用内容によっては、<strong>介護保険の対象となるサービス</strong>と、
+          <strong>保険外でご利用いただく自費サービス</strong>があります。
+          詳しくは、ご利用内容に応じてご案内いたします。
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h2 class="info-heading">きららの基本方針</h2>
+        <p class="info-text">
+          当事業所では、皆様に安心してご利用いただけるよう、送迎そのものだけでなく、受付からご利用当日まで丁寧な対応を心がけています。
+          ご本人様のお身体の状態やご事情はもちろん、ご家族様や関係機関の皆様との連携も大切にしながら、無理のない形でご利用いただける体制を整えています。
+        </p>
+        <p class="info-text">
+          また、はじめてご利用になる方にも不安なくご相談いただけるよう、分かりやすいご案内と、落ち着いてご利用いただける対応を大切にしています。
+          以下の4つを、<strong>介護タクシー きららの基本方針</strong>として掲げています。
+        </p>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <img src="1773320062.png" alt="有資格者が対応します" />
+        <div class="feature-body">
+          <h3 class="feature-title">有資格者が対応します</h3>
+          <p class="feature-text">第二種免許および介護士関連の資格を保有するスタッフが対応し、関係法令を遵守した安全な移動と介助に努めます。</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="1773319933.png" alt="男女スタッフが在籍" />
+        <div class="feature-body">
+          <h3 class="feature-title">男女スタッフが在籍</h3>
+          <p class="feature-text">男性スタッフ・女性スタッフともに在籍しております。ご家族様も含め、安心してご依頼いただける環境を整えています。</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="3枚目1.png" alt="介護保険が適用できます" />
+        <div class="feature-body">
+          <h3 class="feature-title">介護保険が適用できます</h3>
+          <p class="feature-text">通院等乗降介助など、一部のサービスにおいて介護保険の適用が可能です。適用範囲については担当のケアマネジャー様と連携いたします。</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <img src="4枚目.png" alt="予約料はいただきません" />
+        <div class="feature-body">
+          <h3 class="feature-title">予約料はいただきません</h3>
+          <p class="feature-text">ご利用者様の負担を少しでも減らすため、事前の「予約料」は一切いただいておりません。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="price-section" id="price">
+      <div class="price-board">
+        <div class="price-board-inner">
+          <div class="price-kicker">料金案内</div>
+
+          <h2 class="price-title">ご利用料金</h2>
+          <p class="price-lead">
+            通院・転院・お出かけなどのご利用は、短時間でも分かりやすいよう<strong>10分単位</strong>でご案内しています。
+          </p>
+
+          <div class="price-summary-grid">
+            <div class="price-card-box">
+              <div class="price-card-label">基本運賃（時間制）</div>
+              <div class="price-main-row" aria-label="10分まで1,300円">
+                <span class="price-main-time">10分まで</span>
+                <span class="price-main-number">1,300</span>
+                <span class="price-main-yen">円</span>
+              </div>
+              <p class="price-main-note">
+                <strong>通常の乗降介助・見守り・車いす介助は運賃に含みます。</strong><br>
+                通常の送迎に伴う基本的なサポートは、基本運賃の中で対応します。
+              </p>
+            </div>
+
+            <div class="price-card-box accompany">
+              <div class="price-card-label">付き添い介助料</div>
+              <p class="price-accompany-text">
+                病院内の受付・会計・診察待ちや、外出先での付き添いなど、<strong>車両を離れて同行する場合</strong>の料金です。
+              </p>
+              <div class="price-accompany-rates" aria-label="付き添い介助料金">
+                <div class="price-accompany-rate">
+                  <span class="price-accompany-label">30分</span>
+                  <span class="price-accompany-value">1,500円</span>
+                </div>
+                <div class="price-accompany-rate">
+                  <span class="price-accompany-label">以後10分ごと</span>
+                  <span class="price-accompany-value">500円</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price-note-item">
+            <h3>通常の乗降介助は運賃込み</h3>
+            <p>玄関先から車までの見守り、通常の乗降介助、標準的な車いす介助などは、基本運賃の中で対応します。</p>
+          </div>
+
+          <div class="price-table-wrap">
+            <div class="price-table-title">料金の目安</div>
+            <table class="price-table">
+              <tr>
+                <th>10分までの送迎</th>
+                <td>1,300円</td>
+              </tr>
+              <tr>
+                <th>20分までの送迎</th>
+                <td>2,600円</td>
+              </tr>
+              <tr>
+                <th>30分までの送迎</th>
+                <td>3,900円</td>
+              </tr>
+              <tr>
+                <th>40分までの送迎</th>
+                <td>5,200円</td>
+              </tr>
+              <tr class="is-extra">
+                <th>付き添い介助料（30分）</th>
+                <td>1,500円</td>
+              </tr>
+              <tr class="is-extra">
+                <th>付き添い延長（10分ごと）</th>
+                <td>500円</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="price-notice">
+            <h3 class="price-notice-title">付き添いが必要な場合は事前にご相談ください</h3>
+            <p class="price-notice-text">
+              ご予約時にお迎え先・目的地・必要な介助内容を確認し、できる限り分かりやすく料金の目安をご案内します。
+              付き添い介助が必要な場合は、内容に応じて事前に料金をご説明します。
+            </p>
+          </div>
+
+          <div class="price-tags">
+            <div class="price-tag">10分単位で明朗会計</div>
+            <div class="price-tag">通常の乗降介助は運賃込み</div>
+            <div class="price-tag">付き添い介助料は別途</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="company-section" id="company">
+      <div class="company-card">
+        <h2 class="company-heading">会社概要</h2>
+
+        <div class="company-row">
+          <div class="company-label">会社名</div>
+          <div class="company-value">株式会社カトウ</div>
+        </div>
+
+        <div class="company-row">
+          <div class="company-label">所在地</div>
+          <div class="company-value">愛知県蒲郡市丸山町3番14号</div>
+        </div>
+
+        <div class="company-row">
+          <div class="company-label">設立</div>
+          <div class="company-value">平成25年11月18日</div>
+        </div>
+
+        <div class="company-row">
+          <div class="company-label">資本金</div>
+          <div class="company-value">200万円</div>
+        </div>
+
+        <div class="company-row">
+          <div class="company-label">代表者</div>
+          <div class="company-value">代表取締役　加藤 縫子</div>
+        </div>
+
+        <div class="company-row">
+          <div class="company-label">事業内容</div>
+          <div class="company-value">
+            <ol class="company-list">
+              <li>介護保険法に基づく居宅介護支援・居宅サービス・介護予防サービス事業</li>
+              <li>障害者の日常生活及び社会生活を総合的に支援するための法律に基づく障害福祉サービス事業</li>
+              <li>一般乗用旅客自動車運送事業</li>
+              <li>特定旅客自動車運送事業</li>
+              <li>その他前各号に付帯関連する一切の業務</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-card">
+        <h2 class="contact-heading">お問い合わせ</h2>
+        <p class="contact-text">
+          ご利用内容や料金の目安、対応エリアなど、ご不明な点がありましたらお気軽にご連絡ください。
+          ご予約は予約フォーム、再予約やご相談はLINEが便利です。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://forms.gle/Wcq6MSPAPVsqh5gx9">
+            <span class="btn-main">予約フォームから申し込む</span>
+            <span class="btn-sub">ご希望内容を落ち着いて入力できます</span>
+          </a>
+
+          <a class="btn btn-line" href="https://line.me/R/ti/p/@565watrp">
+            <span class="btn-main">LINEで相談する</span>
+            <span class="btn-sub">再予約やご相談はLINEが便利です</span>
+          </a>
+
+          <a class="btn btn-phone-sub" href="tel:09094066235">
+            <span class="btn-main">お急ぎの方のみお電話</span>
+            <span class="btn-sub">対応状況により折り返しとなる場合があります</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="call-bar">
+    <a href="https://forms.gle/Wcq6MSPAPVsqh5gx9">📝 予約フォームはこちら</a>
+  </div>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const drawerMenu = document.getElementById('drawerMenu');
+    const drawerLinks = drawerMenu.querySelectorAll('a');
+
+    menuButton.addEventListener('click', () => {
+      drawerMenu.classList.toggle('open');
+    });
+
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        drawerMenu.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
