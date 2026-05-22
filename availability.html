@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>予約状況｜介護タクシーきらら</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f6f5;
+      color: #1f2933;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding-bottom: 28px;
+    }
+
+    .header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      width: min(100% - 20px, 980px);
+      margin: 0 auto;
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      min-width: 0;
+    }
+
+    .brand-kicker {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #007f3a;
+      font-weight: 900;
+    }
+
+    .brand-sub {
+      margin: 4px 0 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #475569;
+    }
+
+    .top-btn {
+      flex: 0 0 auto;
+      text-decoration: none;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #eef2f7;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid #d8dee8;
+      white-space: nowrap;
+    }
+
+    .wrap {
+      width: min(100% - 20px, 980px);
+      margin: 0 auto;
+      padding: 16px 0 0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #eef8f1);
+      border: 1px solid #dceee1;
+      border-radius: 20px;
+      padding: 18px 16px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      margin-bottom: 14px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #e3f5e9;
+      color: #007f3a;
+      font-size: 12px;
+      font-weight: 900;
+      border: 1px solid #c6e9d1;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #111827;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .notice {
+      background: #fff7df;
+      border: 1px solid #f0d98a;
+      color: #6b4e00;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.4;
+      color: #111827;
+      font-weight: 900;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .list-card,
+    .calendar-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+    }
+
+    .busy-list {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .busy-item {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 10px;
+      padding: 14px;
+      border-bottom: 1px solid #eef2f7;
+    }
+
+    .busy-item:last-child {
+      border-bottom: none;
+    }
+
+    .busy-date {
+      text-align: center;
+      border-radius: 14px;
+      background: #f1f5f9;
+      padding: 9px 6px;
+      align-self: start;
+    }
+
+    .busy-date-main {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #111827;
+    }
+
+    .busy-date-week {
+      margin-top: 3px;
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 800;
+    }
+
+    .busy-body {
+      min-width: 0;
+    }
+
+    .busy-time {
+      font-size: 16px;
+      font-weight: 900;
+      color: #dc2626;
+      line-height: 1.4;
+    }
+
+    .busy-text {
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    .empty {
+      padding: 18px 14px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      border-top: 1px solid #e5e7eb;
+      border-left: 1px solid #e5e7eb;
+    }
+
+    .weekday {
+      background: #f8fafc;
+      padding: 10px 4px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      color: #64748b;
+      border-right: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .day {
+      min-height: 112px;
+      padding: 8px;
+      background: #ffffff;
+      border-right: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .day.is-today {
+      background: #f0fdf4;
+    }
+
+    .day.is-empty {
+      background: #f8fafc;
+    }
+
+    .day-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .day-num {
+      font-size: 14px;
+      font-weight: 900;
+      color: #111827;
+    }
+
+    .today-badge {
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 999px;
+      background: #16a34a;
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .slot {
+      margin-top: 4px;
+      padding: 5px 6px;
+      border-radius: 8px;
+      background: #fee2e2;
+      color: #991b1b;
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .slot-free {
+      margin-top: 10px;
+      padding: 6px;
+      border-radius: 8px;
+      background: #ecfdf3;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .btn-primary {
+      background: #e39a45;
+      color: #ffffff;
+    }
+
+    .btn-line {
+      background: #06c755;
+      color: #ffffff;
+    }
+
+    .btn-light {
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid #d8dee8;
+    }
+
+    .footer-note {
+      margin: 16px 0 0;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .loading {
+      padding: 28px 14px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      .brand-title {
+        font-size: 18px;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+      .calendar-card {
+        overflow-x: auto;
+      }
+
+      .calendar-grid {
+        min-width: 720px;
+      }
+
+      .day {
+        min-height: 104px;
+      }
+    }
+
+    @media (min-width: 800px) {
+      .wrap {
+        padding-top: 22px;
+      }
+
+      .hero {
+        padding: 24px 24px;
+      }
+
+      .hero h2 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .busy-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .busy-item:nth-last-child(2) {
+        border-bottom: none;
+      }
+
+      .actions {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-kicker">LINE登録者様向け</div>
+        <h1 class="brand-title">介護タクシーきらら 予約状況</h1>
+        <p class="brand-sub">予約前の目安としてご確認ください</p>
+      </div>
+      <a class="top-btn" href="./index.html">公式HPへ</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-label">空き状況の目安</div>
+      <h2>ご予約済みの時間帯を確認できます</h2>
+      <p>
+        表示されている時間帯は、予約や予定により対応が難しい可能性があります。
+        実際のご予約可否は、移動距離・介助内容・前後の予定により変わるため、予約フォームまたはLINEでご相談ください。
+      </p>
+    </section>
+
+    <div class="notice">
+      このページはLINE登録者様向けの確認ページです。検索やメニューには出していませんが、URLを知っている方は閲覧できます。
+    </div>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">予約一覧</h2>
+        <div class="section-sub" id="updatedText">更新中</div>
+      </div>
+
+      <div class="list-card">
+        <div id="busyList" class="loading">予約状況を読み込んでいます...</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">カレンダー表示</h2>
+        <div class="section-sub">赤色が予約済み</div>
+      </div>
+
+      <div class="calendar-card">
+        <div id="calendarArea" class="loading">カレンダーを読み込んでいます...</div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://forms.gle/Wcq6MSPAPVsqh5gx9">予約フォームへ</a>
+      <a class="btn btn-line" href="https://line.me/R/ti/p/@565watrp">LINEで相談</a>
+      <a class="btn btn-light" href="tel:09094066235">お急ぎの方のみ電話</a>
+    </div>
+
+    <p class="footer-note">
+      予約状況は自動反映ですが、反映に時間差が出る場合があります。<br>
+      空いている表示でも予約を確約するものではありません。
+    </p>
+  </main>
+</div>
+
+<script>
+  // ★ここを自分の予約管理GASのWebアプリURLに変更
+  const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec';
+
+  const DAYS_TO_SHOW = 14;
+
+  function loadAvailability() {
+    const callbackName = 'renderAvailability_' + Date.now();
+
+    window[callbackName] = function(data) {
+      try {
+        renderAvailability(data);
+      } finally {
+        delete window[callbackName];
+        if (script && script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      }
+    };
+
+    const script = document.createElement('script');
+    script.src = GAS_WEB_APP_URL
+      + '?mode=publicAvailability'
+      + '&days=' + encodeURIComponent(DAYS_TO_SHOW)
+      + '&callback=' + encodeURIComponent(callbackName);
+
+    script.onerror = function() {
+      document.getElementById('busyList').innerHTML =
+        '<div class="empty">予約状況を読み込めませんでした。時間をおいて再度ご確認ください。</div>';
+      document.getElementById('calendarArea').innerHTML =
+        '<div class="empty">カレンダーを読み込めませんでした。</div>';
+    };
+
+    document.body.appendChild(script);
+  }
+
+  function renderAvailability(data) {
+    if (!data || !data.ok) {
+      const msg = data && data.error ? data.error : '取得できませんでした。';
+      document.getElementById('busyList').innerHTML =
+        '<div class="empty">予約状況を読み込めませんでした。<br>' + escapeHtml(msg) + '</div>';
+      document.getElementById('calendarArea').innerHTML =
+        '<div class="empty">カレンダーを読み込めませんでした。</div>';
+      return;
+    }
+
+    document.getElementById('updatedText').textContent = '更新 ' + data.generatedAt;
+
+    renderBusyList(data.days || []);
+    renderCalendar(data.days || []);
+  }
+
+  function renderBusyList(days) {
+    const busy = [];
+
+    days.forEach(function(day) {
+      (day.events || []).forEach(function(ev) {
+        busy.push({
+          date: day.label,
+          weekday: day.weekday,
+          isToday: day.isToday,
+          time: ev.startTime + '〜' + ev.endTime
+        });
+      });
+    });
+
+    const el = document.getElementById('busyList');
+
+    if (!busy.length) {
+      el.className = '';
+      el.innerHTML =
+        '<div class="empty">現在、表示対象期間内に予約済みの時間帯はありません。<br>予約フォームまたはLINEでご相談ください。</div>';
+      return;
+    }
+
+    el.className = 'busy-list';
+    el.innerHTML = busy.map(function(item) {
+      return [
+        '<div class="busy-item">',
+          '<div class="busy-date">',
+            '<div class="busy-date-main">', escapeHtml(item.date), '</div>',
+            '<div class="busy-date-week">', escapeHtml(item.weekday), item.isToday ? '・今日' : '', '</div>',
+          '</div>',
+          '<div class="busy-body">',
+            '<div class="busy-time">', escapeHtml(item.time), '</div>',
+            '<div class="busy-text">この時間帯は予約済み、または対応が難しい時間帯です。</div>',
+          '</div>',
+        '</div>'
+      ].join('');
+    }).join('');
+  }
+
+  function renderCalendar(days) {
+    const el = document.getElementById('calendarArea');
+
+    const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+
+    if (!days.length) {
+      el.innerHTML = '<div class="empty">表示できる日付がありません。</div>';
+      return;
+    }
+
+    const first = parseDate(days[0].date);
+    const firstDay = first.getDay();
+
+    let cells = '';
+
+    weekdays.forEach(function(w) {
+      cells += '<div class="weekday">' + w + '</div>';
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+      cells += '<div class="day is-empty"></div>';
+    }
+
+    days.forEach(function(day) {
+      const events = day.events || [];
+
+      cells += '<div class="day' + (day.isToday ? ' is-today' : '') + '">';
+      cells += '<div class="day-head">';
+      cells += '<div class="day-num">' + escapeHtml(day.label) + '（' + escapeHtml(day.weekday) + '）</div>';
+      if (day.isToday) {
+        cells += '<div class="today-badge">今日</div>';
+      }
+      cells += '</div>';
+
+      if (events.length) {
+        events.forEach(function(ev) {
+          cells += '<div class="slot">' + escapeHtml(ev.startTime + '〜' + ev.endTime) + '</div>';
+        });
+      } else {
+        cells += '<div class="slot-free">空きあり</div>';
+      }
+
+      cells += '</div>';
+    });
+
+    el.className = 'calendar-grid';
+    el.innerHTML = cells;
+  }
+
+  function parseDate(dateText) {
+    const parts = dateText.split('-').map(Number);
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+  }
+
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  loadAvailability();
+</script>
+</body>
+</html>
