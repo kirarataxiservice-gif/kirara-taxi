@@ -450,9 +450,7 @@
       </p>
     </section>
 
-    <div class="notice">
-      このページはLINE登録者様向けの確認ページです。検索やメニューには出していませんが、URLを知っている方は閲覧できます。
-    </div>
+    
 
     <section class="section">
       <div class="section-head">
@@ -546,46 +544,47 @@ const BUSINESS_END = '17:30';
   }
 
   function renderBusyList(days) {
-    const busy = [];
+  const busy = [];
 
-    days.forEach(function(day) {
-      (day.events || []).forEach(function(ev) {
-  const clipped = clipEventToBusinessHours(ev);
-  if (!clipped) return;
+  days.forEach(function(day) {
+    (day.events || []).forEach(function(ev) {
+      const clipped = clipEventToBusinessHours(ev);
+      if (!clipped) return;
 
-  busy.push({
-    date: day.label,
-    weekday: day.weekday,
-    isToday: day.isToday,
-    time: clipped.startTime + '〜' + clipped.endTime
+      busy.push({
+        date: day.label,
+        weekday: day.weekday,
+        isToday: day.isToday,
+        time: clipped.startTime + '〜' + clipped.endTime
+      });
+    });
   });
-});
 
-    const el = document.getElementById('busyList');
+  const el = document.getElementById('busyList');
 
-    if (!busy.length) {
-      el.className = '';
-      el.innerHTML =
-        '<div class="empty">現在、表示対象期間内に予約済みの時間帯はありません。<br>予約フォームまたはLINEでご相談ください。</div>';
-      return;
-    }
-
-    el.className = 'busy-list';
-    el.innerHTML = busy.map(function(item) {
-      return [
-        '<div class="busy-item">',
-          '<div class="busy-date">',
-            '<div class="busy-date-main">', escapeHtml(item.date), '</div>',
-            '<div class="busy-date-week">', escapeHtml(item.weekday), item.isToday ? '・今日' : '', '</div>',
-          '</div>',
-          '<div class="busy-body">',
-            '<div class="busy-time">', escapeHtml(item.time), '</div>',
-            '<div class="busy-text">この時間帯は予約済み、または対応が難しい時間帯です。</div>',
-          '</div>',
-        '</div>'
-      ].join('');
-    }).join('');
+  if (!busy.length) {
+    el.className = '';
+    el.innerHTML =
+      '<div class="empty">現在、表示対象期間内に予約済みの時間帯はありません。<br>予約フォームまたはLINEでご相談ください。</div>';
+    return;
   }
+
+  el.className = 'busy-list';
+  el.innerHTML = busy.map(function(item) {
+    return [
+      '<div class="busy-item">',
+        '<div class="busy-date">',
+          '<div class="busy-date-main">', escapeHtml(item.date), '</div>',
+          '<div class="busy-date-week">', escapeHtml(item.weekday), item.isToday ? '・今日' : '', '</div>',
+        '</div>',
+        '<div class="busy-body">',
+          '<div class="busy-time">', escapeHtml(item.time), '</div>',
+          '<div class="busy-text">この時間帯は予約済み、または対応が難しい時間帯です。</div>',
+        '</div>',
+      '</div>'
+    ].join('');
+  }).join('');
+}
 
   function renderCalendar(days) {
     const el = document.getElementById('calendarArea');
