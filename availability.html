@@ -495,6 +495,10 @@
 
   const DAYS_TO_SHOW = 14;
 
+// 利用者向け表示は営業時間内のみ
+const BUSINESS_START = '08:30';
+const BUSINESS_END = '17:30';
+
   function loadAvailability() {
     const callbackName = 'renderAvailability_' + Date.now();
 
@@ -546,14 +550,16 @@
 
     days.forEach(function(day) {
       (day.events || []).forEach(function(ev) {
-        busy.push({
-          date: day.label,
-          weekday: day.weekday,
-          isToday: day.isToday,
-          time: ev.startTime + '〜' + ev.endTime
-        });
-      });
-    });
+  const clipped = clipEventToBusinessHours(ev);
+  if (!clipped) return;
+
+  busy.push({
+    date: day.label,
+    weekday: day.weekday,
+    isToday: day.isToday,
+    time: clipped.startTime + '〜' + clipped.endTime
+  });
+});
 
     const el = document.getElementById('busyList');
 
@@ -605,7 +611,9 @@
     }
 
     days.forEach(function(day) {
-      const events = day.events || [];
+      const events = (day.events || [])
+  .map(clipEventToBusinessHours)
+  .filter(Boolean);
 
       cells += '<div class="day' + (day.isToday ? ' is-today' : '') + '">';
       cells += '<div class="day-head">';
@@ -635,6 +643,40 @@
     return new Date(parts[0], parts[1] - 1, parts[2]);
   }
 
+function timeToMinutes(timeText) {
+  const parts = String(timeText || '').split(':').map(Number);
+  if (parts.length < 2 || isNaN(parts[0]) || isNaN(parts[1])) return null;
+  return parts[0] * 60 + parts[1];
+}
+
+function minutesToTime(minutes) {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+}
+
+function clipEventToBusinessHours(ev) {
+  const start = timeToMinutes(ev.startTime);
+  const end = timeToMinutes(ev.endTime);
+  const businessStart = timeToMinutes(BUSINESS_START);
+  const businessEnd = timeToMinutes(BUSINESS_END);
+
+  if (start === null || end === null) return null;
+
+  // 営業時間外だけの予定は表示しない
+  if (end <= businessStart || start >= businessEnd) return null;
+
+  // 営業時間にかかる予定だけ、8:30〜17:30内に丸めて表示
+  const clippedStart = Math.max(start, businessStart);
+  const clippedEnd = Math.min(end, businessEnd);
+
+  return {
+    ...ev,
+    startTime: minutesToTime(clippedStart),
+    endTime: minutesToTime(clippedEnd)
+  };
+}
+  
   function escapeHtml(value) {
     return String(value || '')
       .replace(/&/g, '&amp;')
