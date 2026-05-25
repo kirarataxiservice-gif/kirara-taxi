@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>介護タクシーきらら 予約・確認リンク</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 18px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Yu Gothic", "Meiryo", sans-serif;
+      background: #f4efe7;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border: 2px solid #222;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.14);
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.35;
+      text-align: center;
+      border-bottom: 3px solid #222;
+      padding-bottom: 12px;
+    }
+
+    .note {
+      margin: 0 0 16px;
+      padding: 10px 12px;
+      background: #fff1b8;
+      border: 1.5px solid #a87900;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .edit-panel {
+      margin: 0 0 18px;
+      padding: 14px;
+      border: 2px solid #222;
+      border-radius: 14px;
+      background: #f8f8f8;
+    }
+
+    .toggle-btn {
+      width: 100%;
+      padding: 13px 12px;
+      font-size: 17px;
+      font-weight: 900;
+      border: 2px solid #222;
+      border-radius: 12px;
+      background: #fff1b8;
+      cursor: pointer;
+    }
+
+    .editor {
+      display: none;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1.5px dashed #555;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin-top: 4px;
+      font-size: 15px;
+      border: 1.5px solid #333;
+      border-radius: 8px;
+      font-family: inherit;
+    }
+
+    .editor-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .editor-buttons button {
+      padding: 11px 8px;
+      font-size: 15px;
+      font-weight: 900;
+      border: 2px solid #222;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .save-btn {
+      background: #b6d7a8;
+    }
+
+    .clear-btn {
+      background: #f4cccc;
+    }
+
+    .section {
+      margin: 12px 0;
+      padding: 14px;
+      border: 1.5px solid #333;
+      border-radius: 14px;
+      background: #fffdf8;
+    }
+
+    .custom-section {
+      background: #fffbe6;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .sub {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    a.button {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 14px 12px;
+      color: #000;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 900;
+      border: 2px solid #222;
+      border-radius: 12px;
+    }
+
+    a.button:hover,
+    button:hover {
+      filter: brightness(0.96);
+    }
+
+    .small {
+      font-size: 12px;
+      color: #555;
+      word-break: break-all;
+      margin-top: 8px;
+    }
+
+    .delete-link {
+      margin-top: 8px;
+      width: 100%;
+      padding: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      border: 1.5px solid #222;
+      border-radius: 8px;
+      background: #eee;
+      cursor: pointer;
+    }
+
+    .reservation a.button { background: #f0a92e; }
+    .hp a.button { background: #cfe2f3; }
+    .calendar a.button { background: #c9daf8; }
+    .master a.button { background: #b6d7a8; }
+    .driver a.button { background: #d0e0e3; }
+    .sheet a.button { background: #d9ead3; }
+    .before a.button { background: #fce5cd; }
+    .check a.button { background: #eadcf8; }
+    .after a.button { background: #f4cccc; }
+    .custom-section a.button { background: #fff1b8; }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 10px;
+      }
+
+      .wrap {
+        padding: 14px;
+        border-radius: 14px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .title {
+        font-size: 17px;
+      }
+
+      a.button {
+        font-size: 17px;
+        padding: 13px 10px;
+      }
+
+      .small {
+        font-size: 11px;
+      }
+
+      .editor-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>介護タクシーきらら<br>予約・確認リンク</h1>
+
+    <div class="note">
+      必要な項目を押して開いてください。
+    </div>
+
+    <div class="edit-panel">
+      <button class="toggle-btn" onclick="toggleEditor()">＋ リンクを追加・編集</button>
+
+      <div class="editor" id="editor">
+        <label>表示名</label>
+        <input type="text" id="linkTitle" placeholder="例：車両管理表">
+
+        <label>説明</label>
+        <input type="text" id="linkSub" placeholder="例：車両情報・整備記録">
+
+        <label>URL</label>
+        <textarea id="linkUrl" rows="3" placeholder="https://..."></textarea>
+
+        <div class="editor-buttons">
+          <button class="save-btn" onclick="addLink()">このリンクを追加</button>
+          <button class="clear-btn" onclick="clearCustomLinks()">追加リンクを全削除</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="customLinks"></div>
+
+    <div class="section hp">
+  <div class="title">利用者向け 予約状況ページ</div>
+  <div class="sub">LINEリッチメニューから案内する空き状況確認ページ</div>
+  <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
+    予約状況ページを開く
+  </a>
+  <div class="small">
+    https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html
+  </div>
+</div>
+
+    <div class="section calendar">
+  <div class="title">予定カレンダー</div>
+  <div class="sub">予定ブロック・予約確定管理画面</div>
+  <a class="button" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
+    予定カレンダーを開く
+  </a>
+  <div class="small">
+    https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec
+  </div>
+</div>
+
+    <div class="section reservation">
+      <div class="title">予約フォーム</div>
+      <div class="sub">利用予約・問い合わせ用</div>
+      <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
+        予約フォームを開く
+      </a>
+      <div class="small">
+        https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform
+      </div>
+    </div>
+
+    <div class="section hp">
+      <div class="title">HP</div>
+      <div class="sub">介護タクシーきらら ホームページ</div>
+      <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
+        HPを開く
+      </a>
+      <div class="small">
+        https://kirarataxiservice-gif.github.io/kirara-taxi/
+      </div>
+    </div>
+
+    <div class="section before">
+      <div class="title">乗務前 点呼記録</div>
+      <div class="sub">乗務開始前に入力</div>
+      <a class="button" href="https://forms.gle/aZ51tNBr6KYzvuga6" target="_blank" rel="noopener">
+        乗務前 点呼記録を開く
+      </a>
+      <div class="small">
+        https://forms.gle/aZ51tNBr6KYzvuga6
+      </div>
+    </div>
+
+    <div class="section check">
+      <div class="title">日常点検記録フォーム</div>
+      <div class="sub">車両の日常点検入力</div>
+      <a class="button" href="https://forms.gle/8P3FVQ3yPxF1yW7t6" target="_blank" rel="noopener">
+        日常点検記録を開く
+      </a>
+      <div class="small">
+        https://forms.gle/8P3FVQ3yPxF1yW7t6
+      </div>
+    </div>
+
+    <div class="section after">
+      <div class="title">乗務後 点呼記録</div>
+      <div class="sub">乗務終了後に入力</div>
+      <a class="button" href="https://forms.gle/ABfWniGDyMxMaZ2u5" target="_blank" rel="noopener">
+        乗務後 点呼記録を開く
+      </a>
+      <div class="small">
+        https://forms.gle/ABfWniGDyMxMaZ2u5
+      </div>
+    </div>
+
+    <div class="section sheet">
+      <div class="title">点検・乗務前後記録フォーム（回答）</div>
+      <div class="sub">日常点検・乗務前後記録の回答スプレッドシート</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing" target="_blank" rel="noopener">
+        回答スプレッドシートを開く
+      </a>
+      <div class="small">
+        https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing
+      </div>
+    </div>
+
+    <div class="section master">
+      <div class="title">予約マスター</div>
+      <div class="sub">予約内容の管理用スプレッドシート</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing" target="_blank" rel="noopener">
+        予約マスターを開く
+      </a>
+      <div class="small">
+        https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing
+      </div>
+    </div>
+
+    <div class="section driver">
+      <div class="title">運転者管理台帳</div>
+      <div class="sub">運転者情報・資格・管理台帳</div>
+      <a class="button" href="https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&ouid=114018022462306268047&rtpof=true&sd=true" target="_blank" rel="noopener">
+        運転者管理台帳を開く
+      </a>
+      <div class="small">
+        https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&amp;ouid=114018022462306268047&amp;rtpof=true&amp;sd=true
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <script>
+    const STORAGE_KEY = "kirara_custom_links_v1";
+
+    function toggleEditor() {
+      const editor = document.getElementById("editor");
+      editor.style.display = editor.style.display === "block" ? "none" : "block";
+    }
+
+    function getLinks() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveLinks(links) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+    }
+
+    function addLink() {
+      const title = document.getElementById("linkTitle").value.trim();
+      const sub = document.getElementById("linkSub").value.trim();
+      const url = document.getElementById("linkUrl").value.trim();
+
+      if (!title || !url) {
+        alert("表示名とURLは必須です。");
+        return;
+      }
+
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        alert("URLは https:// または http:// から始まる形で入力してください。");
+        return;
+      }
+
+      const links = getLinks();
+      links.unshift({
+        title: title,
+        sub: sub || "追加リンク",
+        url: url
+      });
+
+      saveLinks(links);
+
+      document.getElementById("linkTitle").value = "";
+      document.getElementById("linkSub").value = "";
+      document.getElementById("linkUrl").value = "";
+
+      renderCustomLinks();
+    }
+
+    function deleteLink(index) {
+      const links = getLinks();
+      links.splice(index, 1);
+      saveLinks(links);
+      renderCustomLinks();
+    }
+
+    function clearCustomLinks() {
+      if (!confirm("追加したリンクを全て削除しますか？")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      renderCustomLinks();
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderCustomLinks() {
+      const area = document.getElementById("customLinks");
+      const links = getLinks();
+
+      if (links.length === 0) {
+        area.innerHTML = "";
+        return;
+      }
+
+      area.innerHTML = links.map((link, index) => `
+        <div class="section custom-section">
+          <div class="title">${escapeHtml(link.title)}</div>
+          <div class="sub">${escapeHtml(link.sub)}</div>
+          <a class="button" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">
+            ${escapeHtml(link.title)}を開く
+          </a>
+          <div class="small">${escapeHtml(link.url)}</div>
+          <button class="delete-link" onclick="deleteLink(${index})">この追加リンクを削除</button>
+        </div>
+      `).join("");
+    }
+
+    renderCustomLinks();
+  </script>
+</body>
+</html>
