@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>介護タクシーきらら 予約・確認リンク</title>
+  <title>介護タクシーきらら スタッフ用リンク集</title>
 
   <style>
     body {
@@ -112,16 +112,78 @@
       background: #f4cccc;
     }
 
+    .group {
+      margin: 18px 0;
+      padding: 12px;
+      border: 3px solid #222;
+      border-radius: 18px;
+      background: #fffaf0;
+    }
+
+    .group-main {
+      background: #fff7df;
+    }
+
+    .group-forms {
+      background: #f7fbff;
+    }
+
+    .group-admin {
+      background: #f6fff3;
+    }
+
+    .group-rare {
+      background: #f8f8f8;
+      border-color: #555;
+    }
+
+    .group-custom {
+      display: none;
+      background: #fffbe6;
+    }
+
+    .group-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+      padding: 8px 10px;
+      border: 2px solid #222;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .group-title {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .group-desc {
+      font-size: 12px;
+      color: #444;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
     .section {
-      margin: 12px 0;
+      margin: 10px 0;
       padding: 14px;
       border: 1.5px solid #333;
       border-radius: 14px;
       background: #fffdf8;
     }
 
-    .custom-section {
-      background: #fffbe6;
+    .rare-section {
+      background: #fff;
+      border-color: #777;
+    }
+
+    .rare-section .title,
+    .rare-section .sub,
+    .rare-section .small {
+      color: #333;
     }
 
     .title {
@@ -184,6 +246,7 @@
     .before a.button { background: #fce5cd; }
     .check a.button { background: #eadcf8; }
     .after a.button { background: #f4cccc; }
+    .answer a.button { background: #e6e6e6; }
     .custom-section a.button { background: #fff1b8; }
 
     @media (max-width: 520px) {
@@ -198,6 +261,25 @@
 
       h1 {
         font-size: 22px;
+      }
+
+      .group {
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      .group-head {
+        display: block;
+      }
+
+      .group-title {
+        font-size: 17px;
+      }
+
+      .group-desc {
+        margin-top: 2px;
+        font-size: 12px;
+        white-space: normal;
       }
 
       .title {
@@ -222,10 +304,10 @@
 
 <body>
   <div class="wrap">
-    <h1>介護タクシーきらら<br>予約・確認リンク</h1>
+    <h1>介護タクシーきらら<br>スタッフ用リンク集</h1>
 
     <div class="note">
-      番号順に必要な項目を押して開いてください。
+      普段用・乗務日入力・確認用に分けています。
     </div>
 
     <div class="edit-panel">
@@ -248,125 +330,165 @@
       </div>
     </div>
 
-    <div id="customLinks"></div>
+    <div class="group group-custom" id="customGroup">
+      <div class="group-head">
+        <div class="group-title">追加したリンク</div>
+        <div class="group-desc">この端末だけに保存</div>
+      </div>
+      <div id="customLinks"></div>
+    </div>
 
-    <div class="section hp">
-  <div class="title">01｜利用者向け 予約状況ページ</div>
-  <div class="sub">LINEリッチメニューから案内する空き状況確認ページ</div>
-  <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
-    01｜予約状況ページを開く
-  </a>
-  <div class="small">
-    https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html
-  </div>
-</div>
+    <div class="group group-main">
+      <div class="group-head">
+        <div class="group-title">普段用</div>
+        <div class="group-desc">予約確認・案内用</div>
+      </div>
 
-    <div class="section calendar">
-  <div class="title">02｜予定カレンダー</div>
-  <div class="sub">予定ブロック・予約確定管理画面</div>
-  <a class="button" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
-    02｜予定カレンダーを開く
-  </a>
-  <div class="small">
-    https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec
-  </div>
-</div>
+      <div class="section hp">
+        <div class="title">01｜利用者向け 予約状況ページ</div>
+        <div class="sub">LINEリッチメニューから案内する空き状況確認ページ</div>
+        <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
+          01｜予約状況ページを開く
+        </a>
+        <div class="small">
+          https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html
+        </div>
+      </div>
 
-    <div class="section reservation">
-      <div class="title">03｜予約フォーム</div>
-      <div class="sub">利用予約・問い合わせ用</div>
-      <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
-        03｜予約フォームを開く
-      </a>
-      <div class="small">
-        https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform
+      <div class="section calendar">
+        <div class="title">02｜日程確認用</div>
+        <div class="sub">Googleカレンダーで予定を確認</div>
+        <a class="button" href="https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20" target="_blank" rel="noopener">
+          02｜日程確認用を開く
+        </a>
+        <div class="small">
+          https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20
+        </div>
+      </div>
+
+      <div class="section calendar">
+        <div class="title">03｜予定カレンダー</div>
+        <div class="sub">予定ブロック・予約確定管理画面</div>
+        <a class="button" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
+          03｜予定カレンダーを開く
+        </a>
+        <div class="small">
+          https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec
+        </div>
+      </div>
+
+      <div class="section reservation">
+        <div class="title">04｜予約フォーム</div>
+        <div class="sub">利用予約・問い合わせ用</div>
+        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
+          04｜予約フォームを開く
+        </a>
+        <div class="small">
+          https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform
+        </div>
+      </div>
+
+      <div class="section hp">
+        <div class="title">05｜HP</div>
+        <div class="sub">介護タクシーきらら ホームページ</div>
+        <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
+          05｜HPを開く
+        </a>
+        <div class="small">
+          https://kirarataxiservice-gif.github.io/kirara-taxi/
+        </div>
       </div>
     </div>
 
-    <div class="section hp">
-      <div class="title">04｜HP</div>
-      <div class="sub">介護タクシーきらら ホームページ</div>
-      <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
-        04｜HPを開く
-      </a>
-      <div class="small">
-        https://kirarataxiservice-gif.github.io/kirara-taxi/
+    <div class="group group-forms">
+      <div class="group-head">
+        <div class="group-title">乗務日に入力するもの</div>
+        <div class="group-desc">点呼・日常点検</div>
+      </div>
+
+      <div class="section before">
+        <div class="title">06｜乗務前 点呼記録</div>
+        <div class="sub">乗務開始前に入力</div>
+        <a class="button" href="https://forms.gle/aZ51tNBr6KYzvuga6" target="_blank" rel="noopener">
+          06｜乗務前 点呼記録を開く
+        </a>
+        <div class="small">
+          https://forms.gle/aZ51tNBr6KYzvuga6
+        </div>
+      </div>
+
+      <div class="section check">
+        <div class="title">07｜日常点検記録フォーム</div>
+        <div class="sub">車両の日常点検入力</div>
+        <a class="button" href="https://forms.gle/8P3FVQ3yPxF1yW7t6" target="_blank" rel="noopener">
+          07｜日常点検記録を開く
+        </a>
+        <div class="small">
+          https://forms.gle/8P3FVQ3yPxF1yW7t6
+        </div>
+      </div>
+
+      <div class="section after">
+        <div class="title">08｜乗務後 点呼記録</div>
+        <div class="sub">乗務終了後に入力</div>
+        <a class="button" href="https://forms.gle/ABfWniGDyMxMaZ2u5" target="_blank" rel="noopener">
+          08｜乗務後 点呼記録を開く
+        </a>
+        <div class="small">
+          https://forms.gle/ABfWniGDyMxMaZ2u5
+        </div>
       </div>
     </div>
 
-    <div class="section before">
-      <div class="title">05｜乗務前 点呼記録</div>
-      <div class="sub">乗務開始前に入力</div>
-      <a class="button" href="https://forms.gle/aZ51tNBr6KYzvuga6" target="_blank" rel="noopener">
-        05｜乗務前 点呼記録を開く
-      </a>
-      <div class="small">
-        https://forms.gle/aZ51tNBr6KYzvuga6
+    <div class="group group-admin">
+      <div class="group-head">
+        <div class="group-title">管理表・台帳</div>
+        <div class="group-desc">確認用</div>
+      </div>
+
+      <div class="section master">
+        <div class="title">09｜予約マスター</div>
+        <div class="sub">予約内容の管理用スプレッドシート</div>
+        <a class="button" href="https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing" target="_blank" rel="noopener">
+          09｜予約マスターを開く
+        </a>
+        <div class="small">
+          https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing
+        </div>
+      </div>
+
+      <div class="section driver">
+        <div class="title">10｜運転者管理台帳</div>
+        <div class="sub">運転者情報・資格・管理台帳</div>
+        <a class="button" href="https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&ouid=114018022462306268047&rtpof=true&sd=true" target="_blank" rel="noopener">
+          10｜運転者管理台帳を開く
+        </a>
+        <div class="small">
+          https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&amp;ouid=114018022462306268047&amp;rtpof=true&amp;sd=true
+        </div>
       </div>
     </div>
 
-    <div class="section check">
-      <div class="title">06｜日常点検記録フォーム</div>
-      <div class="sub">車両の日常点検入力</div>
-      <a class="button" href="https://forms.gle/8P3FVQ3yPxF1yW7t6" target="_blank" rel="noopener">
-        06｜日常点検記録を開く
-      </a>
-      <div class="small">
-        https://forms.gle/8P3FVQ3yPxF1yW7t6
+    <div class="group group-rare">
+      <div class="group-head">
+        <div class="group-title">修正・確認用</div>
+      </div>
+
+      <div class="section answer rare-section">
+        <div class="title">11｜点検・乗務前後記録フォーム（回答）</div>
+        <div class="sub">入力内容の修正・確認用。通常の入力では開かない</div>
+        <a class="button" href="https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing" target="_blank" rel="noopener">
+          11｜回答スプレッドシートを開く
+        </a>
+        <div class="small">
+          https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing
+        </div>
       </div>
     </div>
-
-    <div class="section after">
-      <div class="title">07｜乗務後 点呼記録</div>
-      <div class="sub">乗務終了後に入力</div>
-      <a class="button" href="https://forms.gle/ABfWniGDyMxMaZ2u5" target="_blank" rel="noopener">
-        07｜乗務後 点呼記録を開く
-      </a>
-      <div class="small">
-        https://forms.gle/ABfWniGDyMxMaZ2u5
-      </div>
-    </div>
-
-    <div class="section sheet">
-      <div class="title">08｜点検・乗務前後記録フォーム（回答）</div>
-      <div class="sub">日常点検・乗務前後記録の回答スプレッドシート</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing" target="_blank" rel="noopener">
-        08｜回答スプレッドシートを開く
-      </a>
-      <div class="small">
-        https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing
-      </div>
-    </div>
-
-    <div class="section master">
-      <div class="title">09｜予約マスター</div>
-      <div class="sub">予約内容の管理用スプレッドシート</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing" target="_blank" rel="noopener">
-        09｜予約マスターを開く
-      </a>
-      <div class="small">
-        https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing
-      </div>
-    </div>
-
-    <div class="section driver">
-      <div class="title">10｜運転者管理台帳</div>
-      <div class="sub">運転者情報・資格・管理台帳</div>
-      <a class="button" href="https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&ouid=114018022462306268047&rtpof=true&sd=true" target="_blank" rel="noopener">
-        10｜運転者管理台帳を開く
-      </a>
-      <div class="small">
-        https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&amp;ouid=114018022462306268047&amp;rtpof=true&amp;sd=true
-      </div>
-    </div>
-
-
-
-
   </div>
 
   <script>
-    const STORAGE_KEY = "kirara_custom_links_v1";
+    const STORAGE_KEY = "kirara_custom_links_v2";
 
     function toggleEditor() {
       const editor = document.getElementById("editor");
@@ -439,13 +561,17 @@
     }
 
     function renderCustomLinks() {
+      const group = document.getElementById("customGroup");
       const area = document.getElementById("customLinks");
       const links = getLinks();
 
       if (links.length === 0) {
+        group.style.display = "none";
         area.innerHTML = "";
         return;
       }
+
+      group.style.display = "block";
 
       area.innerHTML = links.map((link, index) => `
         <div class="section custom-section">
