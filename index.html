@@ -410,6 +410,10 @@
       padding: 18px 16px;
     }
 
+    .price-card-box.waiting {
+      grid-column: 1 / -1;
+    }
+
     .price-card-label {
       display: inline-flex;
       align-items: center;
@@ -466,6 +470,15 @@
     .price-main-note strong {
       color: #1f2937;
       font-weight: 800;
+    }
+
+    .price-saving {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #6b7280;
+      font-weight: 700;
     }
 
     .price-note-item {
@@ -1131,6 +1144,24 @@
                 </div>
               </div>
             </div>
+
+            <div class="price-card-box waiting">
+              <div class="price-card-label">待機料</div>
+              <p class="price-accompany-text">
+                送迎の途中で、<strong>車両および乗務員を確保したまま待機する場合</strong>の料金です。
+                通常は10分ごと500円、長時間になる場合は1時間を超えるごとに割安になります。
+              </p>
+              <div class="price-accompany-rates" aria-label="待機料金">
+                <div class="price-accompany-rate">
+                  <span class="price-accompany-label">通常</span>
+                  <span class="price-accompany-value">10分ごと 500円</span>
+                </div>
+                <div class="price-accompany-rate">
+                  <span class="price-accompany-label">長時間待機</span>
+                  <span class="price-accompany-value">2時間まで 5,000円</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="price-note-item">
@@ -1164,11 +1195,41 @@
             </table>
           </div>
 
+          <div class="price-table-wrap">
+            <div class="price-table-title">待機料の目安</div>
+            <table class="price-table">
+              <tr>
+                <th>30分まで<span class="price-saving">普通タクシー待料金の目安：約2,200円</span></th>
+                <td>1,500円</td>
+              </tr>
+              <tr>
+                <th>1時間まで<span class="price-saving">普通タクシー待料金の目安：約4,300円</span></th>
+                <td>3,000円</td>
+              </tr>
+              <tr class="is-extra">
+                <th>2時間まで<span class="price-saving">通常より1,000円お得<br>普通タクシー待料金の目安：約8,500円</span></th>
+                <td>5,000円</td>
+              </tr>
+              <tr class="is-extra">
+                <th>3時間まで<span class="price-saving">通常より2,000円お得<br>普通タクシー待料金の目安：約12,800円</span></th>
+                <td>7,000円</td>
+              </tr>
+              <tr class="is-extra">
+                <th>4時間まで<span class="price-saving">通常より3,000円お得<br>普通タクシー待料金の目安：約17,000円</span></th>
+                <td>9,000円</td>
+              </tr>
+              <tr class="is-extra">
+                <th>5時間まで<span class="price-saving">通常より4,000円お得<br>普通タクシー待料金の目安：約21,200円</span></th>
+                <td>11,000円</td>
+              </tr>
+            </table>
+          </div>
+
           <div class="price-notice">
-            <h3 class="price-notice-title">付き添いが必要な場合は事前にご相談ください</h3>
+            <h3 class="price-notice-title">付き添い・待機が必要な場合は事前にご相談ください</h3>
             <p class="price-notice-text">
               ご予約時にお迎え先・目的地・必要な介助内容を確認し、できる限り分かりやすく料金の目安をご案内します。
-              付き添い介助が必要な場合は、内容に応じて事前に料金をご説明します。
+              車両を離れて付き添う場合は付き添い介助料、車両および乗務員を確保したまま待機する場合は待機料として、内容に応じて事前に料金をご説明します。
             </p>
           </div>
 
@@ -1176,6 +1237,7 @@
             <div class="price-tag">10分単位で明朗会計</div>
             <div class="price-tag">通常の乗降介助は運賃込み</div>
             <div class="price-tag">付き添い介助料は別途</div>
+            <div class="price-tag">長時間待機は割安</div>
           </div>
         </div>
       </div>
