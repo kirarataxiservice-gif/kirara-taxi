@@ -6,587 +6,586 @@
   <title>介護タクシーきらら スタッフ用リンク集</title>
 
   <style>
+    :root {
+      --bg: #f3f5f8;
+      --text: #1f2328;
+      --muted: #667085;
+      --panel: #ffffff;
+      --shadow: 0 14px 34px rgba(18, 24, 32, .10);
+      --tile-shadow: 0 8px 18px rgba(18, 24, 32, .12);
+      --tile-shadow-hover: 0 12px 26px rgba(18, 24, 32, .18);
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       margin: 0;
       padding: 18px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Yu Gothic", "Meiryo", sans-serif;
-      background: #f4efe7;
-      color: #222;
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(210, 219, 235, .75), transparent 32%),
+        linear-gradient(180deg, #f9fafc, var(--bg));
+      color: var(--text);
+      line-height: 1.45;
     }
 
     .wrap {
-      max-width: 760px;
+      width: min(1120px, 100%);
       margin: 0 auto;
-      background: #fff;
-      border: 2px solid #222;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.14);
+    }
+
+    .app {
+      overflow: hidden;
+      border-radius: 34px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      padding: 24px 24px 22px;
+      background: linear-gradient(135deg, #191f28, #303946);
+      color: #fff;
+      text-align: center;
     }
 
     h1 {
-      margin: 0 0 16px;
-      font-size: 24px;
-      line-height: 1.35;
-      text-align: center;
-      border-bottom: 3px solid #222;
-      padding-bottom: 12px;
+      margin: 0;
+      font-size: clamp(26px, 4.2vw, 42px);
+      line-height: 1.16;
+      letter-spacing: .03em;
+      font-weight: 950;
     }
 
-    .note {
-      margin: 0 0 16px;
-      padding: 10px 12px;
-      background: #fff1b8;
-      border: 1.5px solid #a87900;
-      border-radius: 10px;
-      font-weight: 800;
-      font-size: 15px;
-    }
-
-    .edit-panel {
-      margin: 0 0 18px;
-      padding: 14px;
-      border: 2px solid #222;
-      border-radius: 14px;
-      background: #f8f8f8;
-    }
-
-    .toggle-btn {
-      width: 100%;
-      padding: 13px 12px;
-      font-size: 17px;
-      font-weight: 900;
-      border: 2px solid #222;
-      border-radius: 12px;
-      background: #fff1b8;
-      cursor: pointer;
-    }
-
-    .editor {
-      display: none;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1.5px dashed #555;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: 900;
+    .header-sub {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, .72);
       font-size: 14px;
-    }
-
-    input, textarea {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 10px;
-      margin-top: 4px;
-      font-size: 15px;
-      border: 1.5px solid #333;
-      border-radius: 8px;
-      font-family: inherit;
-    }
-
-    .editor-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .editor-buttons button {
-      padding: 11px 8px;
-      font-size: 15px;
-      font-weight: 900;
-      border: 2px solid #222;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .save-btn {
-      background: #b6d7a8;
-    }
-
-    .clear-btn {
-      background: #f4cccc;
-    }
-
-    .group {
-      margin: 18px 0;
-      padding: 12px;
-      border: 3px solid #222;
-      border-radius: 18px;
-      background: #fffaf0;
-    }
-
-    .group-main {
-      background: #fff7df;
-    }
-
-    .group-forms {
-      background: #f7fbff;
-    }
-
-    .group-admin {
-      background: #f6fff3;
-    }
-
-    .group-rare {
-      background: #f8f8f8;
-      border-color: #555;
-    }
-
-    .group-custom {
-      display: none;
-      background: #fffbe6;
-    }
-
-    .group-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin: 0 0 10px;
-      padding: 8px 10px;
-      border: 2px solid #222;
-      border-radius: 12px;
-      background: #fff;
-    }
-
-    .group-title {
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1.25;
-    }
-
-    .group-desc {
-      font-size: 12px;
-      color: #444;
       font-weight: 800;
-      white-space: nowrap;
+    }
+
+    .content {
+      padding: 18px;
     }
 
     .section {
-      margin: 10px 0;
-      padding: 14px;
-      border: 1.5px solid #333;
-      border-radius: 14px;
-      background: #fffdf8;
+      margin: 0 0 18px;
     }
 
-    .rare-section {
-      background: #fff;
-      border-color: #777;
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 10px;
+      color: var(--section);
     }
 
-    .rare-section .title,
-    .rare-section .sub,
-    .rare-section .small {
-      color: #333;
+    .section-head::before {
+      content: "";
+      width: 7px;
+      height: 30px;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+      flex: 0 0 auto;
     }
 
-    .title {
-      font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 6px;
+    .section-title {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.12;
+      font-weight: 950;
+      letter-spacing: .03em;
     }
 
-    .sub {
-      font-size: 14px;
-      color: #444;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    a.button {
-      display: block;
-      width: 100%;
-      box-sizing: border-box;
-      text-align: center;
-      padding: 14px 12px;
-      color: #000;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 900;
-      border: 2px solid #222;
-      border-radius: 12px;
-    }
-
-    a.button:hover,
-    button:hover {
-      filter: brightness(0.96);
-    }
-
-    .small {
-      font-size: 12px;
-      color: #555;
-      word-break: break-all;
-      margin-top: 8px;
-    }
-
-    .delete-link {
-      margin-top: 8px;
-      width: 100%;
-      padding: 8px;
+    .section-caption {
+      margin: -4px 0 12px 16px;
+      color: var(--muted);
       font-size: 13px;
       font-weight: 800;
-      border: 1.5px solid #222;
-      border-radius: 8px;
-      background: #eee;
-      cursor: pointer;
     }
 
-    .reservation a.button { background: #f0a92e; }
-    .hp a.button { background: #cfe2f3; }
-    .calendar a.button { background: #c9daf8; }
-    .master a.button { background: #b6d7a8; }
-    .driver a.button { background: #d0e0e3; }
-    .sheet a.button { background: #d9ead3; }
-    .before a.button { background: #fce5cd; }
-    .check a.button { background: #eadcf8; }
-    .after a.button { background: #f4cccc; }
-    .answer a.button { background: #e6e6e6; }
-    .custom-section a.button { background: #fff1b8; }
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+      gap: 12px;
+      padding: 12px;
+      border-radius: 22px;
+      background: color-mix(in srgb, var(--section) 10%, #fff);
+    }
 
-    @media (max-width: 520px) {
+    .tile {
+      --accent: #d22d37;
+      --soft: #fff1f2;
+      --deep: #7c1520;
+      position: relative;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      align-items: center;
+      min-height: 138px;
+      padding: 12px 10px 11px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, #ffffff, var(--soft));
+      color: var(--deep);
+      text-decoration: none;
+      box-shadow: var(--tile-shadow);
+      overflow: hidden;
+      touch-action: manipulation;
+      transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 8px;
+      background: var(--accent);
+    }
+
+    .tile:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--tile-shadow-hover);
+      filter: saturate(1.04);
+    }
+
+    .tile:active {
+      transform: translateY(1px);
+      box-shadow: 0 5px 12px rgba(18, 24, 32, .14);
+    }
+
+    .tile:focus-visible {
+      outline: 4px solid color-mix(in srgb, var(--accent) 26%, transparent);
+      outline-offset: 3px;
+    }
+
+    .tile-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 24px;
+    }
+
+    .num {
+      color: var(--accent);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: .02em;
+    }
+
+    .arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent) 13%, #fff);
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .icon-wrap {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      margin: 6px auto 4px;
+      border-radius: 18px;
+      background: #fff;
+      color: var(--accent);
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--accent) 15%, #fff),
+        0 5px 12px rgba(18, 24, 32, .09);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: block;
+    }
+
+    .label {
+      margin: 0;
+      color: #181b20;
+      text-align: center;
+      font-size: 17px;
+      line-height: 1.18;
+      font-weight: 950;
+      letter-spacing: .01em;
+    }
+
+    .tagline {
+      display: block;
+      margin-top: 3px;
+      color: color-mix(in srgb, var(--accent) 78%, #222);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .theme-red { --section: #df202b; }
+    .theme-blue { --section: #1168d8; }
+    .theme-purple { --section: #9b1fae; }
+    .theme-gray { --section: #667085; }
+
+    .c-red-1 { --accent: #e0202b; --soft: #fff1f2; --deep: #8e1019; }
+    .c-red-2 { --accent: #c92f3e; --soft: #fff0f3; --deep: #7d1320; }
+    .c-red-3 { --accent: #ef4b35; --soft: #fff2ee; --deep: #8d2016; }
+    .c-red-4 { --accent: #b91d50; --soft: #fff0f6; --deep: #751032; }
+    .c-red-5 { --accent: #8d1d36; --soft: #fff1f4; --deep: #5c1021; }
+
+    .c-blue-1 { --accent: #1168d8; --soft: #edf5ff; --deep: #0d448b; }
+    .c-blue-2 { --accent: #0097b2; --soft: #e9fbff; --deep: #006276; }
+    .c-blue-3 { --accent: #2449c7; --soft: #eef1ff; --deep: #182e82; }
+
+    .c-purple-1 { --accent: #8d1aa7; --soft: #fbecff; --deep: #5c0f70; }
+    .c-purple-2 { --accent: #c01886; --soft: #fff0fa; --deep: #761052; }
+
+    .c-gray-1 { --accent: #667085; --soft: #f3f5f8; --deep: #3f4756; }
+
+    .admin-check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .repair .tile-grid {
+      grid-template-columns: repeat(auto-fit, minmax(142px, 180px));
+      justify-content: start;
+    }
+
+    .repair .tile {
+      min-height: 138px;
+    }
+
+    @media (min-width: 900px) {
+      .main-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .rollcall-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .admin-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
       body {
         padding: 10px;
       }
 
-      .wrap {
-        padding: 14px;
-        border-radius: 14px;
+      .app {
+        border-radius: 26px;
       }
 
-      h1 {
-        font-size: 22px;
+      header {
+        padding: 20px 16px 18px;
       }
 
-      .group {
+      .content {
+        padding: 13px;
+      }
+
+      .section {
+        margin-bottom: 16px;
+      }
+
+      .section-caption {
+        margin-left: 16px;
+      }
+
+      .tile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
         padding: 10px;
+        border-radius: 18px;
+      }
+
+      .tile {
+        min-height: 120px;
+        padding: 10px 8px 10px;
         border-radius: 16px;
       }
 
-      .group-head {
-        display: block;
+      .num {
+        font-size: 19px;
       }
 
-      .group-title {
-        font-size: 17px;
+      .arrow {
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
       }
 
-      .group-desc {
-        margin-top: 2px;
-        font-size: 12px;
-        white-space: normal;
+      .icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
       }
 
-      .title {
-        font-size: 17px;
+      .icon {
+        width: 38px;
+        height: 38px;
       }
 
-      a.button {
-        font-size: 17px;
-        padding: 13px 10px;
+      .label {
+        font-size: 15px;
       }
 
-      .small {
-        font-size: 11px;
+      .tagline {
+        font-size: 10px;
       }
 
-      .editor-buttons {
+      .admin-check-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+    }
+
+    @media (max-width: 390px) {
+      .label {
+        font-size: 14px;
+      }
+
+      .tile-grid {
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .icon-wrap {
+        width: 48px;
+        height: 48px;
+      }
+
+      .icon {
+        width: 35px;
+        height: 35px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <h1>介護タクシーきらら<br>スタッフ用リンク集</h1>
+  <main class="wrap">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="i-calendar-check" viewBox="0 0 64 64">
+        <rect x="10" y="14" width="44" height="40" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M10 25h44M22 9v11M42 9v11" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="19" y="32" width="8" height="7" rx="1.5" fill="currentColor" opacity=".25"/>
+        <rect x="31" y="32" width="8" height="7" rx="1.5" fill="currentColor" opacity=".25"/>
+        <rect x="19" y="43" width="8" height="7" rx="1.5" fill="currentColor" opacity=".25"/>
+        <path d="M34 45l6 6 13-16" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
 
-    <div class="note">
-      普段用・乗務日入力・確認用に分けています。
+      <symbol id="i-calendar" viewBox="0 0 64 64">
+        <rect x="9" y="15" width="46" height="39" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 26h46M21 9v12M43 9v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="18" y="33" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="29" y="33" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="40" y="33" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="18" y="43" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="29" y="43" width="7" height="6" rx="1.5" fill="currentColor" opacity=".7"/>
+      </symbol>
+
+      <symbol id="i-block" viewBox="0 0 64 64">
+        <rect x="9" y="12" width="42" height="40" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 24h42M20 8v11M40 8v11" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="17" y="31" width="9" height="7" rx="2" fill="currentColor" opacity=".25"/>
+        <rect x="30" y="31" width="9" height="7" rx="2" fill="currentColor" opacity=".25"/>
+        <path d="M44 38l8 8-13 8-6 2 2-6z" fill="currentColor" opacity=".24"/>
+        <path d="M41 35l9 9M35 50l15-15" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 45h10M26 40v10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="i-form" viewBox="0 0 64 64">
+        <rect x="16" y="10" width="34" height="46" rx="5" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M24 22h17M24 32h17M24 42h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M12 40l12 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <path d="M11 48l4-12 9 9z" fill="currentColor" opacity=".35"/>
+      </symbol>
+
+      <symbol id="i-homepage" viewBox="0 0 64 64">
+        <rect x="8" y="13" width="48" height="40" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M8 24h48" fill="none" stroke="currentColor" stroke-width="4"/>
+        <circle cx="17" cy="18.5" r="2" fill="currentColor"/>
+        <circle cx="25" cy="18.5" r="2" fill="currentColor" opacity=".5"/>
+        <path d="M20 43l12-11 12 11v10H20z" fill="currentColor" opacity=".18"/>
+        <path d="M19 43l13-12 13 12M25 53V41h14v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-driver-check" viewBox="0 0 64 64">
+        <circle cx="24" cy="22" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 54c2-12 8-18 15-18s13 6 15 18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="38" y="14" width="16" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M42 25l4 4 7-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-car-check" viewBox="0 0 64 64">
+        <path d="M17 42h30l-4-14c-.7-2.3-2.5-4-5-4H26c-2.4 0-4.3 1.7-5 4z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M12 42h40v9H12zM18 51v4M46 51v4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 18l5 5 10-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-driver-after" viewBox="0 0 64 64">
+        <circle cx="28" cy="21" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M12 54c2.2-12 8.2-18 16-18s13.8 6 16 18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M45 18c3 3 4 7 3 11M51 13c5 5 7 12 5 19" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M15 28l5 5 9-13" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-sheet-gear" viewBox="0 0 64 64">
+        <rect x="9" y="12" width="40" height="42" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 24h40M21 24v30M34 24v20" fill="none" stroke="currentColor" stroke-width="3" opacity=".55"/>
+        <circle cx="48" cy="45" r="8" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M48 32v5M48 53v5M35 45h5M56 45h5M39 36l4 4M53 50l4 4M39 54l4-4M53 40l4-4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="i-driver-ledger" viewBox="0 0 64 64">
+        <circle cx="24" cy="22" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 54c2-12 8-18 15-18 5 0 9.5 3 12.5 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="40" y="18" width="14" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M44 27h6M44 35h6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="i-repair" viewBox="0 0 64 64">
+        <rect x="8" y="14" width="48" height="34" rx="5" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M22 54h20M32 48v6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M24 25l7 7M20 36l16-16" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <path d="M41 30h9M41 38h9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="38" cy="42" r="4" fill="currentColor" opacity=".35"/>
+      </symbol>
+    </svg>
+
+    <div class="app">
+      <header>
+        <h1>介護タクシーきらら<br>スタッフ用リンク集</h1>
+        <div class="header-sub">必要な画面を小さいアイコンカードからすぐ開く</div>
+      </header>
+
+      <div class="content">
+        <section class="section theme-red" aria-labelledby="reservation-guide">
+          <div class="section-head">
+            <h2 class="section-title" id="reservation-guide">予約確認・案内</h2>
+          </div>
+          <div class="section-caption">利用者案内、内部予定確認、予約入力</div>
+
+          <div class="tile-grid main-grid">
+            <a class="tile c-red-1" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
+              <span class="tile-top"><span class="num">01</span><span class="arrow">↗</span></span>
+              <span class="icon-wrap"><svg class="icon"><use href="#i-calendar-check"/></svg></span>
+              <span class="label">予約状況ページ<span class="tagline">利用者案内</span></span>
+            </a>
+
+            <a class="tile c-red-2" href="https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20" target="_blank" rel="noopener">
+              <span class="tile-top"><span class="num">02</span><span class="arrow">↗</span></span>
+              <span class="icon-wrap"><svg class="icon"><use href="#i-calendar"/></svg></span>
+              <span class="label">予定カレンダー<span class="tagline">内部確認</span></span>
+            </a>
+
+            <a class="tile c-red-3" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
+              <span class="tile-top"><span class="num">03</span><span class="arrow">↗</span></span>
+              <span class="icon-wrap"><svg class="icon"><use href="#i-block"/></svg></span>
+              <span class="label">予定ブロック<span class="tagline">自分の予定入力</span></span>
+            </a>
+
+            <a class="tile c-red-4" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
+              <span class="tile-top"><span class="num">04</span><span class="arrow">↗</span></span>
+              <span class="icon-wrap"><svg class="icon"><use href="#i-form"/></svg></span>
+              <span class="label">予約フォーム<span class="tagline">共用入力</span></span>
+            </a>
+
+            <a class="tile c-red-5" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
+              <span class="tile-top"><span class="num">05</span><span class="arrow">↗</span></span>
+              <span class="icon-wrap"><svg class="icon"><use href="#i-homepage"/></svg></span>
+              <span class="label">HP<span class="tagline">公開ページ</span></span>
+            </a>
+          </div>
+        </section>
+
+        <div class="admin-check-grid">
+          <section class="section theme-blue" aria-labelledby="rollcall-check">
+            <div class="section-head">
+              <h2 class="section-title" id="rollcall-check">点呼・点検</h2>
+            </div>
+            <div class="section-caption">乗務前後の点呼と車両点検</div>
+
+            <div class="tile-grid rollcall-grid">
+              <a class="tile c-blue-1" href="https://forms.gle/aZ51tNBr6KYzvuga6" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">06</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-driver-check"/></svg></span>
+                <span class="label">乗務前点呼<span class="tagline">乗務前</span></span>
+              </a>
+
+              <a class="tile c-blue-2" href="https://forms.gle/8P3FVQ3yPxF1yW7t6" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">07</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-car-check"/></svg></span>
+                <span class="label">日常点検<span class="tagline">車両</span></span>
+              </a>
+
+              <a class="tile c-blue-3" href="https://forms.gle/ABfWniGDyMxMaZ2u5" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">08</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-driver-after"/></svg></span>
+                <span class="label">乗務後点呼<span class="tagline">乗務後</span></span>
+              </a>
+            </div>
+          </section>
+
+          <section class="section theme-purple" aria-labelledby="admin-check">
+            <div class="section-head">
+              <h2 class="section-title" id="admin-check">管理・確認</h2>
+            </div>
+            <div class="section-caption">予約内容、運転者情報、台帳の確認</div>
+
+            <div class="tile-grid admin-grid">
+              <a class="tile c-purple-1" href="https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">09</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-sheet-gear"/></svg></span>
+                <span class="label">予約マスター<span class="tagline">予約管理</span></span>
+              </a>
+
+              <a class="tile c-purple-2" href="https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&amp;ouid=114018022462306268047&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">10</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-driver-ledger"/></svg></span>
+                <span class="label">運転者管理台帳<span class="tagline">運転者</span></span>
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <section class="section theme-gray repair" aria-labelledby="repair-check">
+          <div class="section-head">
+            <h2 class="section-title" id="repair-check">修正用</h2>
+          </div>
+          <div class="section-caption">通常入力では開かない確認・修正用</div>
+
+          <div class="tile-grid">
+            <a class="tile c-gray-1" href="https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing" target="_blank" rel="noopener">
+              <span class="tile-top"><span class="num">11</span><span class="arrow">↗</span></span>
+              <span class="icon-wrap"><svg class="icon"><use href="#i-repair"/></svg></span>
+              <span class="label">点検・点呼<br>回答修正<span class="tagline">回答修正</span></span>
+            </a>
+          </div>
+        </section>
+      </div>
     </div>
-
-    <div class="edit-panel">
-      <button class="toggle-btn" onclick="toggleEditor()">＋ リンクを追加・編集</button>
-
-      <div class="editor" id="editor">
-        <label>表示名</label>
-        <input type="text" id="linkTitle" placeholder="例：車両管理表">
-
-        <label>説明</label>
-        <input type="text" id="linkSub" placeholder="例：車両情報・整備記録">
-
-        <label>URL</label>
-        <textarea id="linkUrl" rows="3" placeholder="https://..."></textarea>
-
-        <div class="editor-buttons">
-          <button class="save-btn" onclick="addLink()">このリンクを追加</button>
-          <button class="clear-btn" onclick="clearCustomLinks()">追加リンクを全削除</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="group group-custom" id="customGroup">
-      <div class="group-head">
-        <div class="group-title">追加したリンク</div>
-        <div class="group-desc">この端末だけに保存</div>
-      </div>
-      <div id="customLinks"></div>
-    </div>
-
-    <div class="group group-main">
-      <div class="group-head">
-        <div class="group-title">普段用</div>
-        <div class="group-desc">予約確認・案内用</div>
-      </div>
-
-      <div class="section hp">
-        <div class="title">01｜利用者向け 予約状況ページ</div>
-        <div class="sub">LINEリッチメニューから案内する空き状況確認ページ</div>
-        <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
-          01｜予約状況ページを開く
-        </a>
-        <div class="small">
-          https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html
-        </div>
-      </div>
-
-      <div class="section calendar">
-        <div class="title">02｜日程確認用</div>
-        <div class="sub">Googleカレンダーで予定を確認</div>
-        <a class="button" href="https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20" target="_blank" rel="noopener">
-          02｜日程確認用を開く
-        </a>
-        <div class="small">
-          https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20
-        </div>
-      </div>
-
-      <div class="section calendar">
-        <div class="title">03｜予定カレンダー</div>
-        <div class="sub">予定ブロック・予約確定管理画面</div>
-        <a class="button" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
-          03｜予定カレンダーを開く
-        </a>
-        <div class="small">
-          https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec
-        </div>
-      </div>
-
-      <div class="section reservation">
-        <div class="title">04｜予約フォーム</div>
-        <div class="sub">利用予約・問い合わせ用</div>
-        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
-          04｜予約フォームを開く
-        </a>
-        <div class="small">
-          https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform
-        </div>
-      </div>
-
-      <div class="section hp">
-        <div class="title">05｜HP</div>
-        <div class="sub">介護タクシーきらら ホームページ</div>
-        <a class="button" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
-          05｜HPを開く
-        </a>
-        <div class="small">
-          https://kirarataxiservice-gif.github.io/kirara-taxi/
-        </div>
-      </div>
-    </div>
-
-    <div class="group group-forms">
-      <div class="group-head">
-        <div class="group-title">乗務日に入力するもの</div>
-        <div class="group-desc">点呼・日常点検</div>
-      </div>
-
-      <div class="section before">
-        <div class="title">06｜乗務前 点呼記録</div>
-        <div class="sub">乗務開始前に入力</div>
-        <a class="button" href="https://forms.gle/aZ51tNBr6KYzvuga6" target="_blank" rel="noopener">
-          06｜乗務前 点呼記録を開く
-        </a>
-        <div class="small">
-          https://forms.gle/aZ51tNBr6KYzvuga6
-        </div>
-      </div>
-
-      <div class="section check">
-        <div class="title">07｜日常点検記録フォーム</div>
-        <div class="sub">車両の日常点検入力</div>
-        <a class="button" href="https://forms.gle/8P3FVQ3yPxF1yW7t6" target="_blank" rel="noopener">
-          07｜日常点検記録を開く
-        </a>
-        <div class="small">
-          https://forms.gle/8P3FVQ3yPxF1yW7t6
-        </div>
-      </div>
-
-      <div class="section after">
-        <div class="title">08｜乗務後 点呼記録</div>
-        <div class="sub">乗務終了後に入力</div>
-        <a class="button" href="https://forms.gle/ABfWniGDyMxMaZ2u5" target="_blank" rel="noopener">
-          08｜乗務後 点呼記録を開く
-        </a>
-        <div class="small">
-          https://forms.gle/ABfWniGDyMxMaZ2u5
-        </div>
-      </div>
-    </div>
-
-    <div class="group group-admin">
-      <div class="group-head">
-        <div class="group-title">管理表・台帳</div>
-        <div class="group-desc">確認用</div>
-      </div>
-
-      <div class="section master">
-        <div class="title">09｜予約マスター</div>
-        <div class="sub">予約内容の管理用スプレッドシート</div>
-        <a class="button" href="https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing" target="_blank" rel="noopener">
-          09｜予約マスターを開く
-        </a>
-        <div class="small">
-          https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing
-        </div>
-      </div>
-
-      <div class="section driver">
-        <div class="title">10｜運転者管理台帳</div>
-        <div class="sub">運転者情報・資格・管理台帳</div>
-        <a class="button" href="https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&ouid=114018022462306268047&rtpof=true&sd=true" target="_blank" rel="noopener">
-          10｜運転者管理台帳を開く
-        </a>
-        <div class="small">
-          https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&amp;ouid=114018022462306268047&amp;rtpof=true&amp;sd=true
-        </div>
-      </div>
-    </div>
-
-    <div class="group group-rare">
-      <div class="group-head">
-        <div class="group-title">修正・確認用</div>
-      </div>
-
-      <div class="section answer rare-section">
-        <div class="title">11｜点検・乗務前後記録フォーム（回答）</div>
-        <div class="sub">入力内容の修正・確認用。通常の入力では開かない</div>
-        <a class="button" href="https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing" target="_blank" rel="noopener">
-          11｜回答スプレッドシートを開く
-        </a>
-        <div class="small">
-          https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const STORAGE_KEY = "kirara_custom_links_v2";
-
-    function toggleEditor() {
-      const editor = document.getElementById("editor");
-      editor.style.display = editor.style.display === "block" ? "none" : "block";
-    }
-
-    function getLinks() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-      } catch (e) {
-        return [];
-      }
-    }
-
-    function saveLinks(links) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-    }
-
-    function addLink() {
-      const title = document.getElementById("linkTitle").value.trim();
-      const sub = document.getElementById("linkSub").value.trim();
-      const url = document.getElementById("linkUrl").value.trim();
-
-      if (!title || !url) {
-        alert("表示名とURLは必須です。");
-        return;
-      }
-
-      if (!url.startsWith("http://") && !url.startsWith("https://")) {
-        alert("URLは https:// または http:// から始まる形で入力してください。");
-        return;
-      }
-
-      const links = getLinks();
-      links.unshift({
-        title: title,
-        sub: sub || "追加リンク",
-        url: url
-      });
-
-      saveLinks(links);
-
-      document.getElementById("linkTitle").value = "";
-      document.getElementById("linkSub").value = "";
-      document.getElementById("linkUrl").value = "";
-
-      renderCustomLinks();
-    }
-
-    function deleteLink(index) {
-      const links = getLinks();
-      links.splice(index, 1);
-      saveLinks(links);
-      renderCustomLinks();
-    }
-
-    function clearCustomLinks() {
-      if (!confirm("追加したリンクを全て削除しますか？")) return;
-      localStorage.removeItem(STORAGE_KEY);
-      renderCustomLinks();
-    }
-
-    function escapeHtml(text) {
-      return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    function renderCustomLinks() {
-      const group = document.getElementById("customGroup");
-      const area = document.getElementById("customLinks");
-      const links = getLinks();
-
-      if (links.length === 0) {
-        group.style.display = "none";
-        area.innerHTML = "";
-        return;
-      }
-
-      group.style.display = "block";
-
-      area.innerHTML = links.map((link, index) => `
-        <div class="section custom-section">
-          <div class="title">${escapeHtml(link.title)}</div>
-          <div class="sub">${escapeHtml(link.sub)}</div>
-          <a class="button" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">
-            ${escapeHtml(link.title)}を開く
-          </a>
-          <div class="small">${escapeHtml(link.url)}</div>
-          <button class="delete-link" onclick="deleteLink(${index})">この追加リンクを削除</button>
-        </div>
-      `).join("");
-    }
-
-    renderCustomLinks();
-  </script>
+  </main>
 </body>
 </html>
