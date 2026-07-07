@@ -256,6 +256,56 @@
 
     .c-gray-1 { --accent: #667085; --soft: #f3f5f8; --deep: #3f4756; }
 
+    .reservation-head {
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .guide-title {
+      margin-left: auto;
+      font-size: clamp(18px, 2.6vw, 26px);
+      line-height: 1.12;
+      font-weight: 950;
+      letter-spacing: .03em;
+      color: currentColor;
+    }
+
+    .reservation-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .guide-caption {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .reservation-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 178px;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .reservation-grid {
+      grid-template-columns: repeat(4, minmax(142px, 1fr));
+    }
+
+    .guide-grid {
+      grid-template-columns: 1fr;
+      min-height: 100%;
+    }
+
+    .guide-grid .tile {
+      min-height: 138px;
+    }
+
     .admin-check-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -318,6 +368,27 @@
         border-radius: 18px;
       }
 
+      .reservation-split {
+        grid-template-columns: minmax(0, 1fr) 132px;
+        gap: 10px;
+      }
+
+      .reservation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .guide-grid {
+        padding: 10px;
+      }
+
+      .guide-grid .tile {
+        min-height: 120px;
+      }
+
+      .guide-title {
+        font-size: 18px;
+      }
+
       .tile {
         min-height: 120px;
         padding: 10px 8px 10px;
@@ -356,6 +427,10 @@
       .admin-check-grid {
         grid-template-columns: 1fr;
         gap: 14px;
+      }
+
+      .reservation-caption {
+        margin-left: 16px;
       }
 
     }
@@ -482,41 +557,53 @@
 
       <div class="content">
         <section class="section theme-red" aria-labelledby="reservation-guide">
-          <div class="section-head">
-            <h2 class="section-title" id="reservation-guide">予約確認・案内</h2>
+          <div class="section-head reservation-head">
+            <h2 class="section-title" id="reservation-guide">予約確認</h2>
+            <div class="guide-title">案内</div>
           </div>
-          <div class="section-caption">利用者案内、内部予定確認、予約入力</div>
+          <div class="section-caption reservation-caption">
+            <span>空き状況、月間カレンダー、不在日登録、予約入力</span>
+            <span class="guide-caption">案内HP</span>
+          </div>
 
-          <div class="tile-grid main-grid">
-            <a class="tile c-red-1" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
-              <span class="tile-top"><span class="num">01</span><span class="arrow">↗</span></span>
-              <span class="icon-wrap"><svg class="icon"><use href="#i-calendar-check"/></svg></span>
-              <span class="label">予約状況ページ<span class="tagline">利用者案内</span></span>
-            </a>
+          <div class="reservation-split">
+            <div>
+              <div class="tile-grid main-grid reservation-grid">
+                <a class="tile c-red-1" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">01</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-calendar-check"/></svg></span>
+                  <span class="label">空き状況<span class="tagline">利用者向け</span></span>
+                </a>
 
-            <a class="tile c-red-2" href="https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20" target="_blank" rel="noopener">
-              <span class="tile-top"><span class="num">02</span><span class="arrow">↗</span></span>
-              <span class="icon-wrap"><svg class="icon"><use href="#i-calendar"/></svg></span>
-              <span class="label">予定カレンダー<span class="tagline">内部確認</span></span>
-            </a>
+                <a class="tile c-red-2" href="https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">02</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-calendar"/></svg></span>
+                  <span class="label">月間カレンダー<span class="tagline">内部確認</span></span>
+                </a>
 
-            <a class="tile c-red-3" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
-              <span class="tile-top"><span class="num">03</span><span class="arrow">↗</span></span>
-              <span class="icon-wrap"><svg class="icon"><use href="#i-block"/></svg></span>
-              <span class="label">予定ブロック<span class="tagline">自分の予定入力</span></span>
-            </a>
+                <a class="tile c-red-5" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">03</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-block"/></svg></span>
+                  <span class="label">不在日登録<span class="tagline">自分の予定入力</span></span>
+                </a>
 
-            <a class="tile c-red-4" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
-              <span class="tile-top"><span class="num">04</span><span class="arrow">↗</span></span>
-              <span class="icon-wrap"><svg class="icon"><use href="#i-form"/></svg></span>
-              <span class="label">予約フォーム<span class="tagline">共用入力</span></span>
-            </a>
+                <a class="tile c-red-4" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">04</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-form"/></svg></span>
+                  <span class="label">予約フォーム<span class="tagline">共用入力</span></span>
+                </a>
+              </div>
+            </div>
 
-            <a class="tile c-red-5" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
-              <span class="tile-top"><span class="num">05</span><span class="arrow">↗</span></span>
-              <span class="icon-wrap"><svg class="icon"><use href="#i-homepage"/></svg></span>
-              <span class="label">HP<span class="tagline">公開ページ</span></span>
-            </a>
+            <div>
+              <div class="tile-grid guide-grid">
+                <a class="tile c-red-3" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">05</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-homepage"/></svg></span>
+                  <span class="label">案内HP<span class="tagline">公開ページ</span></span>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
