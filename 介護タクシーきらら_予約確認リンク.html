@@ -256,54 +256,64 @@
 
     .c-gray-1 { --accent: #667085; --soft: #f3f5f8; --deep: #3f4756; }
 
-    .reservation-head {
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .guide-title {
-      margin-left: auto;
-      font-size: clamp(18px, 2.6vw, 26px);
-      line-height: 1.12;
-      font-weight: 950;
-      letter-spacing: .03em;
-      color: currentColor;
-    }
-
-    .reservation-caption {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .guide-caption {
-      margin-left: auto;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      text-align: right;
-    }
-
-    .reservation-split {
+    .reservation-panel-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 178px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       align-items: start;
     }
 
-    .reservation-grid {
-      grid-template-columns: repeat(4, minmax(142px, 1fr));
+    .reservation-panel {
+      grid-column: 1 / span 4;
+      min-width: 0;
     }
 
-    .guide-grid {
+    .guide-panel {
+      grid-column: 5;
+      min-width: 0;
+    }
+
+    .split-section-head {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 10px;
+      color: var(--section);
+    }
+
+    .split-section-head::before {
+      content: "";
+      width: 7px;
+      height: 30px;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+      flex: 0 0 auto;
+    }
+
+    .split-section-title {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.12;
+      font-weight: 950;
+      letter-spacing: .03em;
+      white-space: nowrap;
+    }
+
+    .split-section-caption {
+      margin: -4px 0 12px 16px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      min-height: 19px;
+    }
+
+    .reservation-card-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .guide-card-grid {
       grid-template-columns: 1fr;
-      min-height: 100%;
-    }
-
-    .guide-grid .tile {
-      min-height: 138px;
     }
 
     .admin-check-grid {
@@ -368,25 +378,47 @@
         border-radius: 18px;
       }
 
-      .reservation-split {
-        grid-template-columns: minmax(0, 1fr) 132px;
+      .reservation-panel-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
       }
 
-      .reservation-grid {
+      .reservation-panel {
+        grid-column: 1 / -1;
+      }
+
+      .guide-panel {
+        grid-column: 2;
+      }
+
+      .split-section-head {
+        gap: 7px;
+        margin-bottom: 8px;
+      }
+
+      .split-section-head::before {
+        width: 6px;
+        height: 24px;
+      }
+
+      .split-section-title {
+        font-size: 18px;
+      }
+
+      .split-section-caption {
+        margin-left: 16px;
+        margin-bottom: 10px;
+        font-size: 11px;
+      }
+
+      .reservation-card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .guide-grid {
-        padding: 10px;
-      }
-
-      .guide-grid .tile {
-        min-height: 120px;
-      }
-
-      .guide-title {
-        font-size: 18px;
+      .guide-card-grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+        background: transparent;
       }
 
       .tile {
@@ -429,10 +461,6 @@
         gap: 14px;
       }
 
-      .reservation-caption {
-        margin-left: 16px;
-      }
-
     }
 
     @media (max-width: 390px) {
@@ -455,6 +483,22 @@
         height: 35px;
       }
     }
+
+    /* 案内ブロック専用色：05案内HPと同じオレンジ系に固定 */
+    .theme-red .guide-panel .split-section-head,
+    .theme-red .guide-panel .split-section-title,
+    .theme-red .guide-panel .split-section-head::before {
+      color: #ef4b35 !important;
+    }
+
+    .theme-red .guide-panel .split-section-head::before {
+      background: #ef4b35 !important;
+    }
+
+    .theme-red .guide-panel .split-section-caption {
+      color: #8d2016 !important;
+    }
+
   </style>
 </head>
 
@@ -557,18 +601,14 @@
 
       <div class="content">
         <section class="section theme-red" aria-labelledby="reservation-guide">
-          <div class="section-head reservation-head">
-            <h2 class="section-title" id="reservation-guide">予約確認</h2>
-            <div class="guide-title">案内</div>
-          </div>
-          <div class="section-caption reservation-caption">
-            <span>空き状況、月間カレンダー、不在日登録、予約入力</span>
-            <span class="guide-caption">案内HP</span>
-          </div>
+          <div class="reservation-panel-layout">
+            <div class="reservation-panel">
+              <div class="split-section-head">
+                <h2 class="split-section-title" id="reservation-guide">予約確認</h2>
+              </div>
+              <div class="split-section-caption">空き状況、月間カレンダー、不在日登録、予約入力</div>
 
-          <div class="reservation-split">
-            <div>
-              <div class="tile-grid main-grid reservation-grid">
+              <div class="tile-grid reservation-card-grid">
                 <a class="tile c-red-1" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
                   <span class="tile-top"><span class="num">01</span><span class="arrow">↗</span></span>
                   <span class="icon-wrap"><svg class="icon"><use href="#i-calendar-check"/></svg></span>
@@ -595,8 +635,13 @@
               </div>
             </div>
 
-            <div>
-              <div class="tile-grid guide-grid">
+            <div class="guide-panel">
+              <div class="split-section-head">
+                <h2 class="split-section-title">案内</h2>
+              </div>
+              <div class="split-section-caption">案内HP</div>
+
+              <div class="tile-grid guide-card-grid">
                 <a class="tile c-red-3" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
                   <span class="tile-top"><span class="num">05</span><span class="arrow">↗</span></span>
                   <span class="icon-wrap"><svg class="icon"><use href="#i-homepage"/></svg></span>
