@@ -1013,6 +1013,296 @@
         width: 920px;
       }
     }
+
+
+    /* =========================
+       予約状況（メインHP内）
+       ========================= */
+    .availability-section {
+      margin: 0 0 24px;
+      scroll-margin-top: 90px;
+    }
+
+    .availability-board {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 22px 18px;
+    }
+
+    .availability-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e3f5e9;
+      color: #007f3a;
+      border: 1px solid #c6e9d1;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .availability-title {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.35;
+      color: #009140;
+      font-weight: 800;
+    }
+
+    .availability-lead {
+      margin: 0 0 18px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #4b5563;
+    }
+
+    .availability-note {
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #fff7df;
+      border: 1px solid #f0d98a;
+      color: #6b4e00;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .availability-block {
+      margin-top: 18px;
+    }
+
+    .availability-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+    }
+
+    .availability-subtitle {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.4;
+      color: #111827;
+      font-weight: 800;
+    }
+
+    .availability-meta {
+      font-size: 12px;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .availability-list-card,
+    .availability-calendar-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .availability-busy-list {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .availability-busy-item {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 10px;
+      padding: 14px;
+      border-bottom: 1px solid #eef2f7;
+    }
+
+    .availability-busy-item:last-child {
+      border-bottom: none;
+    }
+
+    .availability-busy-date {
+      text-align: center;
+      border-radius: 14px;
+      background: #f1f5f9;
+      padding: 9px 6px;
+      align-self: start;
+    }
+
+    .availability-busy-date-main {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #111827;
+    }
+
+    .availability-busy-date-week {
+      margin-top: 3px;
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 800;
+    }
+
+    .availability-busy-body {
+      min-width: 0;
+    }
+
+    .availability-busy-time {
+      font-size: 16px;
+      font-weight: 900;
+      color: #dc2626;
+      line-height: 1.4;
+    }
+
+    .availability-busy-text {
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    .availability-empty,
+    .availability-loading {
+      padding: 20px 14px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .availability-calendar-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .availability-calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      border-top: 1px solid #e5e7eb;
+      border-left: 1px solid #e5e7eb;
+    }
+
+    .availability-weekday {
+      background: #f8fafc;
+      padding: 10px 4px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      color: #64748b;
+      border-right: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .availability-day {
+      min-height: 112px;
+      padding: 8px;
+      background: #ffffff;
+      border-right: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .availability-day.is-today {
+      background: #f0fdf4;
+    }
+
+    .availability-day.is-empty {
+      background: #f8fafc;
+    }
+
+    .availability-day-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .availability-day-num {
+      font-size: 14px;
+      font-weight: 900;
+      color: #111827;
+    }
+
+    .availability-today-badge {
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 999px;
+      background: #16a34a;
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .availability-slot {
+      margin-top: 4px;
+      padding: 5px 6px;
+      border-radius: 8px;
+      background: #fee2e2;
+      color: #991b1b;
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .availability-slot-free {
+      margin-top: 10px;
+      padding: 6px;
+      border-radius: 8px;
+      background: #ecfdf3;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .availability-footer-note {
+      margin: 14px 0 0;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .availability-calendar-grid {
+        min-width: 720px;
+      }
+
+      .availability-day {
+        min-height: 104px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .availability-board {
+        padding: 34px 30px;
+      }
+
+      .availability-title {
+        font-size: 32px;
+      }
+
+      .availability-lead {
+        font-size: 16px;
+      }
+
+      .availability-busy-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .availability-board {
+        padding: 30px;
+      }
+
+      .availability-title {
+        font-size: 30px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1045,6 +1335,7 @@
     <a href="#home">ホーム</a>
     <a href="#guide">ご利用案内</a>
     <a href="#price">料金案内</a>
+    <a href="#availability">予約状況</a>
     <a href="#company">会社概要</a>
     <a href="#contact">お問い合わせ</a>
   </nav>
@@ -1237,6 +1528,58 @@
       </div>
     </section>
 
+
+
+    <section class="availability-section" id="availability">
+      <div class="availability-board">
+        <div class="availability-kicker">予約状況</div>
+        <h2 class="availability-title">空き状況の目安</h2>
+        <p class="availability-lead">
+          ご予約済みの時間帯を確認できます。表示されている時間帯は、予約や予定により対応が難しい可能性があります。
+          実際のご予約可否は、移動距離・介助内容・前後の予定により変わるため、予約フォームまたはLINEでご相談ください。
+        </p>
+
+        <div class="availability-note">
+          表示は営業時間内（8:30〜17:30）の予定を対象としています。空いている表示でも予約を確約するものではありません。
+        </div>
+
+        <div class="availability-block">
+          <div class="availability-head">
+            <h3 class="availability-subtitle">予約一覧</h3>
+            <div class="availability-meta" id="availabilityUpdatedText">更新中</div>
+          </div>
+          <div class="availability-list-card">
+            <div id="availabilityBusyList" class="availability-loading">予約状況を読み込んでいます...</div>
+          </div>
+        </div>
+
+        <div class="availability-block">
+          <div class="availability-head">
+            <h3 class="availability-subtitle">カレンダー表示</h3>
+            <div class="availability-meta">赤色が予約済み</div>
+          </div>
+          <div class="availability-calendar-card availability-calendar-scroll">
+            <div id="availabilityCalendarArea" class="availability-loading">カレンダーを読み込んでいます...</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://forms.gle/Wcq6MSPAPVsqh5gx9">
+            <span class="btn-main">予約フォームから申し込む</span>
+            <span class="btn-sub">空き状況を確認後、そのままお申し込みいただけます</span>
+          </a>
+          <a class="btn btn-line" href="https://line.me/R/ti/p/@565watrp">
+            <span class="btn-main">LINEで相談する</span>
+            <span class="btn-sub">時間帯や介助内容についてご相談いただけます</span>
+          </a>
+        </div>
+
+        <p class="availability-footer-note">
+          予約状況は自動反映ですが、反映に時間差が出る場合があります。
+        </p>
+      </div>
+    </section>
+
     <section class="info-section">
       <div class="info-card">
         <h2 class="info-heading">介護タクシーについて</h2>
@@ -1383,6 +1726,200 @@
         drawerMenu.classList.remove('open');
       });
     });
+
+    // =========================
+    // 公開予約状況（予約状況専用ページと同じGASを参照）
+    // =========================
+    const AVAILABILITY_GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec';
+    const AVAILABILITY_DAYS_TO_SHOW = 14;
+    const AVAILABILITY_BUSINESS_START = '08:30';
+    const AVAILABILITY_BUSINESS_END = '17:30';
+
+    function loadPublicAvailability() {
+      const callbackName = 'renderMainAvailability_' + Date.now();
+      let script;
+
+      window[callbackName] = function(data) {
+        try {
+          renderMainAvailability(data);
+        } finally {
+          delete window[callbackName];
+          if (script && script.parentNode) {
+            script.parentNode.removeChild(script);
+          }
+        }
+      };
+
+      script = document.createElement('script');
+      script.src = AVAILABILITY_GAS_WEB_APP_URL
+        + '?mode=publicAvailability'
+        + '&days=' + encodeURIComponent(AVAILABILITY_DAYS_TO_SHOW)
+        + '&callback=' + encodeURIComponent(callbackName);
+
+      script.onerror = function() {
+        document.getElementById('availabilityBusyList').innerHTML =
+          '<div class="availability-empty">予約状況を読み込めませんでした。時間をおいて再度ご確認ください。</div>';
+        document.getElementById('availabilityCalendarArea').innerHTML =
+          '<div class="availability-empty">カレンダーを読み込めませんでした。</div>';
+      };
+
+      document.body.appendChild(script);
+    }
+
+    function renderMainAvailability(data) {
+      if (!data || !data.ok) {
+        const msg = data && data.error ? data.error : '取得できませんでした。';
+        document.getElementById('availabilityBusyList').innerHTML =
+          '<div class="availability-empty">予約状況を読み込めませんでした。<br>' + escapeAvailabilityHtml(msg) + '</div>';
+        document.getElementById('availabilityCalendarArea').innerHTML =
+          '<div class="availability-empty">カレンダーを読み込めませんでした。</div>';
+        return;
+      }
+
+      document.getElementById('availabilityUpdatedText').textContent = '更新 ' + data.generatedAt;
+      renderMainBusyList(data.days || []);
+      renderMainCalendar(data.days || []);
+    }
+
+    function renderMainBusyList(days) {
+      const busy = [];
+
+      days.forEach(function(day) {
+        (day.events || []).forEach(function(ev) {
+          const clipped = clipMainEventToBusinessHours(ev);
+          if (!clipped) return;
+
+          busy.push({
+            date: day.label,
+            weekday: day.weekday,
+            isToday: day.isToday,
+            time: clipped.startTime + '〜' + clipped.endTime
+          });
+        });
+      });
+
+      const el = document.getElementById('availabilityBusyList');
+
+      if (!busy.length) {
+        el.className = '';
+        el.innerHTML =
+          '<div class="availability-empty">現在、表示対象期間内に予約済みの時間帯はありません。<br>予約フォームまたはLINEでご相談ください。</div>';
+        return;
+      }
+
+      el.className = 'availability-busy-list';
+      el.innerHTML = busy.map(function(item) {
+        return [
+          '<div class="availability-busy-item">',
+            '<div class="availability-busy-date">',
+              '<div class="availability-busy-date-main">', escapeAvailabilityHtml(item.date), '</div>',
+              '<div class="availability-busy-date-week">', escapeAvailabilityHtml(item.weekday), item.isToday ? '・今日' : '', '</div>',
+            '</div>',
+            '<div class="availability-busy-body">',
+              '<div class="availability-busy-time">', escapeAvailabilityHtml(item.time), '</div>',
+              '<div class="availability-busy-text">この時間帯は予約済み、または対応が難しい時間帯です。</div>',
+            '</div>',
+          '</div>'
+        ].join('');
+      }).join('');
+    }
+
+    function renderMainCalendar(days) {
+      const el = document.getElementById('availabilityCalendarArea');
+      const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+
+      if (!days.length) {
+        el.innerHTML = '<div class="availability-empty">表示できる日付がありません。</div>';
+        return;
+      }
+
+      const first = parseAvailabilityDate(days[0].date);
+      const firstDay = first.getDay();
+      let cells = '';
+
+      weekdays.forEach(function(w) {
+        cells += '<div class="availability-weekday">' + w + '</div>';
+      });
+
+      for (let i = 0; i < firstDay; i++) {
+        cells += '<div class="availability-day is-empty"></div>';
+      }
+
+      days.forEach(function(day) {
+        const events = (day.events || [])
+          .map(clipMainEventToBusinessHours)
+          .filter(Boolean);
+
+        cells += '<div class="availability-day' + (day.isToday ? ' is-today' : '') + '">';
+        cells += '<div class="availability-day-head">';
+        cells += '<div class="availability-day-num">' + escapeAvailabilityHtml(day.label) + '（' + escapeAvailabilityHtml(day.weekday) + '）</div>';
+        if (day.isToday) {
+          cells += '<div class="availability-today-badge">今日</div>';
+        }
+        cells += '</div>';
+
+        if (events.length) {
+          events.forEach(function(ev) {
+            cells += '<div class="availability-slot">' + escapeAvailabilityHtml(ev.startTime + '〜' + ev.endTime) + '</div>';
+          });
+        } else {
+          cells += '<div class="availability-slot-free">空きあり</div>';
+        }
+
+        cells += '</div>';
+      });
+
+      el.className = 'availability-calendar-grid';
+      el.innerHTML = cells;
+    }
+
+    function parseAvailabilityDate(dateText) {
+      const parts = dateText.split('-').map(Number);
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function availabilityTimeToMinutes(timeText) {
+      const parts = String(timeText || '').split(':').map(Number);
+      if (parts.length < 2 || isNaN(parts[0]) || isNaN(parts[1])) return null;
+      return parts[0] * 60 + parts[1];
+    }
+
+    function availabilityMinutesToTime(minutes) {
+      const h = Math.floor(minutes / 60);
+      const m = minutes % 60;
+      return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    }
+
+    function clipMainEventToBusinessHours(ev) {
+      const start = availabilityTimeToMinutes(ev.startTime);
+      const end = availabilityTimeToMinutes(ev.endTime);
+      const businessStart = availabilityTimeToMinutes(AVAILABILITY_BUSINESS_START);
+      const businessEnd = availabilityTimeToMinutes(AVAILABILITY_BUSINESS_END);
+
+      if (start === null || end === null) return null;
+      if (end <= businessStart || start >= businessEnd) return null;
+
+      const clippedStart = Math.max(start, businessStart);
+      const clippedEnd = Math.min(end, businessEnd);
+
+      return {
+        ...ev,
+        startTime: availabilityMinutesToTime(clippedStart),
+        endTime: availabilityMinutesToTime(clippedEnd)
+      };
+    }
+
+    function escapeAvailabilityHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    loadPublicAvailability();
+
   </script>
 </body>
 </html>
