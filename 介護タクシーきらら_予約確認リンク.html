@@ -1,196 +1,734 @@
-<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#096341"><title>きらら｜見積もり</title>
-<style>
-:root{font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",Meiryo,sans-serif;color:#172a24;background:#edf2f0;font-size:16px;line-height:1.5;--green:#096341;--line:#cedbd5}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}button,input,select{min-height:44px}input,select,textarea{width:100%;min-width:0;border:1px solid #899f94;border-radius:8px;background:white;color:#172a24;padding:8px}input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--green)}button{border:1px solid #899f94;border-radius:8px;padding:8px 12px;background:white;color:#172a24;font-weight:700}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid #cb7900;outline-offset:2px}.primary{background:var(--green);color:white;border-color:var(--green)}.shell{max-width:880px;margin:auto;padding:12px}.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 10px}.top h1{font-size:20px;margin:0}.top small{font-size:13px;color:#53665e}.result{position:sticky;top:0;z-index:5;background:#083f2c;color:white;padding:14px 18px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 3px 9px #1232;margin-bottom:12px}.result small{display:block;font-size:13px;color:#d3e8dc}.total{font-size:clamp(30px,8vw,40px);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:5px;align-content:start;font-size:14px;font-weight:700;min-width:0}.field input,.field select{font-size:17px;font-weight:500}.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}.seg button[aria-pressed=true]{background:var(--green);color:white;border-color:var(--green)}h2{font-size:17px;margin:0 0 12px}h3{font-size:15px;margin:12px 0 8px}.muted{font-size:13px;color:#52675d;margin:6px 0}.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.between{justify-content:space-between}.check{display:flex;gap:8px;align-items:center;font-size:14px}.stepper{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:4px}.stepper input{text-align:center;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}.stepper button{padding:0;font-size:22px}.unit{font-size:13px;color:#52675d;text-align:right}.service{border-bottom:1px solid var(--line);padding:10px 0;display:grid;grid-template-columns:110px minmax(90px,1fr) auto;gap:8px;align-items:end}.service .fee{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}.service select{font-size:15px}.service .remove{min-height:32px;padding:2px 8px;font-size:13px;color:#803724}.service .right{display:grid;gap:4px;justify-items:end}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}td:last-child,th:last-child{text-align:right}td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}tfoot{font-weight:800;font-size:18px}details{margin:12px 0}summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:700}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.message{font-size:14px;margin:8px 0;color:#713700;white-space:pre-line}.actions .primary{grid-column:1/-1}.subtle{background:#f3f6f4}.rules td:first-child{min-width:86px}.rules td:last-child{text-align:left;white-space:normal}.print-sheet{display:none}.hidden,[hidden]{display:none!important}textarea{resize:vertical}.copy-area{height:150px}.storage{font-size:12px;color:#52675d}.insurance-box{padding:10px;background:#f3f6f4;border-radius:8px;margin-top:10px}.insurance-box .grid{gap:8px}.insurance-box .field{font-size:13px}.insurance-box select{font-size:15px}.leg-title{font-weight:800;margin-bottom:8px}.spacer{margin-top:12px}@media(min-width:700px){.workspace{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.workspace>.card{margin:0}.legs{grid-template-columns:1fr 1fr}}@media(max-width:360px){.shell{padding:8px}.card{padding:10px}.grid{gap:8px}.service{grid-template-columns:98px minmax(75px,1fr) auto;gap:5px}.service .fee{font-size:14px}}
-@media print{@page{size:A4 portrait;margin:15mm}body{background:white;color:black}.shell{display:none!important}.print-sheet{display:block;font-size:11pt}.print-sheet h1{font-size:22pt;margin:0}.print-sheet .p-head{display:flex;justify-content:space-between;align-items:start;border-bottom:2px solid black;padding-bottom:12px;margin-bottom:20px}.print-sheet .p-name{font-size:15pt;margin:20px 0}.print-sheet .p-total{font-size:24pt;font-weight:bold;border-bottom:2px solid black;padding:12px 0;margin:20px 0}.print-sheet table{font-size:10pt}.print-sheet td,.print-sheet th{padding:9px 5px;border-color:#aaa}.print-sheet tr{break-inside:avoid}.print-sheet .p-note{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:18px;font-size:10pt}.print-sheet .p-footer{margin-top:25px;font-size:10pt}.print-sheet .p-details{font-size:10pt;white-space:pre-wrap;overflow-wrap:anywhere}}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>介護タクシーきらら スタッフ用リンク集</title>
 
-/* 元メーターの移送サービス帳票CSSを流用 */
-.page{width:210mm;height:297mm;background:white;position:relative;display:flex;flex-direction:column;overflow:hidden;color:#000;margin:8mm auto;font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Meiryo",sans-serif}.fold-line{position:absolute;top:148.5mm;left:0;width:100%;border-bottom:.5px dashed #ccc;z-index:100}.half-page{width:210mm;height:148.5mm;padding:8mm 8mm 6mm 20mm;position:relative;display:flex;flex-direction:column}.punch-hole{position:absolute;left:7mm;width:5mm;height:5mm;border:.2mm solid #bbb;border-radius:50%}.p-top{top:34.25mm}.p-bottom{top:114.25mm}.p-border-box{border:.3mm solid #000}.p-border-bottom{border-bottom:.3mm solid #000}.p-border-right{border-right:.3mm solid #000}.p-border-left{border-left:.3mm solid #000}.p-flex{display:flex}.p-flex-col{display:flex;flex-direction:column}.p-center{display:flex;justify-content:center;align-items:center}.p-space-between{justify-content:space-between}.p-fs-14{font-size:14px;font-weight:bold}.p-fs-10{font-size:10px}.p-fs-8{font-size:8.5px;line-height:1.2}.p-fs-7{font-size:7.5px}.p-chk{font-family:"MS Gothic",sans-serif;font-size:10px;margin-right:1px}.p-val{display:inline-block;border-bottom:.3mm solid #000;min-width:10mm;text-align:center}.p-time-val{width:4.8mm!important;min-width:4.8mm!important;font-size:10px;font-family:monospace;padding:0;border-left:none!important;border-right:none!important;border-top:none!important;border-bottom:.3mm solid #000!important;display:inline-block;text-align:center;background:transparent!important}.p-lined-container{position:relative;flex:1;display:flex;flex-direction:column}.p-line-row{flex:1;border-bottom:.3mm dashed #555}.p-print-layer{position:absolute;top:0;left:0;right:0;bottom:0;padding:1.8mm 2mm 1mm;font-family:monospace;font-size:10px;line-height:1.65;word-break:break-all;white-space:pre-wrap}.p-header{width:100%;height:16mm;margin-bottom:2mm;align-items:flex-end}.p-h-left{width:40%;height:100%;justify-content:space-between}.p-h-center{width:31%;height:100%;justify-content:flex-end;padding:0 2.5mm}.p-h-right{width:29%;height:100%;flex-direction:column;align-items:flex-end;justify-content:flex-start}.p-main-frame{height:110mm;width:100%}.p-footer{height:6mm;align-items:center;margin-top:.5mm}.p-row-datetime{height:7mm;background:#e8e8e8;font-weight:bold;white-space:nowrap;overflow:hidden;border-bottom:.3mm solid #000}.p-row-svctype{height:14mm}.p-row-precheck{height:6mm;background:#fff;align-items:center}.p-precheck-title{background:#e0e0e0;width:17mm;height:100%;display:flex;align-items:center;justify-content:center;border-right:.3mm solid #000;margin-right:2mm;font-weight:bold}.p-dt-col{padding:0 2mm;border-right:.3mm solid #000}.p-svc-title{width:7mm;writing-mode:vertical-rl;text-align:center;background:#e0e0e0;font-size:8px;letter-spacing:2px;font-weight:bold;border-right:.3mm solid #000;border-bottom:.3mm solid #000}.p-svc-content{flex:1;padding:.5mm 2mm;display:flex;flex-direction:column;justify-content:space-evenly}.p-svc-grid{display:grid;grid-template-columns:80mm 35mm 1fr;align-items:center}.p-svc-grid div{white-space:nowrap;overflow:hidden}.p-svc-right{width:20mm}.p-main-grid{display:grid;grid-template-columns:1fr 1fr;height:83mm;overflow:hidden}.p-body-care{border-right:.3mm solid #000;display:flex;flex-direction:column;position:relative}.p-dashed-divider{position:absolute;top:5mm;bottom:0;right:14mm;border-right:.3mm dashed #000;z-index:10;pointer-events:none}.p-bc-header{height:5mm;display:flex;align-items:center;padding-left:2mm;position:relative;background:#e0e0e0!important;color:#000!important;border-bottom:.3mm solid #000}.p-header-rem{position:absolute;right:0;width:14mm;height:100%;border-left:.3mm dashed #000;display:flex;justify-content:center;align-items:center;font-size:8px;z-index:20;background:transparent}.p-bc-table{position:relative;display:grid;grid-template-columns:10mm 1fr 14mm;height:78mm}.p-cat-cell{border-right:.25mm dotted #000;border-bottom:.25mm dotted #000;display:flex;align-items:center;justify-content:center;text-align:center;font-size:8px;font-weight:bold}.p-item-cell{border-bottom:.25mm dotted #000;padding:.2mm .5mm;display:flex;flex-direction:column;justify-content:center;font-size:7.5px;letter-spacing:-.3px;line-height:1.1}.p-item-cell div{white-space:nowrap;overflow:hidden}.p-rem-cell{border-bottom:.25mm dotted #000}.p-no-bb{border-bottom:none!important}.p-life-care{display:flex;flex-direction:column}.p-lc-top{flex:1;display:flex;flex-direction:column;position:relative}.p-lc-table{position:relative;display:grid;grid-template-columns:10mm 1fr 14mm;flex:1;align-content:stretch}.p-general-work{height:14mm;overflow:hidden;border-top:.3mm solid #000;display:flex;flex-direction:column}.p-gw-header{background:#e0e0e0!important;color:#000!important;border-bottom:.3mm solid #000;height:4.5mm;display:flex;align-items:center;justify-content:center;font-size:10px;text-align:center}.p-notes-area{height:21mm;overflow:hidden;border-top:.3mm solid #000;display:flex;flex-direction:column}.p-notes-header{font-size:8px;padding:.8mm 2mm 0;line-height:1.1}.p-notes-area .p-print-layer{padding:0.4mm 2mm 0!important;line-height:6.1mm!important;font-size:10px!important}.p-taxi-main{flex:1;border:.3mm solid #000;display:flex;flex-direction:column}.p-taxi-row-info{height:7mm;font-weight:bold}.p-route-row{display:grid;grid-template-columns:15mm 1fr;border-bottom:.3mm solid #000;height:10mm;align-items:center}.p-route-head{width:100%;height:100%;background:#e0e0e0;font-size:9px;font-weight:bold;border-right:.3mm solid #000;display:flex;justify-content:center;align-items:center;border-bottom:.3mm solid #000}.p-route-val{padding:0 3mm;font-size:11px}.p-l-section-title{background:#e0e0e0!important;color:#000!important;border-bottom:.3mm solid #000;padding:1.5mm 3mm;font-weight:bold;font-size:10px}.p-fee-grid{display:grid;grid-template-columns:1fr 30mm;border-bottom:.2mm dotted #666;height:7.5mm;align-items:center;padding:0 4mm;font-size:10px}.p-total-row{background:#f0f0f0;height:10mm;font-weight:bold;font-size:12px;border-top:.4mm solid #000;border-bottom:.3mm solid #000}.p-taxi-memo-area{flex:1;display:flex;flex-direction:column}.p-taxi-memo-area .p-print-layer{top:0!important;padding:0 .8mm!important;line-height:1!important;font-size:10px!important;overflow:hidden!important}.p-memo-lines{display:grid!important;grid-template-rows:repeat(3,1fr)!important}.p-memo-lines>div{display:flex;align-items:center;white-space:nowrap;overflow:hidden}.p-copy-label{background:#fff!important;color:#000!important;border:.2mm solid #000;font-size:8.5px;font-weight:500;line-height:1.15;padding:.8mm 1.6mm;border-radius:0;letter-spacing:0;white-space:nowrap}.p-sign-panel{width:50mm;height:14mm;border:.25mm solid #000;display:grid;grid-template-columns:1fr 1fr;background:#fff;margin-top:.9mm;font-size:7.2px;font-weight:700}.p-sign-cell{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:.6mm;gap:.45mm}.p-sign-cell:first-child{border-right:.25mm solid #000}.p-sign-square{width:19mm;height:8.5mm;border:.25mm solid #000;background:#fff}.p-sign-name{font-size:10px;font-weight:900;line-height:1.1;text-align:center;word-break:break-all;padding:1mm}.p-punch-guide{position:absolute;left:1.5mm;top:75mm;width:8mm;height:0;border-top:.35mm solid #000;z-index:200}.p-punch-guide::after{content:"";position:absolute;left:-1.3mm;top:-1mm;width:0;height:0;border-top:1mm solid transparent;border-bottom:1mm solid transparent;border-right:1.8mm solid #000}.p-fare-note{display:inline-block;font-size:10px;color:#000!important;font-weight:900;margin-left:3mm;letter-spacing:.2px;white-space:nowrap}.p-shopping-money-box{width:40mm;border-left:.3mm dashed #000;padding:.2mm 2mm;font-size:7.5px;background:#fff}.p-shopping-money-labels,.p-shopping-money-symbols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5mm;text-align:center}.p-shopping-money-symbols{padding-top:.5mm}.page.sparse-care .p-svc-content,.page.sparse-care .p-row-precheck>.p-flex,.page.sparse-care .p-item-cell>*,.page.sparse-care .p-shopping-money-box>*,.page.sparse-care .p-general-work .p-print-layer,.page.sparse-care .p-notes-area .p-print-layer{visibility:hidden!important}.page.sparse-care .p-item-cell,.page.sparse-care .p-svc-content,.page.sparse-care .p-row-precheck>.p-flex,.page.sparse-care .p-shopping-money-box{background:#fff!important}
-@media screen {.print-sheet {display:none!important}}
-@media print {
- @page{size:A4 portrait;margin:0}
- html,body{margin:0!important;padding:0!important;background:white!important}
- .print-sheet{display:block!important;width:210mm!important;margin:0!important;color:#000!important;font-size:12pt;line-height:1.5}
- .print-sheet .half-page{height:auto;min-height:148.5mm;padding:12mm 12mm 10mm;overflow:visible;font-family:"Yu Gothic",Meiryo,sans-serif}
- .print-sheet .p-header{min-height:30mm;height:auto;gap:3mm;align-items:stretch;margin-bottom:4mm}
- .print-sheet .p-h-left{width:46%;min-width:0;gap:5mm;height:auto;justify-content:space-between}
- .print-sheet .p-h-center{flex:1;min-width:0;height:auto;gap:2mm;padding:0}
- .print-sheet .p-h-right{width:8mm;height:auto;flex-shrink:0}
- .print-sheet .p-h-center .p-flex{font-size:10pt!important;line-height:1.5!important;flex-wrap:wrap}
- .print-sheet .p-h-center .p-fs-8{width:21mm!important;flex-shrink:0;line-height:1.5!important}
- .print-sheet .p-h-center .p-val{font-size:10pt!important;font-family:inherit!important}
- .print-sheet .quote-date{flex:1;white-space:normal;overflow-wrap:anywhere;font-size:10pt}
- .print-sheet .p-val{overflow-wrap:anywhere;white-space:normal;padding-bottom:1mm}
- .print-sheet .p-taxi-main{min-height:90mm;height:auto;display:flex;flex-direction:column}
- .print-sheet .p-taxi-row-info{height:auto;min-height:10mm;flex-wrap:wrap;font-size:10pt}
- .print-sheet .p-taxi-row-info>div{font-size:10pt!important;min-height:10mm;line-height:1.4;padding:1mm;overflow-wrap:anywhere}
- .print-sheet .p-taxi-row-info>div:nth-child(2){width:44mm!important}
- .print-sheet .p-chk{font-size:10pt}
- .print-sheet .p-route-row{min-height:10mm;height:auto;display:flex;border-bottom:.25mm solid #000}
- .print-sheet .p-route-head{width:24mm;flex-shrink:0;display:flex;align-items:center;padding:2mm;background:#eee;border-right:.25mm solid #000;border-bottom:0;font-size:11pt}
- .print-sheet .p-route-val{flex:1;min-width:0;padding:2mm;white-space:normal;overflow-wrap:anywhere;font-size:12pt}
- .print-sheet .quote-schedule{padding:2mm;border-bottom:.25mm solid #000;font-size:11pt;white-space:pre-wrap;line-height:1.5}
- /* Fixed 7.5mm rows clipped two-line details. Let content set row height. */
- .print-sheet .p-fee-grid{display:grid;grid-template-columns:minmax(0,1fr) 29mm;gap:2mm;height:auto;min-height:11mm;align-items:center;border-bottom:.2mm solid #aaa;padding:2mm 0 2.5mm;font-size:12pt;line-height:1.5;break-inside:avoid;flex-shrink:0}
- .print-sheet .p-fee-grid>span{min-width:0;overflow-wrap:anywhere}
- .print-sheet .p-fare-note{display:block;font-size:11pt;line-height:1.5;margin:1mm 0 0 3mm;white-space:normal;overflow-wrap:anywhere;letter-spacing:0}
- .print-sheet .p-total-row{height:auto;min-height:14mm;font-size:14pt;line-height:1.5;font-weight:bold;border-top:.3mm solid #000;border-bottom:.3mm solid #000;align-items:center;gap:3mm;break-inside:avoid}
- .print-sheet .p-total-row>span:last-child{font-size:18pt!important;white-space:nowrap}
- .print-sheet .p-taxi-memo-area{min-height:24mm;height:auto;flex-shrink:0;break-inside:avoid}
- .print-sheet .p-lined-container{height:auto;min-height:16mm}
- .print-sheet .p-line-row{display:none}
- .print-sheet .p-taxi-memo-area .p-print-layer{position:static!important;display:block!important;padding:2mm!important;line-height:1.5!important;white-space:pre-wrap;overflow-wrap:anywhere;font-size:11pt!important;overflow:visible!important}
- .print-sheet .p-copy-label{writing-mode:vertical-rl;font-size:12pt}
- .print-sheet .p-l-section-title{padding:2mm;background:#eee;font-size:13pt;font-weight:bold}
- .print-sheet .p-fs-14{font-size:19pt;line-height:1.4;letter-spacing:0!important}
- .print-sheet .p-fs-10{font-size:12pt}.print-sheet .p-fs-8{font-size:10pt;line-height:1.5}.print-sheet .p-fs-7{font-size:10pt;line-height:1.5}
-}
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --text: #1f2328;
+      --muted: #667085;
+      --panel: #ffffff;
+      --shadow: 0 14px 34px rgba(18, 24, 32, .10);
+      --tile-shadow: 0 8px 18px rgba(18, 24, 32, .12);
+      --tile-shadow-hover: 0 12px 26px rgba(18, 24, 32, .18);
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
 
-</style></head><body>
-<main class="shell"><header class="top"><div><h1>きらら <span style="font-weight:500">見積もり</span></h1><small>介護タクシー きらら</small></div><button id="reset">新しい見積</button></header>
-<div class="result" aria-live="polite" aria-atomic="true"><div>概算合計<small id="resultMode">実費・片道</small></div><div class="total" id="total">1,300円</div></div>
-<section class="card" id="documentDetails"><h2>見積書に記載する内容</h2><div class="grid"><label class="field">お名前<input id="name" maxlength="60" autocomplete="off" placeholder="氏名（様は自動で付きます）"></label><label class="field">利用予定日<input id="visitDate" type="date"></label><label class="field">迎え先・乗車地<input id="pickup" maxlength="120"></label><label class="field">行き先・降車地<input id="destination" maxlength="120"></label><label class="field">行き・出発予定時刻<input id="departTime" type="time"></label><label class="field" id="scheduleBack" hidden>帰り・出発予定時刻<input id="returnTime" type="time"></label></div><details><summary>経由地・見積日・備考</summary><label class="field">経由地<input id="waypoint" maxlength="120"></label><label class="field spacer">見積日<input id="date" type="date"></label><label class="field spacer">備考<textarea id="memo" maxlength="600" rows="3"></textarea></label></details></section>
-<div class="workspace"><section class="card"><div class="seg" aria-label="片道・往復"><button type="button" data-trip="one" aria-pressed="true">片道</button><button type="button" data-trip="round" aria-pressed="false">往復</button></div>
-<div class="grid"><label class="field">料金区分<select id="mode"><option value="self">実費</option><option value="care">介護保険</option></select></label><label class="field" id="custodyField" hidden>往復の拘束<select id="custody"><option value="continuous">拘束継続・運賃時間を合算</option><option value="released">いったん解放・片道ごと計算</option></select></label></div>
-<p class="muted" id="rideHelp">運賃対象時間を入力（待機・付き添いの時間を除く）。</p>
-<div class="grid legs spacer" id="legs">
-<div id="leg0"><div class="leg-title" id="outLabel">片道の時間</div><div class="stepper"><button data-step="-1" data-target="outMinutes" aria-label="行きの時間を1分減らす">−</button><input id="outMinutes" aria-label="行きの運賃対象時間（分）" type="number" min="1" max="1439" step="1" value="10" inputmode="numeric"><button data-step="1" data-target="outMinutes" aria-label="行きの時間を1分増やす">＋</button></div><div class="unit">分</div><div class="insurance-box" data-care hidden><label class="field">算定区分<select id="units0"><option value="97">日中 97単位</option><option value="194">日中・2人介助 194単位</option><option value="121">夜間早朝 121単位</option><option value="146">深夜 146単位</option></select></label><div class="grid spacer"><label class="field">地域<select id="region0"><option value="0">蒲郡市 10.00</option><option value="1">幸田町 10.00</option><option value="2">豊川市 10.00</option><option value="3">豊橋市 10.21</option><option value="4">岡崎市 10.42</option></select></label><label class="field">負担<select id="copay0"><option value="10">1割</option><option value="20">2割</option><option value="30">3割</option></select></label></div></div><label class="check spacer"><input type="checkbox" id="staff0">増員30分 ＋2,000円</label></div>
-<div id="leg1" hidden><div class="row between"><div class="leg-title">帰りの時間</div><button id="same" style="min-height:32px;padding:2px 6px;font-size:13px">行きと同じ</button></div><div class="stepper"><button data-step="-1" data-target="backMinutes" aria-label="帰りの時間を1分減らす">−</button><input id="backMinutes" aria-label="帰りの運賃対象時間（分）" type="number" min="1" max="1439" step="1" value="10" inputmode="numeric"><button data-step="1" data-target="backMinutes" aria-label="帰りの時間を1分増やす">＋</button></div><div class="unit">分</div><div class="insurance-box" data-care hidden><label class="field">算定区分<select id="units1"><option value="97">日中 97単位</option><option value="194">日中・2人介助 194単位</option><option value="121">夜間早朝 121単位</option><option value="146">深夜 146単位</option></select></label><div class="grid spacer"><label class="field">地域<select id="region1"><option value="0">蒲郡市 10.00</option><option value="1">幸田町 10.00</option><option value="2">豊川市 10.00</option><option value="3">豊橋市 10.21</option><option value="4">岡崎市 10.42</option></select></label><label class="field">負担<select id="copay1"><option value="10">1割</option><option value="20">2割</option><option value="30">3割</option></select></label></div></div><label class="check spacer"><input type="checkbox" id="staff1">増員30分 ＋2,000円</label></div>
-</div>
-<h3>待機・付き添い</h3><div id="services"></div><div class="row spacer"><button id="addWait">＋ 待機</button><button id="addEscort">＋ 付き添い</button></div><p class="muted">別々の待機・付き添いは分けて追加。各回で料金を計算します。</p>
-<p class="message" id="validation" role="alert"></p></section>
-<section class="card"><h2>見積内訳</h2><table><thead><tr><th>項目・計算内容</th><th>金額</th></tr></thead><tbody id="breakdown"></tbody><tfoot><tr><td>合計</td><td id="tableTotal">1,300円</td></tr></tfoot></table>
+    * {
+      box-sizing: border-box;
+    }
 
-<div class="actions"><button class="primary" id="print">見積書を印刷／PDF保存</button><button id="copy">金額・内訳をコピー</button><button id="saveFile">見積データを保存</button><button id="loadFile">見積データを開く</button><button id="ratesButton">料金表を確認</button></div><input hidden type="file" id="fileInput" accept="application/json,.json"><p class="message" id="message" role="status"></p><textarea class="copy-area" id="copyFallback" aria-label="コピー用の見積内容" readonly hidden></textarea><p class="storage" id="storageState">入力はこの端末に自動保存されます。</p>
-</section></div>
-<details class="card" id="rates"><summary>料金設定・計算方法</summary><p class="muted">添付メーターの設定に準拠（2026年9月11日版）。金額への消費税の追加計算はありません。</p><table class="rules"><tbody>
-<tr><td>実費運賃</td><td>10分まで1,300円。以後10分ごと1,300円。端数切上げ。</td></tr><tr><td>往復</td><td>拘束継続：行き＋帰りの運賃対象時間を合算して切上げ。いったん解放：行き・帰りをそれぞれ切上げて合計。</td></tr><tr><td>付き添い</td><td>各回10分ごと500円。端数切上げ。長時間割引なし。0分は0円。</td></tr><tr><td>待機</td><td>各回1〜10分500円、11〜20分1,000円、21〜30分1,500円、31〜60分2,500円、61〜120分5,000円、121〜180分7,500円。30分を超えたら60分ごとの切上げ×2,500円。0分は0円。</td></tr><tr><td>スタッフ増員</td><td>30分2,000円。各片道で「なし／2,000円」を選択。人数・延長時間での自動加算はありません。</td></tr><tr><td>介護保険単位</td><td>通院等乗降介助：日中97単位、日中・2人介助194単位、夜間早朝121単位、深夜146単位。</td></tr><tr><td>地域単価</td><td>蒲郡市・幸田町・豊川市：10.00円／単位。豊橋市：10.21円／単位。岡崎市：10.42円／単位。</td></tr><tr><td>負担割合</td><td>1割・2割・3割。単位数×地域単価の1円未満を切捨て、その額×負担割合の1円未満を切捨て。</td></tr><tr><td>介護保険モード</td><td>片道ごとの自己負担＋待機＋付き添い＋増員。元メーターの計算どおり、時間制運賃は加算しません。</td></tr><tr><td>時間の入力</td><td>待機・付き添いを除いた運賃対象時間を入力。運賃と追加サービスで同じ時間を二重計上しません。往復の拘束状態は見積時に選択します。</td></tr><tr><td>その他</td><td>車いす・階段介助・障害者割引などの独立した金額設定は、添付メーターにありません。</td></tr>
-</tbody></table></details></main>
-<article class="print-sheet" id="printSheet"></article>
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 18px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Yu Gothic", "Meiryo", sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(210, 219, 235, .75), transparent 32%),
+        linear-gradient(180deg, #f9fafc, var(--bg));
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .wrap {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .app {
+      overflow: hidden;
+      border-radius: 34px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      padding: 24px 24px 22px;
+      background: linear-gradient(135deg, #191f28, #303946);
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 4.2vw, 42px);
+      line-height: 1.16;
+      letter-spacing: .03em;
+      font-weight: 950;
+    }
+
+    .header-sub {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .content {
+      padding: 18px;
+    }
+
+    .section {
+      margin: 0 0 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 10px;
+      color: var(--section);
+    }
+
+    .section-head::before {
+      content: "";
+      width: 7px;
+      height: 30px;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+      flex: 0 0 auto;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.12;
+      font-weight: 950;
+      letter-spacing: .03em;
+    }
+
+    .section-caption {
+      margin: -4px 0 12px 16px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+      gap: 12px;
+      padding: 12px;
+      border-radius: 22px;
+      background: color-mix(in srgb, var(--section) 10%, #fff);
+    }
+
+    .tile {
+      --accent: #d22d37;
+      --soft: #fff1f2;
+      --deep: #7c1520;
+      position: relative;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      align-items: center;
+      min-height: 138px;
+      padding: 12px 10px 11px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, #ffffff, var(--soft));
+      color: var(--deep);
+      text-decoration: none;
+      box-shadow: var(--tile-shadow);
+      overflow: hidden;
+      touch-action: manipulation;
+      transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 8px;
+      background: var(--accent);
+    }
+
+    .tile:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--tile-shadow-hover);
+      filter: saturate(1.04);
+    }
+
+    .tile:active {
+      transform: translateY(1px);
+      box-shadow: 0 5px 12px rgba(18, 24, 32, .14);
+    }
+
+    .tile:focus-visible {
+      outline: 4px solid color-mix(in srgb, var(--accent) 26%, transparent);
+      outline-offset: 3px;
+    }
+
+    .tile-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 24px;
+    }
+
+    .num {
+      color: var(--accent);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: .02em;
+    }
+
+    .arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent) 13%, #fff);
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .icon-wrap {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      margin: 6px auto 4px;
+      border-radius: 18px;
+      background: #fff;
+      color: var(--accent);
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--accent) 15%, #fff),
+        0 5px 12px rgba(18, 24, 32, .09);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: block;
+    }
+
+    .label {
+      margin: 0;
+      color: #181b20;
+      text-align: center;
+      font-size: 17px;
+      line-height: 1.18;
+      font-weight: 950;
+      letter-spacing: .01em;
+    }
+
+    .tagline {
+      display: block;
+      margin-top: 3px;
+      color: color-mix(in srgb, var(--accent) 78%, #222);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .theme-red { --section: #df202b; }
+    .theme-orange { --section: #df760d; }
+    .c-orange-1 { --accent: #e77812; --soft: #fff2e5; --deep: #873b0b; }
+    .c-orange-2 { --accent: #c75b0b; --soft: #ffecdc; --deep: #763009; }
+    .theme-blue { --section: #1168d8; }
+    .theme-purple { --section: #9b1fae; }
+    .theme-gray { --section: #667085; }
+
+    .c-red-1 { --accent: #e0202b; --soft: #fff1f2; --deep: #8e1019; }
+    .c-red-2 { --accent: #c92f3e; --soft: #fff0f3; --deep: #7d1320; }
+    .c-red-3 { --accent: #ef4b35; --soft: #fff2ee; --deep: #8d2016; }
+    .c-red-4 { --accent: #b91d50; --soft: #fff0f6; --deep: #751032; }
+    .c-red-5 { --accent: #8d1d36; --soft: #fff1f4; --deep: #5c1021; }
+
+    .c-blue-1 { --accent: #1168d8; --soft: #edf5ff; --deep: #0d448b; }
+    .c-blue-2 { --accent: #0097b2; --soft: #e9fbff; --deep: #006276; }
+    .c-blue-3 { --accent: #2449c7; --soft: #eef1ff; --deep: #182e82; }
+
+    .c-purple-1 { --accent: #8d1aa7; --soft: #fbecff; --deep: #5c0f70; }
+    .c-purple-2 { --accent: #c01886; --soft: #fff0fa; --deep: #761052; }
+
+    .c-gray-1 { --accent: #667085; --soft: #f3f5f8; --deep: #3f4756; }
+
+    .reservation-panel-layout {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+    }
+
+    .reservation-panel {
+      grid-column: 1 / span 4;
+      min-width: 0;
+    }
+
+    .guide-panel {
+      grid-column: 5 / span 2;
+      min-width: 0;
+    }
+
+    .split-section-head {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 10px;
+      color: var(--section);
+    }
+
+    .split-section-head::before {
+      content: "";
+      width: 7px;
+      height: 30px;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+      flex: 0 0 auto;
+    }
+
+    .split-section-title {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.12;
+      font-weight: 950;
+      letter-spacing: .03em;
+      white-space: nowrap;
+    }
+
+    .split-section-caption {
+      margin: -4px 0 12px 16px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      min-height: 19px;
+    }
+
+    .reservation-card-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .guide-card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .repair .tile-grid {
+      grid-template-columns: repeat(auto-fit, minmax(142px, 180px));
+      justify-content: start;
+    }
+
+    .repair .tile {
+      min-height: 138px;
+    }
+
+    @media (min-width: 900px) {
+      .main-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .rollcall-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .admin-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 10px;
+      }
+
+      .app {
+        border-radius: 26px;
+      }
+
+      header {
+        padding: 20px 16px 18px;
+      }
+
+      .content {
+        padding: 13px;
+      }
+
+      .section {
+        margin-bottom: 16px;
+      }
+
+      .section-caption {
+        margin-left: 16px;
+      }
+
+      .tile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 10px;
+        border-radius: 18px;
+      }
+
+      .reservation-panel-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .reservation-panel {
+        grid-column: 1 / -1;
+      }
+
+      .guide-panel {
+        grid-column: 1 / -1;
+      }
+
+      .split-section-head {
+        gap: 7px;
+        margin-bottom: 8px;
+      }
+
+      .split-section-head::before {
+        width: 6px;
+        height: 24px;
+      }
+
+      .split-section-title {
+        font-size: 18px;
+      }
+
+      .split-section-caption {
+        margin-left: 16px;
+        margin-bottom: 10px;
+        font-size: 11px;
+      }
+
+      .reservation-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .guide-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 0;
+        background: transparent;
+      }
+
+      .tile {
+        min-height: 120px;
+        padding: 10px 8px 10px;
+        border-radius: 16px;
+      }
+
+      .num {
+        font-size: 19px;
+      }
+
+      .arrow {
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
+      }
+
+      .icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
+      }
+
+      .icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .label {
+        font-size: 15px;
+      }
+
+      .tagline {
+        font-size: 10px;
+      }
+
+      .admin-check-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .label {
+        font-size: 14px;
+      }
+
+      .tile-grid {
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .icon-wrap {
+        width: 48px;
+        height: 48px;
+      }
+
+      .icon {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="i-calendar-check" viewBox="0 0 64 64">
+        <rect x="10" y="14" width="44" height="40" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M10 25h44M22 9v11M42 9v11" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="19" y="32" width="8" height="7" rx="1.5" fill="currentColor" opacity=".25"/>
+        <rect x="31" y="32" width="8" height="7" rx="1.5" fill="currentColor" opacity=".25"/>
+        <rect x="19" y="43" width="8" height="7" rx="1.5" fill="currentColor" opacity=".25"/>
+        <path d="M34 45l6 6 13-16" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-calendar" viewBox="0 0 64 64">
+        <rect x="9" y="15" width="46" height="39" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 26h46M21 9v12M43 9v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="18" y="33" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="29" y="33" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="40" y="33" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="18" y="43" width="7" height="6" rx="1.5" fill="currentColor" opacity=".35"/>
+        <rect x="29" y="43" width="7" height="6" rx="1.5" fill="currentColor" opacity=".7"/>
+      </symbol>
+
+      <symbol id="i-block" viewBox="0 0 64 64">
+        <rect x="9" y="12" width="42" height="40" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 24h42M20 8v11M40 8v11" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="17" y="31" width="9" height="7" rx="2" fill="currentColor" opacity=".25"/>
+        <rect x="30" y="31" width="9" height="7" rx="2" fill="currentColor" opacity=".25"/>
+        <path d="M44 38l8 8-13 8-6 2 2-6z" fill="currentColor" opacity=".24"/>
+        <path d="M41 35l9 9M35 50l15-15" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 45h10M26 40v10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="i-form" viewBox="0 0 64 64">
+        <rect x="16" y="10" width="34" height="46" rx="5" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M24 22h17M24 32h17M24 42h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M12 40l12 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <path d="M11 48l4-12 9 9z" fill="currentColor" opacity=".35"/>
+      </symbol>
+
+      <symbol id="i-homepage" viewBox="0 0 64 64">
+        <rect x="8" y="13" width="48" height="40" rx="7" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M8 24h48" fill="none" stroke="currentColor" stroke-width="4"/>
+        <circle cx="17" cy="18.5" r="2" fill="currentColor"/>
+        <circle cx="25" cy="18.5" r="2" fill="currentColor" opacity=".5"/>
+        <path d="M20 43l12-11 12 11v10H20z" fill="currentColor" opacity=".18"/>
+        <path d="M19 43l13-12 13 12M25 53V41h14v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-driver-check" viewBox="0 0 64 64">
+        <circle cx="24" cy="22" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 54c2-12 8-18 15-18s13 6 15 18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="38" y="14" width="16" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M42 25l4 4 7-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-car-check" viewBox="0 0 64 64">
+        <path d="M17 42h30l-4-14c-.7-2.3-2.5-4-5-4H26c-2.4 0-4.3 1.7-5 4z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M12 42h40v9H12zM18 51v4M46 51v4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 18l5 5 10-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-driver-after" viewBox="0 0 64 64">
+        <circle cx="28" cy="21" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M12 54c2.2-12 8.2-18 16-18s13.8 6 16 18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M45 18c3 3 4 7 3 11M51 13c5 5 7 12 5 19" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M15 28l5 5 9-13" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <symbol id="i-sheet-gear" viewBox="0 0 64 64">
+        <rect x="9" y="12" width="40" height="42" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 24h40M21 24v30M34 24v20" fill="none" stroke="currentColor" stroke-width="3" opacity=".55"/>
+        <circle cx="48" cy="45" r="8" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M48 32v5M48 53v5M35 45h5M56 45h5M39 36l4 4M53 50l4 4M39 54l4-4M53 40l4-4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="i-driver-ledger" viewBox="0 0 64 64">
+        <circle cx="24" cy="22" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M9 54c2-12 8-18 15-18 5 0 9.5 3 12.5 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="40" y="18" width="14" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M44 27h6M44 35h6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </symbol>
+
+      <symbol id="i-repair" viewBox="0 0 64 64">
+        <rect x="8" y="14" width="48" height="34" rx="5" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path d="M22 54h20M32 48v6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M24 25l7 7M20 36l16-16" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <path d="M41 30h9M41 38h9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="38" cy="42" r="4" fill="currentColor" opacity=".35"/>
+      </symbol>
+    </svg>
+
+    <div class="app">
+      <header>
+        <h1>介護タクシーきらら<br>スタッフ用リンク集</h1>
+        <div class="header-sub">必要な画面を小さいアイコンカードからすぐ開く</div>
+      </header>
+
+      <div class="content">
+        <section class="section theme-red" aria-labelledby="reservation-guide">
+          <div class="reservation-panel-layout">
+            <div class="reservation-panel">
+              <div class="split-section-head">
+                <h2 class="split-section-title" id="reservation-guide">予約確認</h2>
+              </div>
+              <div class="split-section-caption">空き状況、月間カレンダー、不在日登録、予約入力</div>
+
+              <div class="tile-grid reservation-card-grid">
+                <a class="tile c-red-1" href="https://kirarataxiservice-gif.github.io/kirara-taxi/availability.html" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">01</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-calendar-check"/></svg></span>
+                  <span class="label">空き状況<span class="tagline">利用者向け</span></span>
+                </a>
+
+                <a class="tile c-red-2" href="https://calendar.google.com/calendar/u/0?cid=a2lyYXJhLnRheGkuc2VydmljZUBnbWFpbC5jb20" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">02</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-calendar"/></svg></span>
+                  <span class="label">月間カレンダー<span class="tagline">内部確認</span></span>
+                </a>
+
+                <a class="tile c-red-5" href="https://script.google.com/macros/s/AKfycbzcf7qnwiay3ZTazuyB5EqmVSbFZu5B9iDvrYcnMHyYnKJ0olBo9af2t4eF8Se6929p/exec" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">03</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-block"/></svg></span>
+                  <span class="label">不在日登録<span class="tagline">自分の予定入力</span></span>
+                </a>
+
+                <a class="tile c-red-4" href="https://docs.google.com/forms/d/e/1FAIpQLSdYXwUfeqqEzQCuMGGAVgApmAa2OBKbQtRdJzMUKOkXmUq3SQ/viewform" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">04</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-form"/></svg></span>
+                  <span class="label">予約フォーム<span class="tagline">共用入力</span></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="guide-panel theme-orange">
+              <div class="split-section-head">
+                <h2 class="split-section-title">案内</h2>
+              </div>
+              <div class="split-section-caption">案内HP・見積もり</div>
+
+              <div class="tile-grid guide-card-grid">
+                <a class="tile c-orange-1" href="https://kirarataxiservice-gif.github.io/kirara-taxi/" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">05</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-homepage"/></svg></span>
+                  <span class="label">案内HP<span class="tagline">公開ページ</span></span>
+                </a>
+
+                <a class="tile c-orange-2" id="estimate-link" href="#estimate" target="_blank" rel="noopener">
+                  <span class="tile-top"><span class="num">06</span><span class="arrow">↗</span></span>
+                  <span class="icon-wrap"><svg class="icon"><use href="#i-form"/></svg></span>
+                  <span class="label">見積もり<span class="tagline">作成・印刷</span></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="admin-check-grid">
+          <section class="section theme-blue" aria-labelledby="rollcall-check">
+            <div class="section-head">
+              <h2 class="section-title" id="rollcall-check">点呼・点検</h2>
+            </div>
+            <div class="section-caption">乗務前後の点呼と車両点検</div>
+
+            <div class="tile-grid rollcall-grid">
+              <a class="tile c-blue-1" href="https://forms.gle/aZ51tNBr6KYzvuga6" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">07</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-driver-check"/></svg></span>
+                <span class="label">乗務前点呼<span class="tagline">乗務前</span></span>
+              </a>
+
+              <a class="tile c-blue-2" href="https://forms.gle/8P3FVQ3yPxF1yW7t6" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">08</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-car-check"/></svg></span>
+                <span class="label">日常点検<span class="tagline">車両</span></span>
+              </a>
+
+              <a class="tile c-blue-3" href="https://forms.gle/ABfWniGDyMxMaZ2u5" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">09</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-driver-after"/></svg></span>
+                <span class="label">乗務後点呼<span class="tagline">乗務後</span></span>
+              </a>
+            </div>
+          </section>
+
+          <section class="section theme-purple" aria-labelledby="admin-check">
+            <div class="section-head">
+              <h2 class="section-title" id="admin-check">管理・確認</h2>
+            </div>
+            <div class="section-caption">予約内容、運転者情報、台帳の確認</div>
+
+            <div class="tile-grid admin-grid">
+              <a class="tile c-purple-1" href="https://docs.google.com/spreadsheets/d/1FoN9MWGm_YrOm1UlKaeFMC8MiNBOOhvFfH04tZGQXGE/edit?usp=sharing" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">10</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-sheet-gear"/></svg></span>
+                <span class="label">予約マスター<span class="tagline">予約管理</span></span>
+              </a>
+
+              <a class="tile c-purple-2" href="https://docs.google.com/spreadsheets/d/1JlRb-Mrj71QzkCxaC5Ke-EsCAjHEtHeW/edit?usp=sharing&amp;ouid=114018022462306268047&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">
+                <span class="tile-top"><span class="num">11</span><span class="arrow">↗</span></span>
+                <span class="icon-wrap"><svg class="icon"><use href="#i-driver-ledger"/></svg></span>
+                <span class="label">運転者管理台帳<span class="tagline">運転者</span></span>
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <section class="section theme-gray repair" aria-labelledby="repair-check">
+          <div class="section-head">
+            <h2 class="section-title" id="repair-check">修正用</h2>
+          </div>
+          <div class="section-caption">通常入力では開かない確認・修正用</div>
+
+          <div class="tile-grid">
+            <a class="tile c-gray-1" href="https://docs.google.com/spreadsheets/d/1axqA7iP6OCzRasARtWfF97gviBwqd-Xoy5_ymd5bSHM/edit?usp=sharing" target="_blank" rel="noopener">
+              <span class="tile-top"><span class="num">12</span><span class="arrow">↗</span></span>
+              <span class="icon-wrap"><svg class="icon"><use href="#i-repair"/></svg></span>
+              <span class="label">点検・点呼<br>回答修正<span class="tagline">回答修正</span></span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+<script id="estimate-document" type="application/json">"\u003c!doctype html>\n\u003chtml lang=\"ja\">\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\u003cmeta name=\"theme-color\" content=\"#096341\">\u003ctitle>きらら｜見積もり\u003c/title>\n\u003cstyle>\n:root{font-family:-apple-system,BlinkMacSystemFont,\"Yu Gothic\",Meiryo,sans-serif;color:#172a24;background:#edf2f0;font-size:16px;line-height:1.5;--green:#096341;--line:#cedbd5}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}button,input,select{min-height:44px}input,select,textarea{width:100%;min-width:0;border:1px solid #899f94;border-radius:8px;background:white;color:#172a24;padding:8px}input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--green)}button{border:1px solid #899f94;border-radius:8px;padding:8px 12px;background:white;color:#172a24;font-weight:700}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid #cb7900;outline-offset:2px}.primary{background:var(--green);color:white;border-color:var(--green)}.shell{max-width:880px;margin:auto;padding:12px}.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 10px}.top h1{font-size:20px;margin:0}.top small{font-size:13px;color:#53665e}.result{position:sticky;top:0;z-index:5;background:#083f2c;color:white;padding:14px 18px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 3px 9px #1232;margin-bottom:12px}.result small{display:block;font-size:13px;color:#d3e8dc}.total{font-size:clamp(30px,8vw,40px);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:5px;align-content:start;font-size:14px;font-weight:700;min-width:0}.field input,.field select{font-size:17px;font-weight:500}.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}.seg button[aria-pressed=true]{background:var(--green);color:white;border-color:var(--green)}h2{font-size:17px;margin:0 0 12px}h3{font-size:15px;margin:12px 0 8px}.muted{font-size:13px;color:#52675d;margin:6px 0}.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.between{justify-content:space-between}.check{display:flex;gap:8px;align-items:center;font-size:14px}.stepper{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:4px}.stepper input{text-align:center;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}.stepper button{padding:0;font-size:22px}.unit{font-size:13px;color:#52675d;text-align:right}.service{border-bottom:1px solid var(--line);padding:10px 0;display:grid;grid-template-columns:110px minmax(90px,1fr) auto;gap:8px;align-items:end}.service .fee{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}.service select{font-size:15px}.service .remove{min-height:32px;padding:2px 8px;font-size:13px;color:#803724}.service .right{display:grid;gap:4px;justify-items:end}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}td:last-child,th:last-child{text-align:right}td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}tfoot{font-weight:800;font-size:18px}details{margin:12px 0}summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:700}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.message{font-size:14px;margin:8px 0;color:#713700;white-space:pre-line}.actions .primary{grid-column:1/-1}.subtle{background:#f3f6f4}.rules td:first-child{min-width:86px}.rules td:last-child{text-align:left;white-space:normal}.print-sheet{display:none}.hidden,[hidden]{display:none!important}textarea{resize:vertical}.copy-area{height:150px}.storage{font-size:12px;color:#52675d}.insurance-box{padding:10px;background:#f3f6f4;border-radius:8px;margin-top:10px}.insurance-box .grid{gap:8px}.insurance-box .field{font-size:13px}.insurance-box select{font-size:15px}.leg-title{font-weight:800;margin-bottom:8px}.spacer{margin-top:12px}@media(min-width:700px){.workspace{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.workspace>.card{margin:0}.legs{grid-template-columns:1fr 1fr}}@media(max-width:360px){.shell{padding:8px}.card{padding:10px}.grid{gap:8px}.service{grid-template-columns:98px minmax(75px,1fr) auto;gap:5px}.service .fee{font-size:14px}}\n@media print{@page{size:A4 portrait;margin:15mm}body{background:white;color:black}.shell{display:none!important}.print-sheet{display:block;font-size:11pt}.print-sheet h1{font-size:22pt;margin:0}.print-sheet .p-head{display:flex;justify-content:space-between;align-items:start;border-bottom:2px solid black;padding-bottom:12px;margin-bottom:20px}.print-sheet .p-name{font-size:15pt;margin:20px 0}.print-sheet .p-total{font-size:24pt;font-weight:bold;border-bottom:2px solid black;padding:12px 0;margin:20px 0}.print-sheet table{font-size:10pt}.print-sheet td,.print-sheet th{padding:9px 5px;border-color:#aaa}.print-sheet tr{break-inside:avoid}.print-sheet .p-note{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:18px;font-size:10pt}.print-sheet .p-footer{margin-top:25px;font-size:10pt}.print-sheet .p-details{font-size:10pt;white-space:pre-wrap;overflow-wrap:anywhere}}\n\n/* 元メーターの移送サービス帳票CSSを流用 */\n.page{width:210mm;height:297mm;background:white;position:relative;display:flex;flex-direction:column;overflow:hidden;color:#000;margin:8mm auto;font-family:\"Noto Sans JP\",\"Hiragino Kaku Gothic ProN\",\"Meiryo\",sans-serif}.fold-line{position:absolute;top:148.5mm;left:0;width:100%;border-bottom:.5px dashed #ccc;z-index:100}.half-page{width:210mm;height:148.5mm;padding:8mm 8mm 6mm 20mm;position:relative;display:flex;flex-direction:column}.punch-hole{position:absolute;left:7mm;width:5mm;height:5mm;border:.2mm solid #bbb;border-radius:50%}.p-top{top:34.25mm}.p-bottom{top:114.25mm}.p-border-box{border:.3mm solid #000}.p-border-bottom{border-bottom:.3mm solid #000}.p-border-right{border-right:.3mm solid #000}.p-border-left{border-left:.3mm solid #000}.p-flex{display:flex}.p-flex-col{display:flex;flex-direction:column}.p-center{display:flex;justify-content:center;align-items:center}.p-space-between{justify-content:space-between}.p-fs-14{font-size:14px;font-weight:bold}.p-fs-10{font-size:10px}.p-fs-8{font-size:8.5px;line-height:1.2}.p-fs-7{font-size:7.5px}.p-chk{font-family:\"MS Gothic\",sans-serif;font-size:10px;margin-right:1px}.p-val{display:inline-block;border-bottom:.3mm solid #000;min-width:10mm;text-align:center}.p-time-val{width:4.8mm!important;min-width:4.8mm!important;font-size:10px;font-family:monospace;padding:0;border-left:none!important;border-right:none!important;border-top:none!important;border-bottom:.3mm solid #000!important;display:inline-block;text-align:center;background:transparent!important}.p-lined-container{position:relative;flex:1;display:flex;flex-direction:column}.p-line-row{flex:1;border-bottom:.3mm dashed #555}.p-print-layer{position:absolute;top:0;left:0;right:0;bottom:0;padding:1.8mm 2mm 1mm;font-family:monospace;font-size:10px;line-height:1.65;word-break:break-all;white-space:pre-wrap}.p-header{width:100%;height:16mm;margin-bottom:2mm;align-items:flex-end}.p-h-left{width:40%;height:100%;justify-content:space-between}.p-h-center{width:31%;height:100%;justify-content:flex-end;padding:0 2.5mm}.p-h-right{width:29%;height:100%;flex-direction:column;align-items:flex-end;justify-content:flex-start}.p-main-frame{height:110mm;width:100%}.p-footer{height:6mm;align-items:center;margin-top:.5mm}.p-row-datetime{height:7mm;background:#e8e8e8;font-weight:bold;white-space:nowrap;overflow:hidden;border-bottom:.3mm solid #000}.p-row-svctype{height:14mm}.p-row-precheck{height:6mm;background:#fff;align-items:center}.p-precheck-title{background:#e0e0e0;width:17mm;height:100%;display:flex;align-items:center;justify-content:center;border-right:.3mm solid #000;margin-right:2mm;font-weight:bold}.p-dt-col{padding:0 2mm;border-right:.3mm solid #000}.p-svc-title{width:7mm;writing-mode:vertical-rl;text-align:center;background:#e0e0e0;font-size:8px;letter-spacing:2px;font-weight:bold;border-right:.3mm solid #000;border-bottom:.3mm solid #000}.p-svc-content{flex:1;padding:.5mm 2mm;display:flex;flex-direction:column;justify-content:space-evenly}.p-svc-grid{display:grid;grid-template-columns:80mm 35mm 1fr;align-items:center}.p-svc-grid div{white-space:nowrap;overflow:hidden}.p-svc-right{width:20mm}.p-main-grid{display:grid;grid-template-columns:1fr 1fr;height:83mm;overflow:hidden}.p-body-care{border-right:.3mm solid #000;display:flex;flex-direction:column;position:relative}.p-dashed-divider{position:absolute;top:5mm;bottom:0;right:14mm;border-right:.3mm dashed #000;z-index:10;pointer-events:none}.p-bc-header{height:5mm;display:flex;align-items:center;padding-left:2mm;position:relative;background:#e0e0e0!important;color:#000!important;border-bottom:.3mm solid #000}.p-header-rem{position:absolute;right:0;width:14mm;height:100%;border-left:.3mm dashed #000;display:flex;justify-content:center;align-items:center;font-size:8px;z-index:20;background:transparent}.p-bc-table{position:relative;display:grid;grid-template-columns:10mm 1fr 14mm;height:78mm}.p-cat-cell{border-right:.25mm dotted #000;border-bottom:.25mm dotted #000;display:flex;align-items:center;justify-content:center;text-align:center;font-size:8px;font-weight:bold}.p-item-cell{border-bottom:.25mm dotted #000;padding:.2mm .5mm;display:flex;flex-direction:column;justify-content:center;font-size:7.5px;letter-spacing:-.3px;line-height:1.1}.p-item-cell div{white-space:nowrap;overflow:hidden}.p-rem-cell{border-bottom:.25mm dotted #000}.p-no-bb{border-bottom:none!important}.p-life-care{display:flex;flex-direction:column}.p-lc-top{flex:1;display:flex;flex-direction:column;position:relative}.p-lc-table{position:relative;display:grid;grid-template-columns:10mm 1fr 14mm;flex:1;align-content:stretch}.p-general-work{height:14mm;overflow:hidden;border-top:.3mm solid #000;display:flex;flex-direction:column}.p-gw-header{background:#e0e0e0!important;color:#000!important;border-bottom:.3mm solid #000;height:4.5mm;display:flex;align-items:center;justify-content:center;font-size:10px;text-align:center}.p-notes-area{height:21mm;overflow:hidden;border-top:.3mm solid #000;display:flex;flex-direction:column}.p-notes-header{font-size:8px;padding:.8mm 2mm 0;line-height:1.1}.p-notes-area .p-print-layer{padding:0.4mm 2mm 0!important;line-height:6.1mm!important;font-size:10px!important}.p-taxi-main{flex:1;border:.3mm solid #000;display:flex;flex-direction:column}.p-taxi-row-info{height:7mm;font-weight:bold}.p-route-row{display:grid;grid-template-columns:15mm 1fr;border-bottom:.3mm solid #000;height:10mm;align-items:center}.p-route-head{width:100%;height:100%;background:#e0e0e0;font-size:9px;font-weight:bold;border-right:.3mm solid #000;display:flex;justify-content:center;align-items:center;border-bottom:.3mm solid #000}.p-route-val{padding:0 3mm;font-size:11px}.p-l-section-title{background:#e0e0e0!important;color:#000!important;border-bottom:.3mm solid #000;padding:1.5mm 3mm;font-weight:bold;font-size:10px}.p-fee-grid{display:grid;grid-template-columns:1fr 30mm;border-bottom:.2mm dotted #666;height:7.5mm;align-items:center;padding:0 4mm;font-size:10px}.p-total-row{background:#f0f0f0;height:10mm;font-weight:bold;font-size:12px;border-top:.4mm solid #000;border-bottom:.3mm solid #000}.p-taxi-memo-area{flex:1;display:flex;flex-direction:column}.p-taxi-memo-area .p-print-layer{top:0!important;padding:0 .8mm!important;line-height:1!important;font-size:10px!important;overflow:hidden!important}.p-memo-lines{display:grid!important;grid-template-rows:repeat(3,1fr)!important}.p-memo-lines>div{display:flex;align-items:center;white-space:nowrap;overflow:hidden}.p-copy-label{background:#fff!important;color:#000!important;border:.2mm solid #000;font-size:8.5px;font-weight:500;line-height:1.15;padding:.8mm 1.6mm;border-radius:0;letter-spacing:0;white-space:nowrap}.p-sign-panel{width:50mm;height:14mm;border:.25mm solid #000;display:grid;grid-template-columns:1fr 1fr;background:#fff;margin-top:.9mm;font-size:7.2px;font-weight:700}.p-sign-cell{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:.6mm;gap:.45mm}.p-sign-cell:first-child{border-right:.25mm solid #000}.p-sign-square{width:19mm;height:8.5mm;border:.25mm solid #000;background:#fff}.p-sign-name{font-size:10px;font-weight:900;line-height:1.1;text-align:center;word-break:break-all;padding:1mm}.p-punch-guide{position:absolute;left:1.5mm;top:75mm;width:8mm;height:0;border-top:.35mm solid #000;z-index:200}.p-punch-guide::after{content:\"\";position:absolute;left:-1.3mm;top:-1mm;width:0;height:0;border-top:1mm solid transparent;border-bottom:1mm solid transparent;border-right:1.8mm solid #000}.p-fare-note{display:inline-block;font-size:10px;color:#000!important;font-weight:900;margin-left:3mm;letter-spacing:.2px;white-space:nowrap}.p-shopping-money-box{width:40mm;border-left:.3mm dashed #000;padding:.2mm 2mm;font-size:7.5px;background:#fff}.p-shopping-money-labels,.p-shopping-money-symbols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5mm;text-align:center}.p-shopping-money-symbols{padding-top:.5mm}.page.sparse-care .p-svc-content,.page.sparse-care .p-row-precheck>.p-flex,.page.sparse-care .p-item-cell>*,.page.sparse-care .p-shopping-money-box>*,.page.sparse-care .p-general-work .p-print-layer,.page.sparse-care .p-notes-area .p-print-layer{visibility:hidden!important}.page.sparse-care .p-item-cell,.page.sparse-care .p-svc-content,.page.sparse-care .p-row-precheck>.p-flex,.page.sparse-care .p-shopping-money-box{background:#fff!important}\n@media screen {.print-sheet {display:none!important}}\n@media print {\n @page{size:A4 portrait;margin:0}\n html,body{margin:0!important;padding:0!important;background:white!important}\n .print-sheet{display:block!important;width:210mm!important;margin:0!important;color:#000!important;font-size:12pt;line-height:1.5}\n .print-sheet .half-page{height:auto;min-height:148.5mm;padding:12mm 12mm 10mm;overflow:visible;font-family:\"Yu Gothic\",Meiryo,sans-serif}\n .print-sheet .p-header{min-height:30mm;height:auto;gap:3mm;align-items:stretch;margin-bottom:4mm}\n .print-sheet .p-h-left{width:46%;min-width:0;gap:5mm;height:auto;justify-content:space-between}\n .print-sheet .p-h-center{flex:1;min-width:0;height:auto;gap:2mm;padding:0}\n .print-sheet .p-h-right{width:8mm;height:auto;flex-shrink:0}\n .print-sheet .p-h-center .p-flex{font-size:10pt!important;line-height:1.5!important;flex-wrap:wrap}\n .print-sheet .p-h-center .p-fs-8{width:21mm!important;flex-shrink:0;line-height:1.5!important}\n .print-sheet .p-h-center .p-val{font-size:10pt!important;font-family:inherit!important}\n .print-sheet .quote-date{flex:1;white-space:normal;overflow-wrap:anywhere;font-size:10pt}\n .print-sheet .p-val{overflow-wrap:anywhere;white-space:normal;padding-bottom:1mm}\n .print-sheet .p-taxi-main{min-height:90mm;height:auto;display:flex;flex-direction:column}\n .print-sheet .p-taxi-row-info{height:auto;min-height:10mm;flex-wrap:wrap;font-size:10pt}\n .print-sheet .p-taxi-row-info>div{font-size:10pt!important;min-height:10mm;line-height:1.4;padding:1mm;overflow-wrap:anywhere}\n .print-sheet .p-taxi-row-info>div:nth-child(2){width:44mm!important}\n .print-sheet .p-chk{font-size:10pt}\n .print-sheet .p-route-row{min-height:10mm;height:auto;display:flex;border-bottom:.25mm solid #000}\n .print-sheet .p-route-head{width:24mm;flex-shrink:0;display:flex;align-items:center;padding:2mm;background:#eee;border-right:.25mm solid #000;border-bottom:0;font-size:11pt}\n .print-sheet .p-route-val{flex:1;min-width:0;padding:2mm;white-space:normal;overflow-wrap:anywhere;font-size:12pt}\n .print-sheet .quote-schedule{padding:2mm;border-bottom:.25mm solid #000;font-size:11pt;white-space:pre-wrap;line-height:1.5}\n /* Fixed 7.5mm rows clipped two-line details. Let content set row height. */\n .print-sheet .p-fee-grid{display:grid;grid-template-columns:minmax(0,1fr) 29mm;gap:2mm;height:auto;min-height:11mm;align-items:center;border-bottom:.2mm solid #aaa;padding:2mm 0 2.5mm;font-size:12pt;line-height:1.5;break-inside:avoid;flex-shrink:0}\n .print-sheet .p-fee-grid>span{min-width:0;overflow-wrap:anywhere}\n .print-sheet .p-fare-note{display:block;font-size:11pt;line-height:1.5;margin:1mm 0 0 3mm;white-space:normal;overflow-wrap:anywhere;letter-spacing:0}\n .print-sheet .p-total-row{height:auto;min-height:14mm;font-size:14pt;line-height:1.5;font-weight:bold;border-top:.3mm solid #000;border-bottom:.3mm solid #000;align-items:center;gap:3mm;break-inside:avoid}\n .print-sheet .p-total-row>span:last-child{font-size:18pt!important;white-space:nowrap}\n .print-sheet .p-taxi-memo-area{min-height:24mm;height:auto;flex-shrink:0;break-inside:avoid}\n .print-sheet .p-lined-container{height:auto;min-height:16mm}\n .print-sheet .p-line-row{display:none}\n .print-sheet .p-taxi-memo-area .p-print-layer{position:static!important;display:block!important;padding:2mm!important;line-height:1.5!important;white-space:pre-wrap;overflow-wrap:anywhere;font-size:11pt!important;overflow:visible!important}\n .print-sheet .p-copy-label{writing-mode:vertical-rl;font-size:12pt}\n .print-sheet .p-l-section-title{padding:2mm;background:#eee;font-size:13pt;font-weight:bold}\n .print-sheet .p-fs-14{font-size:19pt;line-height:1.4;letter-spacing:0!important}\n .print-sheet .p-fs-10{font-size:12pt}.print-sheet .p-fs-8{font-size:10pt;line-height:1.5}.print-sheet .p-fs-7{font-size:10pt;line-height:1.5}\n}\n\n\u003c/style>\u003c/head>\u003cbody>\n\u003cmain class=\"shell\">\u003cheader class=\"top\">\u003cdiv>\u003ch1>きらら \u003cspan style=\"font-weight:500\">見積もり\u003c/span>\u003c/h1>\u003csmall>介護タクシー きらら\u003c/small>\u003c/div>\u003cbutton id=\"reset\">新しい見積\u003c/button>\u003c/header>\n\u003cdiv class=\"result\" aria-live=\"polite\" aria-atomic=\"true\">\u003cdiv>概算合計\u003csmall id=\"resultMode\">実費・片道\u003c/small>\u003c/div>\u003cdiv class=\"total\" id=\"total\">1,300円\u003c/div>\u003c/div>\n\u003csection class=\"card\" id=\"documentDetails\">\u003ch2>見積書に記載する内容\u003c/h2>\u003cdiv class=\"grid\">\u003clabel class=\"field\">お名前\u003cinput id=\"name\" maxlength=\"60\" autocomplete=\"off\" placeholder=\"氏名（様は自動で付きます）\">\u003c/label>\u003clabel class=\"field\">利用予定日\u003cinput id=\"visitDate\" type=\"date\">\u003c/label>\u003clabel class=\"field\">迎え先・乗車地\u003cinput id=\"pickup\" maxlength=\"120\">\u003c/label>\u003clabel class=\"field\">行き先・降車地\u003cinput id=\"destination\" maxlength=\"120\">\u003c/label>\u003clabel class=\"field\">行き・出発予定時刻\u003cinput id=\"departTime\" type=\"time\">\u003c/label>\u003clabel class=\"field\" id=\"scheduleBack\" hidden>帰り・出発予定時刻\u003cinput id=\"returnTime\" type=\"time\">\u003c/label>\u003c/div>\u003cdetails>\u003csummary>経由地・見積日・備考\u003c/summary>\u003clabel class=\"field\">経由地\u003cinput id=\"waypoint\" maxlength=\"120\">\u003c/label>\u003clabel class=\"field spacer\">見積日\u003cinput id=\"date\" type=\"date\">\u003c/label>\u003clabel class=\"field spacer\">備考\u003ctextarea id=\"memo\" maxlength=\"600\" rows=\"3\">\u003c/textarea>\u003c/label>\u003c/details>\u003c/section>\n\u003cdiv class=\"workspace\">\u003csection class=\"card\">\u003cdiv class=\"seg\" aria-label=\"片道・往復\">\u003cbutton type=\"button\" data-trip=\"one\" aria-pressed=\"true\">片道\u003c/button>\u003cbutton type=\"button\" data-trip=\"round\" aria-pressed=\"false\">往復\u003c/button>\u003c/div>\n\u003cdiv class=\"grid\">\u003clabel class=\"field\">料金区分\u003cselect id=\"mode\">\u003coption value=\"self\">実費\u003c/option>\u003coption value=\"care\">介護保険\u003c/option>\u003c/select>\u003c/label>\u003clabel class=\"field\" id=\"custodyField\" hidden>往復の拘束\u003cselect id=\"custody\">\u003coption value=\"continuous\">拘束継続・運賃時間を合算\u003c/option>\u003coption value=\"released\">いったん解放・片道ごと計算\u003c/option>\u003c/select>\u003c/label>\u003c/div>\n\u003cp class=\"muted\" id=\"rideHelp\">運賃対象時間を入力（待機・付き添いの時間を除く）。\u003c/p>\n\u003cdiv class=\"grid legs spacer\" id=\"legs\">\n\u003cdiv id=\"leg0\">\u003cdiv class=\"leg-title\" id=\"outLabel\">片道の時間\u003c/div>\u003cdiv class=\"stepper\">\u003cbutton data-step=\"-1\" data-target=\"outMinutes\" aria-label=\"行きの時間を1分減らす\">−\u003c/button>\u003cinput id=\"outMinutes\" aria-label=\"行きの運賃対象時間（分）\" type=\"number\" min=\"1\" max=\"1439\" step=\"1\" value=\"10\" inputmode=\"numeric\">\u003cbutton data-step=\"1\" data-target=\"outMinutes\" aria-label=\"行きの時間を1分増やす\">＋\u003c/button>\u003c/div>\u003cdiv class=\"unit\">分\u003c/div>\u003cdiv class=\"insurance-box\" data-care hidden>\u003clabel class=\"field\">算定区分\u003cselect id=\"units0\">\u003coption value=\"97\">日中 97単位\u003c/option>\u003coption value=\"194\">日中・2人介助 194単位\u003c/option>\u003coption value=\"121\">夜間早朝 121単位\u003c/option>\u003coption value=\"146\">深夜 146単位\u003c/option>\u003c/select>\u003c/label>\u003cdiv class=\"grid spacer\">\u003clabel class=\"field\">地域\u003cselect id=\"region0\">\u003coption value=\"0\">蒲郡市 10.00\u003c/option>\u003coption value=\"1\">幸田町 10.00\u003c/option>\u003coption value=\"2\">豊川市 10.00\u003c/option>\u003coption value=\"3\">豊橋市 10.21\u003c/option>\u003coption value=\"4\">岡崎市 10.42\u003c/option>\u003c/select>\u003c/label>\u003clabel class=\"field\">負担\u003cselect id=\"copay0\">\u003coption value=\"10\">1割\u003c/option>\u003coption value=\"20\">2割\u003c/option>\u003coption value=\"30\">3割\u003c/option>\u003c/select>\u003c/label>\u003c/div>\u003c/div>\u003clabel class=\"check spacer\">\u003cinput type=\"checkbox\" id=\"staff0\">増員30分 ＋2,000円\u003c/label>\u003c/div>\n\u003cdiv id=\"leg1\" hidden>\u003cdiv class=\"row between\">\u003cdiv class=\"leg-title\">帰りの時間\u003c/div>\u003cbutton id=\"same\" style=\"min-height:32px;padding:2px 6px;font-size:13px\">行きと同じ\u003c/button>\u003c/div>\u003cdiv class=\"stepper\">\u003cbutton data-step=\"-1\" data-target=\"backMinutes\" aria-label=\"帰りの時間を1分減らす\">−\u003c/button>\u003cinput id=\"backMinutes\" aria-label=\"帰りの運賃対象時間（分）\" type=\"number\" min=\"1\" max=\"1439\" step=\"1\" value=\"10\" inputmode=\"numeric\">\u003cbutton data-step=\"1\" data-target=\"backMinutes\" aria-label=\"帰りの時間を1分増やす\">＋\u003c/button>\u003c/div>\u003cdiv class=\"unit\">分\u003c/div>\u003cdiv class=\"insurance-box\" data-care hidden>\u003clabel class=\"field\">算定区分\u003cselect id=\"units1\">\u003coption value=\"97\">日中 97単位\u003c/option>\u003coption value=\"194\">日中・2人介助 194単位\u003c/option>\u003coption value=\"121\">夜間早朝 121単位\u003c/option>\u003coption value=\"146\">深夜 146単位\u003c/option>\u003c/select>\u003c/label>\u003cdiv class=\"grid spacer\">\u003clabel class=\"field\">地域\u003cselect id=\"region1\">\u003coption value=\"0\">蒲郡市 10.00\u003c/option>\u003coption value=\"1\">幸田町 10.00\u003c/option>\u003coption value=\"2\">豊川市 10.00\u003c/option>\u003coption value=\"3\">豊橋市 10.21\u003c/option>\u003coption value=\"4\">岡崎市 10.42\u003c/option>\u003c/select>\u003c/label>\u003clabel class=\"field\">負担\u003cselect id=\"copay1\">\u003coption value=\"10\">1割\u003c/option>\u003coption value=\"20\">2割\u003c/option>\u003coption value=\"30\">3割\u003c/option>\u003c/select>\u003c/label>\u003c/div>\u003c/div>\u003clabel class=\"check spacer\">\u003cinput type=\"checkbox\" id=\"staff1\">増員30分 ＋2,000円\u003c/label>\u003c/div>\n\u003c/div>\n\u003ch3>待機・付き添い\u003c/h3>\u003cdiv id=\"services\">\u003c/div>\u003cdiv class=\"row spacer\">\u003cbutton id=\"addWait\">＋ 待機\u003c/button>\u003cbutton id=\"addEscort\">＋ 付き添い\u003c/button>\u003c/div>\u003cp class=\"muted\">別々の待機・付き添いは分けて追加。各回で料金を計算します。\u003c/p>\n\u003cp class=\"message\" id=\"validation\" role=\"alert\">\u003c/p>\u003c/section>\n\u003csection class=\"card\">\u003ch2>見積内訳\u003c/h2>\u003ctable>\u003cthead>\u003ctr>\u003cth>項目・計算内容\u003c/th>\u003cth>金額\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody id=\"breakdown\">\u003c/tbody>\u003ctfoot>\u003ctr>\u003ctd>合計\u003c/td>\u003ctd id=\"tableTotal\">1,300円\u003c/td>\u003c/tr>\u003c/tfoot>\u003c/table>\n\n\u003cdiv class=\"actions\">\u003cbutton class=\"primary\" id=\"print\">見積書を印刷／PDF保存\u003c/button>\u003cbutton id=\"copy\">金額・内訳をコピー\u003c/button>\u003cbutton id=\"saveFile\">見積データを保存\u003c/button>\u003cbutton id=\"loadFile\">見積データを開く\u003c/button>\u003cbutton id=\"ratesButton\">料金表を確認\u003c/button>\u003c/div>\u003cinput hidden type=\"file\" id=\"fileInput\" accept=\"application/json,.json\">\u003cp class=\"message\" id=\"message\" role=\"status\">\u003c/p>\u003ctextarea class=\"copy-area\" id=\"copyFallback\" aria-label=\"コピー用の見積内容\" readonly hidden>\u003c/textarea>\u003cp class=\"storage\" id=\"storageState\">入力はこの端末に自動保存されます。\u003c/p>\n\u003c/section>\u003c/div>\n\u003cdetails class=\"card\" id=\"rates\">\u003csummary>料金設定・計算方法\u003c/summary>\u003cp class=\"muted\">添付メーターの設定に準拠（2026年9月11日版）。金額への消費税の追加計算はありません。\u003c/p>\u003ctable class=\"rules\">\u003ctbody>\n\u003ctr>\u003ctd>実費運賃\u003c/td>\u003ctd>10分まで1,300円。以後10分ごと1,300円。端数切上げ。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>往復\u003c/td>\u003ctd>拘束継続：行き＋帰りの運賃対象時間を合算して切上げ。いったん解放：行き・帰りをそれぞれ切上げて合計。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>付き添い\u003c/td>\u003ctd>各回10分ごと500円。端数切上げ。長時間割引なし。0分は0円。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>待機\u003c/td>\u003ctd>各回1〜10分500円、11〜20分1,000円、21〜30分1,500円、31〜60分2,500円、61〜120分5,000円、121〜180分7,500円。30分を超えたら60分ごとの切上げ×2,500円。0分は0円。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>スタッフ増員\u003c/td>\u003ctd>30分2,000円。各片道で「なし／2,000円」を選択。人数・延長時間での自動加算はありません。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>介護保険単位\u003c/td>\u003ctd>通院等乗降介助：日中97単位、日中・2人介助194単位、夜間早朝121単位、深夜146単位。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>地域単価\u003c/td>\u003ctd>蒲郡市・幸田町・豊川市：10.00円／単位。豊橋市：10.21円／単位。岡崎市：10.42円／単位。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>負担割合\u003c/td>\u003ctd>1割・2割・3割。単位数×地域単価の1円未満を切捨て、その額×負担割合の1円未満を切捨て。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>介護保険モード\u003c/td>\u003ctd>片道ごとの自己負担＋待機＋付き添い＋増員。元メーターの計算どおり、時間制運賃は加算しません。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>時間の入力\u003c/td>\u003ctd>待機・付き添いを除いた運賃対象時間を入力。運賃と追加サービスで同じ時間を二重計上しません。往復の拘束状態は見積時に選択します。\u003c/td>\u003c/tr>\u003ctr>\u003ctd>その他\u003c/td>\u003ctd>車いす・階段介助・障害者割引などの独立した金額設定は、添付メーターにありません。\u003c/td>\u003c/tr>\n\u003c/tbody>\u003c/table>\u003c/details>\u003c/main>\n\u003carticle class=\"print-sheet\" id=\"printSheet\">\u003c/article>\n\u003cscript>\n'use strict';\n/* Exact pricing primitives copied from the supplied meter. */\nfunction round10Fare(minutes, unit) {\n    minutes = Number(minutes || 0);\n    if (minutes \u003c= 0) return 0;\n    return Math.ceil(minutes / 10) * unit;\n  }\n\nfunction calcWaitingFare(minutes) {\n    minutes = Number(minutes || 0);\n    if (minutes \u003c= 0) return 0;\n\n    // 30分までは通常どおり10分ごと500円。\n    // 30分を超える待機は、1時間単位の上限2,500円で計算する。\n    // 例：1時間まで2,500円、2時間まで5,000円、3時間まで7,500円。\n    if (minutes \u003c= 30) return round10Fare(minutes, 500);\n    return Math.ceil(minutes / 60) * 2500;\n  }\n\nfunction round10Minutes(minutes) {\n    minutes = Number(minutes || 0);\n    if (minutes \u003c= 0) return 0;\n    return Math.ceil(minutes / 10) * 10;\n  }\n\nfunction baseFareByCustody(outboundMinutes, returnMinutes, continuous) {\n    outboundMinutes = Number(outboundMinutes || 0);\n    returnMinutes = Number(returnMinutes || 0);\n    if (continuous) return round10Fare(outboundMinutes + returnMinutes, 1300);\n    return round10Fare(outboundMinutes, 1300) + round10Fare(returnMinutes, 1300);\n  }\n\nfunction billedMinutesByCustody(outboundMinutes, returnMinutes, continuous) {\n    outboundMinutes = Number(outboundMinutes || 0);\n    returnMinutes = Number(returnMinutes || 0);\n    if (continuous) return round10Minutes(outboundMinutes + returnMinutes);\n    return round10Minutes(outboundMinutes) + round10Minutes(returnMinutes);\n  }\nconst $=id=>document.getElementById(id), yen=n=>Number(n).toLocaleString('ja-JP')+'円';\nconst REGIONS=[['蒲郡市',10],['幸田町',10],['豊川市',10],['豊橋市',10.21],['岡崎市',10.42]];\nconst KEY='kirara_standalone_quote_20260911';\nconst fieldIds=['mode','custody','outMinutes','backMinutes','units0','units1','region0','region1','copay0','copay1','staff0','staff1','name','date','pickup','destination','memo','visitDate','departTime','returnTime','waypoint'];\nlet trip='one',services=[],serial=0,lastResult=null;\nfunction today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}\nfunction esc(s){return String(s??'').replace(/[&\u003c>\"']/g,c=>({'&':'&amp;','\u003c':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]))}\nfunction number(id){return Number($(id).value)}\nfunction getData(){const fields={};for(const id of fieldIds)fields[id]=$(id).type==='checkbox'?$(id).checked:$(id).value;return {format:'kirara-quote',version:1,trip,fields,services:services.map(s=>({...s}))}}\nfunction saveDraft(){try{localStorage.setItem(KEY,JSON.stringify(getData()));$('storageState').textContent='入力はこの端末に自動保存されています。'}catch(e){$('storageState').textContent='この開き方では自動保存を利用できません。「見積データを保存」で残せます。'}}\nfunction checkData(d){\n if(!d||d.format!=='kirara-quote'||d.version!==1||!['one','round'].includes(d.trip)||!d.fields||!Array.isArray(d.services)||d.services.length>100)throw Error('きらら見積もりのデータではありません。');\n for(const id of ['visitDate','departTime','returnTime','waypoint'])if(d.fields[id]===undefined)d.fields[id]='';\n for(const id of fieldIds){const v=d.fields[id];if($(id).type==='checkbox'){if(typeof v!=='boolean')throw Error('増員のデータが不正です。')}else if(typeof v!=='string'||v.length>1000)throw Error('入力データが不正です。');if($(id).tagName==='SELECT'&&![...$(id).options].some(o=>o.value===v))throw Error('料金設定が一致しません。');}\n for(const s of d.services)if(!s||!['wait','escort'].includes(s.kind)||!['string','number'].includes(typeof s.minutes)||!Number.isInteger(Number(s.minutes))||Number(s.minutes)\u003c0||Number(s.minutes)>1439)throw Error('待機・付き添いの時間が不正です。');\n\n return d;\n}\nfunction restore(d){checkData(d);trip=d.trip;for(const id of fieldIds){if($(id).type==='checkbox')$(id).checked=d.fields[id];else $(id).value=d.fields[id];}services=d.services.map(s=>({id:++serial,kind:s.kind,minutes:s.minutes}));renderServices();render();}\nfunction renderServices(){\n $('services').innerHTML=services.map(s=>`\u003cdiv class=\"service\" data-id=\"${s.id}\">\u003clabel class=\"field\">区分\u003cselect data-kind=\"${s.id}\" aria-label=\"追加サービスの区分\">\u003coption value=\"wait\" ${s.kind==='wait'?'selected':''}>待機\u003c/option>\u003coption value=\"escort\" ${s.kind==='escort'?'selected':''}>付き添い\u003c/option>\u003c/select>\u003c/label>\u003clabel class=\"field\">予定時間（分）\u003cinput type=\"number\" min=\"0\" max=\"1439\" step=\"1\" inputmode=\"numeric\" data-minutes=\"${s.id}\" value=\"${esc(s.minutes)}\">\u003c/label>\u003cdiv class=\"right\">\u003cspan class=\"fee\" id=\"fee${s.id}\">\u003c/span>\u003cbutton class=\"remove\" data-remove=\"${s.id}\" aria-label=\"この${s.kind==='wait'?'待機':'付き添い'}を削除\">削除\u003c/button>\u003c/div>\u003c/div>`).join('');\n}\nfunction calculate(){\n const care=$('mode').value==='care',round=trip==='round',rows=[],errors=[];\n const a=number('outMinutes'),b=number('backMinutes');\n if(!care){for(const id of round?['outMinutes','backMinutes']:['outMinutes'])if(!$(id).value||!$(id).validity.valid)errors.push((id==='outMinutes'?'行き':'帰り')+'は1〜1,439分の整数で入力してください。');}\n if(!care){if(round){const continuous=$('custody').value==='continuous';const fare=baseFareByCustody(a,b,continuous);rows.push({label:'往復運賃',detail:continuous?`${a}分＋${b}分＝${a+b}分 → ${billedMinutesByCustody(a,b,true)}分扱い`:`行き${a}分 → ${round10Minutes(a)}分、帰り${b}分 → ${round10Minutes(b)}分`,amount:fare});}else rows.push({label:'片道運賃',detail:`${a}分 → ${round10Minutes(a)}分扱い`,amount:round10Fare(a,1300)});}\n else {for(let i=0;i\u003c(round?2:1);i++){const units=number('units'+i),region=REGIONS[number('region'+i)],rate=number('copay'+i);const gross=Math.floor(units*region[1]),amount=Math.floor(gross*rate/100);rows.push({label:(round?(i?'帰り':'行き'):'片道')+'・介護保険自己負担',detail:`${units}単位 × ${region[1].toFixed(2)}円（${region[0]}）→ ${yen(gross)} × ${rate/10}割`,amount});}}\n services.forEach((s,i)=>{const min=Number(s.minutes);if(String(s.minutes)===''||!Number.isInteger(min)||min\u003c0||min>1439)errors.push(`追加サービス${i+1}は0〜1,439分の整数で入力してください。`);const amount=s.kind==='wait'?calcWaitingFare(min):round10Fare(min,500);rows.push({label:s.kind==='wait'?'待機':'付き添い',detail:`${min}分（${i+1}件目）`,amount});});\n for(let i=0;i\u003c(round?2:1);i++)if($('staff'+i).checked)rows.push({label:'スタッフ増員30分',detail:round?(i?'帰り':'行き'):'片道',amount:2000});\n return {rows,errors,total:rows.reduce((t,r)=>t+r.amount,0),care,round};\n}\nfunction render(){\n const care=$('mode').value==='care',round=trip==='round';\n document.querySelectorAll('[data-trip]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.trip===trip)));\n $('scheduleBack').hidden=!round;$('leg1').hidden=!round;$('custodyField').hidden=!round||care;$('outLabel').textContent=round?'行きの予定時間':'片道の予定時間';\n document.querySelectorAll('[data-care]').forEach(e=>e.hidden=!care);document.querySelectorAll('.stepper,.unit').forEach(e=>e.hidden=false);\n $('rideHelp').textContent=care?'介護保険自己負担と追加サービスを計算します。': '運賃対象時間を入力（待機・付き添いの時間を除く）。';\n const r=calculate();lastResult=r;const invalid=r.errors.length>0;\n $('validation').textContent=r.errors.join('\\n');$('total').textContent=invalid?'—':yen(r.total);$('tableTotal').textContent=invalid?'—':yen(r.total);\n $('resultMode').textContent=(care?'介護保険':'実費')+'・'+(round?'往復':'片道')+(!care&&round?($('custody').value==='continuous'?'・拘束継続':'・解放あり'):'');\n $('breakdown').innerHTML=invalid?'\u003ctr>\u003ctd colspan=\"2\">入力時間を確認してください。\u003c/td>\u003c/tr>':r.rows.map(row=>`\u003ctr>\u003ctd>${esc(row.label)}\u003cdiv class=\"muted\">${esc(row.detail)}\u003c/div>\u003c/td>\u003ctd>${yen(row.amount)}\u003c/td>\u003c/tr>`).join('');\n services.forEach(s=>{const m=Number(s.minutes);$('fee'+s.id).textContent=String(s.minutes)===''||!Number.isInteger(m)||m\u003c0||m>1439?'—':yen(s.kind==='wait'?calcWaitingFare(m):round10Fare(m,500));});\n for(const id of ['print','copy','saveFile'])$(id).disabled=invalid;\n $('copyFallback').hidden=true;saveDraft();buildPrint();\n}\nfunction scheduleText(){\n const parts=[];\n if($('visitDate').value)parts.push('利用予定日 '+$('visitDate').value);\n if($('departTime').value)parts.push('行き 出発予定 '+$('departTime').value);\n if(trip==='round'&&$('returnTime').value)parts.push('帰り 出発予定 '+$('returnTime').value);\n parts.push(trip==='round'?'運賃対象予定：行き'+$('outMinutes').value+'分／帰り'+$('backMinutes').value+'分':'運賃対象予定：'+$('outMinutes').value+'分');\n return parts.join('　');\n}\nfunction buildPrint(){\n if(!lastResult||lastResult.errors.length){$('printSheet').textContent='入力内容を確認してください。';return;}\n const r=lastResult;\n const d={userName:$('name').value,startPlace:$('pickup').value,endPlace:$('destination').value,waypoint:$('waypoint').value,reservationId:$('date').value,memo:$('memo').value,tripType:trip==='round'?'往復':'行き',billingMode:r.care?'介護保険':'実費',totalFare:r.total,rentalFare:0,careCoPay:r.rows.filter(x=>x.label.includes('自己負担')).reduce((t,x)=>t+x.amount,0)};\n const date=$('visitDate').value;const parts=date?date.split('-').map(Number):[];const [y='',m='',day='']=parts;const dow=parts.length===3?['日','月','火','水','木','金','土'][new Date(y,m-1,day).getDay()]:'';\n const chk='☑',box='□',isCombinedRound=trip==='round';const formatYen=yen;\n const ride=r.rows.find(x=>x.label.includes('運賃'));\n const basicFareText=ride?esc(ride.detail+'　'+yen(ride.amount)):'';\n const serviceRows=kind=>r.rows.filter(x=>x.label===kind);\n const escortFare=serviceRows('付き添い').reduce((t,x)=>t+x.amount,0),waitingFare=serviceRows('待機').reduce((t,x)=>t+x.amount,0);\n const escortLineText=esc(serviceRows('付き添い').map(x=>x.detail+' '+yen(x.amount)).join('／')||'なし');\n const waitingLineText=esc(serviceRows('待機').map(x=>x.detail+' '+yen(x.amount)).join('／')||'なし');\n const staff=r.rows.filter(x=>x.label==='スタッフ増員30分');const otherOnlyFare=staff.reduce((t,x)=>t+x.amount,0),otherOnlyLineText=esc(staff.map(x=>x.detail+' 増員30分').join('／')||'なし');\n $('printSheet').innerHTML=`\u003cdiv class=\"half-page\">\u003cdiv class=\"p-header p-flex\">\u003cdiv class=\"p-h-left p-flex-col\">\u003cdiv class=\"p-fs-14\" style=\"letter-spacing:2px;\">移送サービス見積書\u003c/div>\u003cdiv class=\"p-flex\" style=\"align-items:flex-end;\">\u003cspan class=\"p-fs-10\">お名前\u003c/span>\u003cspan class=\"p-val\" style=\"flex:1; margin:0 2mm;\">${esc(d.userName)}\u003c/span>\u003cspan class=\"p-fs-10\">様\u003c/span>\u003c/div>\u003c/div>\u003cdiv class=\"p-h-center p-flex-col p-space-between\">\u003cdiv class=\"p-flex\" style=\"align-items:flex-end;margin-bottom:.8mm;\">\u003cdiv class=\"p-fs-8\" style=\"width:14mm;line-height:1.2;\">発行元\u003c/div>\u003cdiv class=\"p-val\" style=\"flex:1;font-size:10px;\">介護タクシー きらら\u003c/div>\u003c/div>\u003cdiv class=\"p-flex\" style=\"align-items:flex-end;margin-bottom:.8mm;\">\u003cdiv class=\"p-fs-8\" style=\"width:14mm;line-height:1.2;\">利用予定日\u003c/div>\u003cdiv class=\"quote-date\">${esc(y)}年${esc(m)}月${esc(day)}日（${esc(dow)}）\u003c/div>\u003c/div>\u003cdiv class=\"p-flex\" style=\"align-items:flex-end;\">\u003cdiv class=\"p-fs-8\" style=\"width:14mm;line-height:1.1;\">見積日\u003c/div>\u003cdiv class=\"p-val\" style=\"flex:1;font-size:10px;font-family:monospace;\">${esc(d.reservationId)}\u003c/div>\u003c/div>\u003c/div>\u003cdiv class=\"p-h-right p-flex\">\u003cdiv class=\"p-copy-label\">見積書\u003c/div>\u003c/div>\u003c/div>\u003cdiv class=\"p-taxi-main\">\u003cdiv class=\"p-flex p-border-bottom p-fs-8 p-taxi-row-info\">\u003cdiv class=\"p-center p-border-right\" style=\"width:12mm;background:#e0e0e0;\">区分\u003c/div>\u003cdiv class=\"p-center p-border-right\" style=\"width:42mm;font-size:8px;\">\u003cspan class=\"p-chk\">${(!isCombinedRound&&d.tripType==='行き')?chk:box}\u003c/span>行き\u003cspan class=\"p-chk\" style=\"margin-left:2mm;\">${(!isCombinedRound&&d.tripType==='帰り')?chk:box}\u003c/span>帰り\u003cspan class=\"p-chk\" style=\"margin-left:2mm;\">${isCombinedRound?chk:box}\u003c/span>往復\u003c/div>\u003cdiv class=\"p-center p-border-right\" style=\"width:15mm;background:#e0e0e0;\">利用形態\u003c/div>\u003cdiv class=\"p-center p-border-right\" style=\"flex:1;\">\u003cspan class=\"p-chk\">${d.billingMode==='介護保険'?chk:box}\u003c/span>介護保険 \u003cspan class=\"p-chk\" style=\"margin-left:4mm;\">${d.billingMode!=='介護保険'?chk:box}\u003c/span>保険外\u003c/div>\u003c/div>\u003cdiv class=\"p-flex-col p-border-bottom\">\u003cdiv class=\"p-route-row\">\u003cdiv class=\"p-route-head\">乗車地\u003c/div>\u003cdiv class=\"p-route-val\">${esc(d.startPlace)}\u003c/div>\u003c/div>\u003cdiv class=\"p-route-row\">\u003cdiv class=\"p-route-head\">経由地\u003c/div>\u003cdiv class=\"p-route-val\">${esc(d.waypoint||'なし')}\u003c/div>\u003c/div>\u003cdiv class=\"p-route-row\" style=\"border-bottom:none;\">\u003cdiv class=\"p-route-head\">降車地\u003c/div>\u003cdiv class=\"p-route-val\">${esc(d.endPlace)}\u003c/div>\u003c/div>\u003c/div>\u003cdiv class=\"quote-schedule\">${esc(scheduleText())}\u003c/div>\u003cdiv class=\"p-l-section-title\">見積料金明細\u003c/div>\u003cdiv class=\"p-flex-col\" style=\"padding:1.0mm 8mm; flex:1;\">\u003cdiv class=\"p-fee-grid\">\u003cspan>・基本運賃（時間制）\u003cspan class=\"p-fare-note\">${basicFareText}\u003c/span>\u003c/span>\u003cspan>\u003c/span>\u003c/div>\u003cdiv class=\"p-fee-grid\">\u003cspan>・付き添い介助\u003cspan class=\"p-fare-note\">${escortLineText}\u003c/span>\u003c/span>\u003cspan style=\"text-align:right;\">${escortFare?formatYen(escortFare):''}\u003c/span>\u003c/div>\u003cdiv class=\"p-fee-grid\">\u003cspan>・待機料\u003cspan class=\"p-fare-note\">${waitingLineText}\u003c/span>\u003c/span>\u003cspan style=\"text-align:right;\">${waitingFare?formatYen(waitingFare):''}\u003c/span>\u003c/div>\u003cdiv class=\"p-fee-grid\">\u003cspan>・車いす / 機器レンタル\u003c/span>\u003cspan style=\"text-align:right;\">${d.rentalFare?formatYen(d.rentalFare):''}\u003c/span>\u003c/div>\u003cdiv class=\"p-fee-grid\">\u003cspan>・その他料金\u003cspan class=\"p-fare-note\">${otherOnlyLineText}\u003c/span>\u003c/span>\u003cspan style=\"text-align:right;\">${otherOnlyFare?formatYen(otherOnlyFare):''}\u003c/span>\u003c/div>\u003cdiv class=\"p-fee-grid\" style=\"border-bottom:none;\">\u003cspan>・介護保険自己負担額\u003c/span>\u003cspan style=\"text-align:right;\">${d.billingMode==='介護保険'?formatYen(d.careCoPay):''}\u003c/span>\u003c/div>\u003c/div>\u003cdiv class=\"p-total-row p-flex p-space-between\" style=\"padding:0 12mm;\">\u003cspan>概算お見積金額\u003c/span>\u003cspan style=\"font-size:14px;\">${formatYen(d.totalFare)}\u003c/span>\u003c/div>\u003cdiv class=\"p-taxi-memo-area\">\u003cdiv class=\"p-fs-8\" style=\"padding:1mm 2mm 0;\">備考\u003c/div>\u003cdiv class=\"p-lined-container\">\u003cdiv class=\"p-line-row\">\u003c/div>\u003cdiv class=\"p-line-row\">\u003c/div>\u003cdiv class=\"p-line-row\" style=\"border:none;\">\u003c/div>\u003cdiv class=\"p-print-layer p-memo-lines\">${esc(d.memo)}\u003c/div>\u003c/div>\u003c/div>\u003c/div>\u003cdiv class=\"p-fs-7\" style=\"margin-top:1mm;text-align:right;\">概算見積です。実際の運行内容により金額が変わる場合があります。\u003c/div>\u003c/div>`;\n}\n\nfunction quoteText(){const r=lastResult;return ['介護タクシー きらら　概算見積',$('name').value?$('name').value+' 様':'',$('date').value,$('resultMode').textContent,scheduleText(),[$('pickup').value,$('waypoint').value,$('destination').value].filter(Boolean).join(' → '),...r.rows.map(x=>`${x.label}：${x.detail}　${yen(x.amount)}`),'合計 '+yen(r.total),$('memo').value,'概算見積です。実際の運行内容により金額が変わる場合があります。'].filter(Boolean).join('\\n')}\nfunction addService(kind){services.push({id:++serial,kind,minutes:0});renderServices();render();}\nfunction download(data){const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='きらら見積_'+($('date').value||today())+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}\nfor(const id of fieldIds)$(id).addEventListener('input',()=>{ $('message').textContent='';render();});\ndocument.querySelectorAll('[data-trip]').forEach(b=>b.addEventListener('click',()=>{trip=b.dataset.trip;render();}));\ndocument.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',()=>{const f=$(b.dataset.target);f.value=Math.max(1,Math.min(1439,Number(f.value||1)+Number(b.dataset.step)));render();}));\n$('same').onclick=()=>{for(const [a,b] of [['outMinutes','backMinutes'],['units0','units1'],['region0','region1'],['copay0','copay1']])$(b).value=$(a).value;$('staff1').checked=$('staff0').checked;render();};\n$('services').addEventListener('input',e=>{const id=Number(e.target.dataset.minutes||e.target.dataset.kind),s=services.find(s=>s.id===id);if(!s)return;if(e.target.dataset.minutes)s.minutes=e.target.value;else s.kind=e.target.value;render();});\n$('services').addEventListener('click',e=>{const id=Number(e.target.dataset.remove);if(!id)return;services=services.filter(s=>s.id!==id);renderServices();render();});\n$('addWait').onclick=()=>addService('wait');$('addEscort').onclick=()=>addService('escort');\n$('print').onclick=()=>{buildPrint();window.print();};window.addEventListener('beforeprint',buildPrint);\n$('copy').onclick=async()=>{const t=quoteText();try{if(!navigator.clipboard)throw Error();await navigator.clipboard.writeText(t);$('message').textContent='金額と内訳をコピーしました。';}catch(e){$('copyFallback').value=t;$('copyFallback').hidden=false;$('copyFallback').focus();$('copyFallback').select();$('message').textContent='下の文章を選択してコピーできます。';}};\n$('saveFile').onclick=()=>{download(getData());$('message').textContent='見積データを保存しました。「見積データを開く」で再編集できます。';};\n$('loadFile').onclick=()=>$('fileInput').click();$('fileInput').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>200000)throw Error('ファイルが大きすぎます。');const d=checkData(JSON.parse(await f.text()));if(!confirm('現在の入力を、選んだ見積データに置き換えますか？'))return;restore(d);$('message').textContent='見積データを読み込みました。';}catch(err){$('message').textContent='読み込めません：'+err.message;}finally{e.target.value='';}};\n$('ratesButton').onclick=()=>{$('rates').open=true;$('rates').scrollIntoView({behavior:'smooth',block:'start'});};\n$('reset').onclick=()=>{if(!confirm('入力を消して新しい見積を始めますか？'))return;trip='one';services=[];for(const id of fieldIds){const e=$(id);if(e.type==='checkbox')e.checked=false;else if(e.tagName==='SELECT')e.selectedIndex=0;else e.value='';}$('outMinutes').value='10';$('backMinutes').value='10';$('date').value=today();$('message').textContent='';renderServices();render();window.scrollTo({top:0,behavior:'smooth'});};\n$('date').value=today();try{const d=localStorage.getItem(KEY);if(d)restore(JSON.parse(d));}catch(e){$('message').textContent='前回の入力を復元できませんでした。保存した見積データがあれば開いてください。';}renderServices();render();\n\u003c/script>\u003c/body>\u003c/html>\n"</script>
 <script>
-'use strict';
-/* Exact pricing primitives copied from the supplied meter. */
-function round10Fare(minutes, unit) {
-    minutes = Number(minutes || 0);
-    if (minutes <= 0) return 0;
-    return Math.ceil(minutes / 10) * unit;
-  }
-
-function calcWaitingFare(minutes) {
-    minutes = Number(minutes || 0);
-    if (minutes <= 0) return 0;
-
-    // 30分までは通常どおり10分ごと500円。
-    // 30分を超える待機は、1時間単位の上限2,500円で計算する。
-    // 例：1時間まで2,500円、2時間まで5,000円、3時間まで7,500円。
-    if (minutes <= 30) return round10Fare(minutes, 500);
-    return Math.ceil(minutes / 60) * 2500;
-  }
-
-function round10Minutes(minutes) {
-    minutes = Number(minutes || 0);
-    if (minutes <= 0) return 0;
-    return Math.ceil(minutes / 10) * 10;
-  }
-
-function baseFareByCustody(outboundMinutes, returnMinutes, continuous) {
-    outboundMinutes = Number(outboundMinutes || 0);
-    returnMinutes = Number(returnMinutes || 0);
-    if (continuous) return round10Fare(outboundMinutes + returnMinutes, 1300);
-    return round10Fare(outboundMinutes, 1300) + round10Fare(returnMinutes, 1300);
-  }
-
-function billedMinutesByCustody(outboundMinutes, returnMinutes, continuous) {
-    outboundMinutes = Number(outboundMinutes || 0);
-    returnMinutes = Number(returnMinutes || 0);
-    if (continuous) return round10Minutes(outboundMinutes + returnMinutes);
-    return round10Minutes(outboundMinutes) + round10Minutes(returnMinutes);
-  }
-const $=id=>document.getElementById(id), yen=n=>Number(n).toLocaleString('ja-JP')+'円';
-const REGIONS=[['蒲郡市',10],['幸田町',10],['豊川市',10],['豊橋市',10.21],['岡崎市',10.42]];
-const KEY='kirara_standalone_quote_20260911';
-const fieldIds=['mode','custody','outMinutes','backMinutes','units0','units1','region0','region1','copay0','copay1','staff0','staff1','name','date','pickup','destination','memo','visitDate','departTime','returnTime','waypoint'];
-let trip='one',services=[],serial=0,lastResult=null;
-function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function number(id){return Number($(id).value)}
-function getData(){const fields={};for(const id of fieldIds)fields[id]=$(id).type==='checkbox'?$(id).checked:$(id).value;return {format:'kirara-quote',version:1,trip,fields,services:services.map(s=>({...s}))}}
-function saveDraft(){try{localStorage.setItem(KEY,JSON.stringify(getData()));$('storageState').textContent='入力はこの端末に自動保存されています。'}catch(e){$('storageState').textContent='この開き方では自動保存を利用できません。「見積データを保存」で残せます。'}}
-function checkData(d){
- if(!d||d.format!=='kirara-quote'||d.version!==1||!['one','round'].includes(d.trip)||!d.fields||!Array.isArray(d.services)||d.services.length>100)throw Error('きらら見積もりのデータではありません。');
- for(const id of ['visitDate','departTime','returnTime','waypoint'])if(d.fields[id]===undefined)d.fields[id]='';
- for(const id of fieldIds){const v=d.fields[id];if($(id).type==='checkbox'){if(typeof v!=='boolean')throw Error('増員のデータが不正です。')}else if(typeof v!=='string'||v.length>1000)throw Error('入力データが不正です。');if($(id).tagName==='SELECT'&&![...$(id).options].some(o=>o.value===v))throw Error('料金設定が一致しません。');}
- for(const s of d.services)if(!s||!['wait','escort'].includes(s.kind)||!['string','number'].includes(typeof s.minutes)||!Number.isInteger(Number(s.minutes))||Number(s.minutes)<0||Number(s.minutes)>1439)throw Error('待機・付き添いの時間が不正です。');
-
- return d;
-}
-function restore(d){checkData(d);trip=d.trip;for(const id of fieldIds){if($(id).type==='checkbox')$(id).checked=d.fields[id];else $(id).value=d.fields[id];}services=d.services.map(s=>({id:++serial,kind:s.kind,minutes:s.minutes}));renderServices();render();}
-function renderServices(){
- $('services').innerHTML=services.map(s=>`<div class="service" data-id="${s.id}"><label class="field">区分<select data-kind="${s.id}" aria-label="追加サービスの区分"><option value="wait" ${s.kind==='wait'?'selected':''}>待機</option><option value="escort" ${s.kind==='escort'?'selected':''}>付き添い</option></select></label><label class="field">予定時間（分）<input type="number" min="0" max="1439" step="1" inputmode="numeric" data-minutes="${s.id}" value="${esc(s.minutes)}"></label><div class="right"><span class="fee" id="fee${s.id}"></span><button class="remove" data-remove="${s.id}" aria-label="この${s.kind==='wait'?'待機':'付き添い'}を削除">削除</button></div></div>`).join('');
-}
-function calculate(){
- const care=$('mode').value==='care',round=trip==='round',rows=[],errors=[];
- const a=number('outMinutes'),b=number('backMinutes');
- if(!care){for(const id of round?['outMinutes','backMinutes']:['outMinutes'])if(!$(id).value||!$(id).validity.valid)errors.push((id==='outMinutes'?'行き':'帰り')+'は1〜1,439分の整数で入力してください。');}
- if(!care){if(round){const continuous=$('custody').value==='continuous';const fare=baseFareByCustody(a,b,continuous);rows.push({label:'往復運賃',detail:continuous?`${a}分＋${b}分＝${a+b}分 → ${billedMinutesByCustody(a,b,true)}分扱い`:`行き${a}分 → ${round10Minutes(a)}分、帰り${b}分 → ${round10Minutes(b)}分`,amount:fare});}else rows.push({label:'片道運賃',detail:`${a}分 → ${round10Minutes(a)}分扱い`,amount:round10Fare(a,1300)});}
- else {for(let i=0;i<(round?2:1);i++){const units=number('units'+i),region=REGIONS[number('region'+i)],rate=number('copay'+i);const gross=Math.floor(units*region[1]),amount=Math.floor(gross*rate/100);rows.push({label:(round?(i?'帰り':'行き'):'片道')+'・介護保険自己負担',detail:`${units}単位 × ${region[1].toFixed(2)}円（${region[0]}）→ ${yen(gross)} × ${rate/10}割`,amount});}}
- services.forEach((s,i)=>{const min=Number(s.minutes);if(String(s.minutes)===''||!Number.isInteger(min)||min<0||min>1439)errors.push(`追加サービス${i+1}は0〜1,439分の整数で入力してください。`);const amount=s.kind==='wait'?calcWaitingFare(min):round10Fare(min,500);rows.push({label:s.kind==='wait'?'待機':'付き添い',detail:`${min}分（${i+1}件目）`,amount});});
- for(let i=0;i<(round?2:1);i++)if($('staff'+i).checked)rows.push({label:'スタッフ増員30分',detail:round?(i?'帰り':'行き'):'片道',amount:2000});
- return {rows,errors,total:rows.reduce((t,r)=>t+r.amount,0),care,round};
-}
-function render(){
- const care=$('mode').value==='care',round=trip==='round';
- document.querySelectorAll('[data-trip]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.trip===trip)));
- $('scheduleBack').hidden=!round;$('leg1').hidden=!round;$('custodyField').hidden=!round||care;$('outLabel').textContent=round?'行きの予定時間':'片道の予定時間';
- document.querySelectorAll('[data-care]').forEach(e=>e.hidden=!care);document.querySelectorAll('.stepper,.unit').forEach(e=>e.hidden=false);
- $('rideHelp').textContent=care?'介護保険自己負担と追加サービスを計算します。': '運賃対象時間を入力（待機・付き添いの時間を除く）。';
- const r=calculate();lastResult=r;const invalid=r.errors.length>0;
- $('validation').textContent=r.errors.join('\n');$('total').textContent=invalid?'—':yen(r.total);$('tableTotal').textContent=invalid?'—':yen(r.total);
- $('resultMode').textContent=(care?'介護保険':'実費')+'・'+(round?'往復':'片道')+(!care&&round?($('custody').value==='continuous'?'・拘束継続':'・解放あり'):'');
- $('breakdown').innerHTML=invalid?'<tr><td colspan="2">入力時間を確認してください。</td></tr>':r.rows.map(row=>`<tr><td>${esc(row.label)}<div class="muted">${esc(row.detail)}</div></td><td>${yen(row.amount)}</td></tr>`).join('');
- services.forEach(s=>{const m=Number(s.minutes);$('fee'+s.id).textContent=String(s.minutes)===''||!Number.isInteger(m)||m<0||m>1439?'—':yen(s.kind==='wait'?calcWaitingFare(m):round10Fare(m,500));});
- for(const id of ['print','copy','saveFile'])$(id).disabled=invalid;
- $('copyFallback').hidden=true;saveDraft();buildPrint();
-}
-function scheduleText(){
- const parts=[];
- if($('visitDate').value)parts.push('利用予定日 '+$('visitDate').value);
- if($('departTime').value)parts.push('行き 出発予定 '+$('departTime').value);
- if(trip==='round'&&$('returnTime').value)parts.push('帰り 出発予定 '+$('returnTime').value);
- parts.push(trip==='round'?'運賃対象予定：行き'+$('outMinutes').value+'分／帰り'+$('backMinutes').value+'分':'運賃対象予定：'+$('outMinutes').value+'分');
- return parts.join('　');
-}
-function buildPrint(){
- if(!lastResult||lastResult.errors.length){$('printSheet').textContent='入力内容を確認してください。';return;}
- const r=lastResult;
- const d={userName:$('name').value,startPlace:$('pickup').value,endPlace:$('destination').value,waypoint:$('waypoint').value,reservationId:$('date').value,memo:$('memo').value,tripType:trip==='round'?'往復':'行き',billingMode:r.care?'介護保険':'実費',totalFare:r.total,rentalFare:0,careCoPay:r.rows.filter(x=>x.label.includes('自己負担')).reduce((t,x)=>t+x.amount,0)};
- const date=$('visitDate').value;const parts=date?date.split('-').map(Number):[];const [y='',m='',day='']=parts;const dow=parts.length===3?['日','月','火','水','木','金','土'][new Date(y,m-1,day).getDay()]:'';
- const chk='☑',box='□',isCombinedRound=trip==='round';const formatYen=yen;
- const ride=r.rows.find(x=>x.label.includes('運賃'));
- const basicFareText=ride?esc(ride.detail+'　'+yen(ride.amount)):'';
- const serviceRows=kind=>r.rows.filter(x=>x.label===kind);
- const escortFare=serviceRows('付き添い').reduce((t,x)=>t+x.amount,0),waitingFare=serviceRows('待機').reduce((t,x)=>t+x.amount,0);
- const escortLineText=esc(serviceRows('付き添い').map(x=>x.detail+' '+yen(x.amount)).join('／')||'なし');
- const waitingLineText=esc(serviceRows('待機').map(x=>x.detail+' '+yen(x.amount)).join('／')||'なし');
- const staff=r.rows.filter(x=>x.label==='スタッフ増員30分');const otherOnlyFare=staff.reduce((t,x)=>t+x.amount,0),otherOnlyLineText=esc(staff.map(x=>x.detail+' 増員30分').join('／')||'なし');
- $('printSheet').innerHTML=`<div class="half-page"><div class="p-header p-flex"><div class="p-h-left p-flex-col"><div class="p-fs-14" style="letter-spacing:2px;">移送サービス見積書</div><div class="p-flex" style="align-items:flex-end;"><span class="p-fs-10">お名前</span><span class="p-val" style="flex:1; margin:0 2mm;">${esc(d.userName)}</span><span class="p-fs-10">様</span></div></div><div class="p-h-center p-flex-col p-space-between"><div class="p-flex" style="align-items:flex-end;margin-bottom:.8mm;"><div class="p-fs-8" style="width:14mm;line-height:1.2;">発行元</div><div class="p-val" style="flex:1;font-size:10px;">介護タクシー きらら</div></div><div class="p-flex" style="align-items:flex-end;margin-bottom:.8mm;"><div class="p-fs-8" style="width:14mm;line-height:1.2;">利用予定日</div><div class="quote-date">${esc(y)}年${esc(m)}月${esc(day)}日（${esc(dow)}）</div></div><div class="p-flex" style="align-items:flex-end;"><div class="p-fs-8" style="width:14mm;line-height:1.1;">見積日</div><div class="p-val" style="flex:1;font-size:10px;font-family:monospace;">${esc(d.reservationId)}</div></div></div><div class="p-h-right p-flex"><div class="p-copy-label">見積書</div></div></div><div class="p-taxi-main"><div class="p-flex p-border-bottom p-fs-8 p-taxi-row-info"><div class="p-center p-border-right" style="width:12mm;background:#e0e0e0;">区分</div><div class="p-center p-border-right" style="width:42mm;font-size:8px;"><span class="p-chk">${(!isCombinedRound&&d.tripType==='行き')?chk:box}</span>行き<span class="p-chk" style="margin-left:2mm;">${(!isCombinedRound&&d.tripType==='帰り')?chk:box}</span>帰り<span class="p-chk" style="margin-left:2mm;">${isCombinedRound?chk:box}</span>往復</div><div class="p-center p-border-right" style="width:15mm;background:#e0e0e0;">利用形態</div><div class="p-center p-border-right" style="flex:1;"><span class="p-chk">${d.billingMode==='介護保険'?chk:box}</span>介護保険 <span class="p-chk" style="margin-left:4mm;">${d.billingMode!=='介護保険'?chk:box}</span>保険外</div></div><div class="p-flex-col p-border-bottom"><div class="p-route-row"><div class="p-route-head">乗車地</div><div class="p-route-val">${esc(d.startPlace)}</div></div><div class="p-route-row"><div class="p-route-head">経由地</div><div class="p-route-val">${esc(d.waypoint||'なし')}</div></div><div class="p-route-row" style="border-bottom:none;"><div class="p-route-head">降車地</div><div class="p-route-val">${esc(d.endPlace)}</div></div></div><div class="quote-schedule">${esc(scheduleText())}</div><div class="p-l-section-title">見積料金明細</div><div class="p-flex-col" style="padding:1.0mm 8mm; flex:1;"><div class="p-fee-grid"><span>・基本運賃（時間制）<span class="p-fare-note">${basicFareText}</span></span><span></span></div><div class="p-fee-grid"><span>・付き添い介助<span class="p-fare-note">${escortLineText}</span></span><span style="text-align:right;">${escortFare?formatYen(escortFare):''}</span></div><div class="p-fee-grid"><span>・待機料<span class="p-fare-note">${waitingLineText}</span></span><span style="text-align:right;">${waitingFare?formatYen(waitingFare):''}</span></div><div class="p-fee-grid"><span>・車いす / 機器レンタル</span><span style="text-align:right;">${d.rentalFare?formatYen(d.rentalFare):''}</span></div><div class="p-fee-grid"><span>・その他料金<span class="p-fare-note">${otherOnlyLineText}</span></span><span style="text-align:right;">${otherOnlyFare?formatYen(otherOnlyFare):''}</span></div><div class="p-fee-grid" style="border-bottom:none;"><span>・介護保険自己負担額</span><span style="text-align:right;">${d.billingMode==='介護保険'?formatYen(d.careCoPay):''}</span></div></div><div class="p-total-row p-flex p-space-between" style="padding:0 12mm;"><span>概算お見積金額</span><span style="font-size:14px;">${formatYen(d.totalFare)}</span></div><div class="p-taxi-memo-area"><div class="p-fs-8" style="padding:1mm 2mm 0;">備考</div><div class="p-lined-container"><div class="p-line-row"></div><div class="p-line-row"></div><div class="p-line-row" style="border:none;"></div><div class="p-print-layer p-memo-lines">${esc(d.memo)}</div></div></div></div><div class="p-fs-7" style="margin-top:1mm;text-align:right;">概算見積です。実際の運行内容により金額が変わる場合があります。</div></div>`;
-}
-
-function quoteText(){const r=lastResult;return ['介護タクシー きらら　概算見積',$('name').value?$('name').value+' 様':'',$('date').value,$('resultMode').textContent,scheduleText(),[$('pickup').value,$('waypoint').value,$('destination').value].filter(Boolean).join(' → '),...r.rows.map(x=>`${x.label}：${x.detail}　${yen(x.amount)}`),'合計 '+yen(r.total),$('memo').value,'概算見積です。実際の運行内容により金額が変わる場合があります。'].filter(Boolean).join('\n')}
-function addService(kind){services.push({id:++serial,kind,minutes:0});renderServices();render();}
-function download(data){const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='きらら見積_'+($('date').value||today())+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-for(const id of fieldIds)$(id).addEventListener('input',()=>{ $('message').textContent='';render();});
-document.querySelectorAll('[data-trip]').forEach(b=>b.addEventListener('click',()=>{trip=b.dataset.trip;render();}));
-document.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',()=>{const f=$(b.dataset.target);f.value=Math.max(1,Math.min(1439,Number(f.value||1)+Number(b.dataset.step)));render();}));
-$('same').onclick=()=>{for(const [a,b] of [['outMinutes','backMinutes'],['units0','units1'],['region0','region1'],['copay0','copay1']])$(b).value=$(a).value;$('staff1').checked=$('staff0').checked;render();};
-$('services').addEventListener('input',e=>{const id=Number(e.target.dataset.minutes||e.target.dataset.kind),s=services.find(s=>s.id===id);if(!s)return;if(e.target.dataset.minutes)s.minutes=e.target.value;else s.kind=e.target.value;render();});
-$('services').addEventListener('click',e=>{const id=Number(e.target.dataset.remove);if(!id)return;services=services.filter(s=>s.id!==id);renderServices();render();});
-$('addWait').onclick=()=>addService('wait');$('addEscort').onclick=()=>addService('escort');
-$('print').onclick=()=>{buildPrint();window.print();};window.addEventListener('beforeprint',buildPrint);
-$('copy').onclick=async()=>{const t=quoteText();try{if(!navigator.clipboard)throw Error();await navigator.clipboard.writeText(t);$('message').textContent='金額と内訳をコピーしました。';}catch(e){$('copyFallback').value=t;$('copyFallback').hidden=false;$('copyFallback').focus();$('copyFallback').select();$('message').textContent='下の文章を選択してコピーできます。';}};
-$('saveFile').onclick=()=>{download(getData());$('message').textContent='見積データを保存しました。「見積データを開く」で再編集できます。';};
-$('loadFile').onclick=()=>$('fileInput').click();$('fileInput').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>200000)throw Error('ファイルが大きすぎます。');const d=checkData(JSON.parse(await f.text()));if(!confirm('現在の入力を、選んだ見積データに置き換えますか？'))return;restore(d);$('message').textContent='見積データを読み込みました。';}catch(err){$('message').textContent='読み込めません：'+err.message;}finally{e.target.value='';}};
-$('ratesButton').onclick=()=>{$('rates').open=true;$('rates').scrollIntoView({behavior:'smooth',block:'start'});};
-$('reset').onclick=()=>{if(!confirm('入力を消して新しい見積を始めますか？'))return;trip='one';services=[];for(const id of fieldIds){const e=$(id);if(e.type==='checkbox')e.checked=false;else if(e.tagName==='SELECT')e.selectedIndex=0;else e.value='';}$('outMinutes').value='10';$('backMinutes').value='10';$('date').value=today();$('message').textContent='';renderServices();render();window.scrollTo({top:0,behavior:'smooth'});};
-$('date').value=today();try{const d=localStorage.getItem(KEY);if(d)restore(JSON.parse(d));}catch(e){$('message').textContent='前回の入力を復元できませんでした。保存した見積データがあれば開いてください。';}renderServices();render();
-</script></body></html>
+(function () {
+  document.getElementById('estimate-link').addEventListener('click', function (event) {
+    event.preventDefault();
+    var html = JSON.parse(document.getElementById('estimate-document').textContent);
+    var estimateWindow = window.open('', '_blank');
+    if (!estimateWindow) {
+      alert('見積もりを開くため、このページのポップアップを許可してください。');
+      return;
+    }
+    estimateWindow.document.open();
+    estimateWindow.document.write(html);
+    estimateWindow.document.close();
+    estimateWindow.opener = null;
+  });
+}());
+</script>
+</body>
+</html>
