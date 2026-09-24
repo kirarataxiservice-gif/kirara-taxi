@@ -1735,7 +1735,34 @@
     const AVAILABILITY_BUSINESS_START = '08:30';
     const AVAILABILITY_BUSINESS_END = '17:30';
 
+    function isProductionAvailabilityHost() {
+      return String(window.location.hostname || '').toLowerCase() === 'kirarataxiservice-gif.github.io';
+    }
+
+    function showAvailabilityPreviewPlaceholder() {
+      const busyList = document.getElementById('availabilityBusyList');
+      const calendarArea = document.getElementById('availabilityCalendarArea');
+      const updatedText = document.getElementById('availabilityUpdatedText');
+
+      if (updatedText) updatedText.textContent = '';
+      if (busyList) {
+        busyList.innerHTML =
+          '<div class="availability-empty">プレビューでは予約状況の外部通信を行いません。</div>';
+      }
+      if (calendarArea) {
+        calendarArea.innerHTML =
+          '<div class="availability-empty">本番サイトでは最新の予約状況が表示されます。</div>';
+      }
+    }
+
     function loadPublicAvailability() {
+      // ChatGPTプレビュー・ローカルファイル・別ホストではGASへ接続しない。
+      // 本番のGitHub Pages上でのみ公開空き状況を取得する。
+      if (!isProductionAvailabilityHost()) {
+        showAvailabilityPreviewPlaceholder();
+        return;
+      }
+
       const callbackName = 'renderMainAvailability_' + Date.now();
       let script;
 
@@ -1785,15 +1812,18 @@
       const busy = [];
 
       days.forEach(function(day) {
-        (day.events || []).forEach(function(ev) {
-          const clipped = clipMainEventToBusinessHours(ev);
-          if (!clipped) return;
+        const events = mergeMainAvailabilityEvents(
+          (day.events || [])
+            .map(clipMainEventToBusinessHours)
+            .filter(Boolean)
+        );
 
+        events.forEach(function(ev) {
           busy.push({
             date: day.label,
             weekday: day.weekday,
             isToday: day.isToday,
-            time: clipped.startTime + '〜' + clipped.endTime
+            time: ev.startTime + '〜' + ev.endTime
           });
         });
       });
@@ -1846,9 +1876,11 @@
       }
 
       days.forEach(function(day) {
-        const events = (day.events || [])
-          .map(clipMainEventToBusinessHours)
-          .filter(Boolean);
+        const events = mergeMainAvailabilityEvents(
+          (day.events || [])
+            .map(clipMainEventToBusinessHours)
+            .filter(Boolean)
+        );
 
         cells += '<div class="availability-day' + (day.isToday ? ' is-today' : '') + '">';
         cells += '<div class="availability-day-head">';
@@ -1888,6 +1920,47 @@
       const h = Math.floor(minutes / 60);
       const m = minutes % 60;
       return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    }
+
+    function mergeMainAvailabilityEvents(events) {
+      const normalized = (events || [])
+        .map(function(ev) {
+          const start = availabilityTimeToMinutes(ev.startTime);
+          const end = availabilityTimeToMinutes(ev.endTime);
+          if (start === null || end === null || start >= end) return null;
+          return { start: start, end: end };
+        })
+        .filter(Boolean)
+        .sort(function(a, b) {
+          return a.start - b.start || a.end - b.end;
+        });
+
+      const merged = [];
+
+      normalized.forEach(function(item) {
+        if (!merged.length) {
+          merged.push({ start: item.start, end: item.end });
+          return;
+        }
+
+        const last = merged[merged.length - 1];
+
+        // 公開空き状況では、重複・包含・隣接する予約済み時間を1本にまとめる。
+        if (item.start <= last.end) {
+          if (item.end > last.end) last.end = item.end;
+          return;
+        }
+
+        merged.push({ start: item.start, end: item.end });
+      });
+
+      return merged.map(function(item) {
+        return {
+          title: '予約済み',
+          startTime: availabilityMinutesToTime(item.start),
+          endTime: availabilityMinutesToTime(item.end)
+        };
+      });
     }
 
     function clipMainEventToBusinessHours(ev) {
